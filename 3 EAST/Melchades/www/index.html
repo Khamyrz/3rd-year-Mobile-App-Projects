@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bantayan Island Vape Shop Finder</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="icon-container">ICON</div>
+            <p>BANTAYAN ISLAND VAPE SHOP FINDER</p>
+            <button id="enter-btn">ENTER</button>
+        </div>
+    </div>
+
+    <!-- Main Menu Screen -->
+    <div id="main-menu" class="screen">
+        <div class="header">
+            <div class="menu-icon">≡</div>
+            <h1>BANTAYAN</h1>
+        </div>
+        <div class="menu-options">
+            <button id="btn-bantayan" class="menu-btn">BANTAYAN</button>
+            <button id="btn-madridejos" class="menu-btn">MADRIDEJOS</button>
+            <button id="btn-santa-fe" class="menu-btn">SANTA FE</button>
+        </div>
+    </div>
+
+    <!-- Location Screens -->
+    <div id="bantayan-screen" class="screen location-screen">
+        <div class="header">
+            <div class="back-btn">←</div>
+            <h1>BANTAYAN</h1>
+        </div>
+        <div class="subheader">VAPE SHOP</div>
+        <div class="shop-list" id="bantayan-shops"></div>
+        <div class="map-container" id="bantayan-map"></div>
+    </div>
+
+    <div id="madridejos-screen" class="screen location-screen">
+        <div class="header">
+            <div class="back-btn">←</div>
+            <h1>MADRIDEJOS</h1>
+        </div>
+        <div class="subheader">VAPE SHOP</div>
+        <div class="shop-list" id="madridejos-shops"></div>
+        <div class="map-container" id="madridejos-map"></div>
+    </div>
+
+    <div id="santa-fe-screen" class="screen location-screen">
+        <div class="header">
+            <div class="back-btn">←</div>
+            <h1>SANTA FE</h1>
+        </div>
+        <div class="subheader">VAPE SHOP</div>
+        <div class="shop-list" id="santa-fe-shops"></div>
+        <div class="map-container" id="santa-fe-map"></div>
+    </div>
+
+    <!-- Shop Detail Screen -->
+    <div id="shop-detail" class="screen">
+        <div class="header">
+            <div class="back-btn">←</div>
+            <h1 id="shop-name">SHOP NAME</h1>
+        </div>
+        <div class="shop-details">
+            <div class="shop-image">
+                <img id="shop-img" src="" alt="Shop Image">
+            </div>
+            <div class="shop-info">
+                <p id="shop-address"></p>
+                <p id="shop-hours"></p>
+                <p id="shop-contact"></p>
+                <div class="shop-description" id="shop-description"></div>
+            </div>
+            <div class="shop-actions">
+                <button id="shop-direction-btn">GET DIRECTIONS</button>
+                <button id="shop-call-btn">CALL</button>
+            </div>
+        </div>
+        <div class="map-container" id="detail-map"></div>
+    </div>
+
+    <!-- Age Verification Modal -->
+    <div id="age-verification" class="modal">
+        <div class="modal-content">
+            <h2>Age Verification</h2>
+            <p>You must be 21 years or older to access this app.</p>
+            <div class="age-buttons">
+                <button id="under-age-btn">I'M UNDER 21</button>
+                <button id="over-age-btn">I'M 21 OR OLDER</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Health Notice Modal -->
+    <div id="health-notice" class="modal">
+        <div class="modal-content">
+            <h2>Health Notice</h2>
+            <p>Vaping products contain nicotine, which is addictive. These products are intended for adult smokers only.</p>
+            <p>Nicotine delivery systems may pose health risks. Not recommended for non-smokers.</p>
+            <button id="acknowledge-btn">I UNDERSTAND</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

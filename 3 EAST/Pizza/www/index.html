@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pizza Finder</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <header>
+    <h1>Pizza Finder</h1>
+  </header>
+  <main>
+    <section id="map-section">
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <!-- Modal Popup Structure -->
+  <div id="pizza-modal" class="modal-popup">
+    <div class="modal-content">
+      <button class="close-btn">&times;</button>
+      <div class="modal-header">
+        <h2 id="modal-shop-name"></h2>
+        <div class="modal-rating" id="modal-rating"></div>
+      </div>
+      <div class="modal-body">
+        <div class="shop-details">
+          <p><strong>Hours:</strong> <span id="modal-hours"></span></p>
+          <p><strong>Contact:</strong> <span id="modal-contact"></span></p>
+          <p><strong>Services:</strong> <span id="modal-services"></span></p>
+        </div>
+        <div class="menu-section">
+          <h3>Menu</h3>
+          <div id="modal-products"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add inline JavaScript for modal functionality -->
+  <script>
+    // Get modal elements
+    const modal = document.getElementById('pizza-modal');
+    const modalContent = modal.querySelector('.modal-content');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // Close modal function
+    function closeModal() {
+      modalContent.classList.remove('active');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400);
+    }
+
+    // Close modal when clicking the close button
+    closeBtn.onclick = closeModal;
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+
+    // Close modal when pressing ESC key
+    document.onkeydown = function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    // Function to show modal with shop details
+    function showPizzaModal(branch) {
+      // Update modal content
+      document.getElementById('modal-shop-name').textContent = branch.name;
+      document.getElementById('modal-rating').innerHTML = branch.reviews;
+      document.getElementById('modal-hours').textContent = branch.hours;
+      document.getElementById('modal-contact').textContent = branch.contact;
+      document.getElementById('modal-services').textContent = branch.services;
+
+      // Clear and rebuild products list
+      const modalProducts = document.getElementById('modal-products');
+      modalProducts.innerHTML = '';
+      branch.products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+          <img src="images/${product.image}.png" alt="${product.name}" class="product-image">
+          <div class="product-name">${product.name}</div>
+          <div class="product-price">${product.price}</div>
+        `;
+        modalProducts.appendChild(productCard);
+        modalProducts.appendChild(productCard);
+      });
+
+      // Show modal with smooth animation
+      modal.style.display = 'block';
+      modalContent.classList.remove('active');
+      setTimeout(() => {
+        modalContent.classList.add('active');
+      }, 10);
+    }
+
+    // Export showPizzaModal function to be used by app.js
+    window.showPizzaModal = showPizzaModal;
+  </script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    background-color: #0066cc;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+header h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Navigation Menu */
+nav {
+    background-color: #004a99;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-menu li {
+    padding: 12px 15px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 15px;
+}
+
+.nav-menu li.active {
+    background-color: #003366;
+    font-weight: bold;
+    border-bottom: 3px solid #ffffff;
+}
+
+.nav-menu li:hover {
+    background-color: #005bb7;
+}
+
+/* Main Content Area */
+main {
+    padding: 15px;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.content-section h2 {
+    font-size: 20px;
+    color: #0066cc;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Home Section */
+.hero-video {
+    margin: 10px 0 20px;
+    text-align: center;
+}
+
+.featured-video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.video-caption {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #666;
+    font-style: italic;
+}
+
+.featured-types {
+    margin: 25px 0;
+}
+
+.featured-types h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #0066cc;
+    text-align: center;
+}
+
+.fish-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.fish-card {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: transform 0.3s;
+}
+
+.fish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.fish-card h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #0066cc;
+}
+
+.fish-card p {
+    font-size: 13px;
+    color: #666;
+}
+
+.get-started {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.get-started h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #0066cc;
+}
+
+.start-button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 3px 10px rgba(0, 102, 204, 0.2);
+}
+
+.start-button:hover {
+    background-color: #005bb7;
+}
+
+/* Fish Types Section */
+.fish-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fish-item {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fish-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.fish-details h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #0066cc;
+}
+
+.fish-properties {
+    list-style: none;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.fish-properties li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Methods Section */
+.method-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.method-card {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.method-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #0066cc;
+    text-align: center;
+}
+
+.method-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.method-steps h4 {
+    font-size: 16px;
+    margin: 12px 0 8px;
+    color: #0066cc;
+}
+
+.method-steps ol {
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.method-steps ol li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.method-tips {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.method-tips h4 {
+    margin-bottom: 8px;
+}
+
+.method-tips ul {
+    padding-left: 25px;
+}
+
+.method-tips ul li {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Recipes Section */
+.recipe-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.recipe-card {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.recipe-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #0066cc;
+}
+
+.recipe-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    min-height: 40px;
+}
+
+.view-recipe-btn {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-recipe-btn:hover {
+    background-color: #005bb7;
+}
+
+/* Recipe Modal */
+.recipe-modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+}
+
+.recipe-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-recipe {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-recipe:hover {
+    color: #0066cc;
+}
+
+/* About Section */
+.about-content {
+    padding: 10px;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.about-content h3 {
+    font-size: 18px;
+    margin: 20px 0 10px;
+    color: #0066cc;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    background-color: #0066cc;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 480px; /* Mobile phone width simulation */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .fish-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .fish-item {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .fish-image {
+        width: 40%;
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .fish-details {
+        width: 60%;
+    }
+    
+    .method-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        justify-content: flex-start;
+    }
+    
+    .nav-menu li {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .recipe-cards {
+        grid-template-columns: 1fr;
+    }
+}

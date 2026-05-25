@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alberto's Pizza</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen">
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/150" alt="Alberto's Pizza Logo" class="logo">
+            <h1>Alberto's Pizza</h1>
+            <p>Delicious pizza delivered to your doorstep!</p>
+        </div>
+        <div class="login-container">
+            <h2>Login to Continue</h2>
+            <button id="fb-login-button" class="fb-button">
+                <i class="fab fa-facebook-f"></i> Continue with Facebook
+            </button>
+            <p class="login-info">Login to access our full menu and place orders seamlessly.</p>
+        </div>
+    </div>
+
+    <!-- Main App (Hidden initially) -->
+    <div id="main-app" class="screen hidden">
+        <!-- Header -->
+        <header>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="header-title">Alberto's Pizza</div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </header>
+
+        <!-- Nav Menu (Hidden initially) -->
+        <nav id="side-menu" class="hidden">
+            <div class="user-profile">
+                <img id="user-pic" src="https://via.placeholder.com/50" alt="Profile Picture">
+                <div id="user-name">User Name</div>
+                <div id="user-email">user@example.com</div>
+            </div>
+            <ul>
+                <li><a href="#" class="menu-link" data-category="all">All Menu</a></li>
+                <li><a href="#" class="menu-link" data-category="pizza">Pizzas</a></li>
+                <li><a href="#" class="menu-link" data-category="food">Foods</a></li>
+                <li><a href="#" class="menu-link" data-category="shake">Shakes</a></li>
+                <li><a href="#" class="menu-link" data-category="milktea">Milk Tea</a></li>
+                <li><a href="#" class="menu-link" data-category="snack">Snacks</a></li>
+                <li><a href="#" id="view-orders">My Orders</a></li>
+                <li><a href="#" id="logout-button">Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Menu Categories -->
+            <div class="categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="pizza">Pizzas</button>
+                <button class="category-btn" data-category="food">Foods</button>
+                <button class="category-btn" data-category="shake">Shakes</button>
+                <button class="category-btn" data-category="milktea">Milk Tea</button>
+                <button class="category-btn" data-category="snack">Snacks</button>
+            </div>
+
+            <!-- Menu Items -->
+            <div id="menu-items" class="menu-container"></div>
+        </main>
+
+        <!-- Footer -->
+        
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Cart</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div id="cart-items" class="modal-body">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total-price">₱0.00</span>
+                </div>
+                <button id="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div id="order-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Order</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Your order is ready to be processed. Would you like to:</p>
+                <button id="messenger-btn" class="fb-button">
+                    <i class="fab fa-facebook-messenger"></i> Send via Facebook Messenger
+                </button>
+                <div class="delivery-info">
+                    <h3>Delivery Details</h3>
+                    <input type="text" id="delivery-address" placeholder="Delivery Address" class="form-input">
+                    <input type="text" id="contact-number" placeholder="Contact Number" class="form-input">
+                    <textarea id="delivery-notes" placeholder="Additional Notes (Optional)" class="form-input"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-order-btn">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2>Order Placed Successfully!</h2>
+                <p>Your order has been sent to Alberto's Pizza.</p>
+                <p>You will receive updates via Facebook Messenger.</p>
+                <button id="close-success-btn">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

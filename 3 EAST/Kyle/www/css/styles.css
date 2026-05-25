@@ -1,0 +1,308 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Filter Section */
+.filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filters h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.checkbox-group {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+#search-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-button:hover {
+    background-color: #2980b9;
+}
+
+/* Map Section */
+.map-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+/* Shop List Section */
+.shop-list {
+    padding: 1.5rem;
+}
+
+.shop-list h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.shops {
+    display: grid;
+    gap: 1rem;
+}
+
+.shop-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.shop-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.shop-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.shop-rating {
+    color: #f1c40f;
+    font-weight: 600;
+}
+
+.shop-address {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.shop-details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.shop-services {
+    margin-bottom: 1rem;
+}
+
+.service-tag {
+    display: inline-block;
+    background: #e8f4fc;
+    color: #3498db;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin: 0.2rem;
+    font-size: 0.9rem;
+}
+
+.shop-contact {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.shop-description {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Popup Styles */
+.custom-popup .leaflet-popup-content-wrapper {
+    padding: 0;
+    border-radius: 8px;
+}
+
+.popup-title {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+}
+
+.popup-content {
+    padding: 1rem;
+}
+
+.popup-rating {
+    color: #f1c40f;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.popup-address,
+.popup-hours,
+.popup-category,
+.popup-contact {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.popup-description {
+    margin: 1rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.popup-services ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.popup-services li {
+    display: inline-block;
+    background: #e8f4fc;
+    color: #3498db;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin: 0.2rem;
+    font-size: 0.9rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters {
+        margin-bottom: 1rem;
+    }
+    
+    #map {
+        height: 300px;
+    }
+}

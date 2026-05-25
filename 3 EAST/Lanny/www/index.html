@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline' https://*.facebook.com https://*.fbcdn.net; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- Facebook Meta Tags -->
+    <meta property="fb:app_id" content="1048038436655118" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Alberto's Pizza" />
+    <meta property="og:description" content="Order your favorite pizza online!" />
+    
+    <title>Alberto's Pizza</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen (Initial View) -->
+        <div id="loginScreen" class="screen active">
+            <div class="logo-container">
+                <h1>Alberto's Pizza</h1>
+                <img src="img/logo.png" alt="Alberto's Pizza Logo" class="logo">
+            </div>
+            <p class="welcome-text">Order your favorite pizza online!</p>
+            <div class="login-container">
+                <button id="fbLoginBtn" class="fb-login-btn">
+                    <i class="fab fa-facebook-f"></i> Continue with Facebook
+                </button>
+                <p class="login-info">Login to place your order and track delivery</p>
+            </div>
+        </div>
+
+        <!-- Main App Screen (After Login) -->
+        <div id="mainScreen" class="screen">
+            <header>
+                <div class="header-left">
+                    <button id="menuBtn" class="icon-btn"><i class="fas fa-bars"></i></button>
+                    <h2>Alberto's Pizza</h2>
+                </div>
+                <div class="header-right">
+                    <button id="cartBtn" class="icon-btn"><i class="fas fa-shopping-cart"></i> <span id="cartCount">0</span></button>
+                </div>
+            </header>
+
+            <!-- Side Menu -->
+            <div id="sideMenu" class="side-menu">
+                <div class="user-info">
+                    <img id="userProfilePic" src="img/default-profile.png" alt="Profile Picture" class="profile-pic">
+                    <p id="userName">User Name</p>
+                </div>
+                <ul class="menu-items">
+                    <li><a href="#" class="active"><i class="fas fa-pizza-slice"></i> Menu</a></li>
+                    <li><a href="#"><i class="fas fa-history"></i> Order History</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Delivery Locations</a></li>
+                    <li><a href="#"><i class="fas fa-percent"></i> Promotions</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+
+            <!-- Menu Content -->
+            <div class="content">
+                <div class="search-container">
+                    <input type="text" placeholder="Search menu..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="categories">
+                    <button class="category-btn active">All</button>
+                    <button class="category-btn">Bestsellers</button>
+                    <button class="category-btn">Classic</button>
+                    <button class="category-btn">Specialty</button>
+                    <button class="category-btn">Sides</button>
+                </div>
+
+                <div class="menu-items-container">
+                    <!-- Menu items will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Map View for Store Locations -->
+            <div id="mapView" class="map-container hidden">
+                <div class="map-header">
+                    <button id="backToMenuBtn" class="icon-btn"><i class="fas fa-arrow-left"></i></button>
+                    <h3>Find Nearby Stores</h3>
+                </div>
+                <div class="map-placeholder">
+                    <img src="img/map.png" alt="Map View" class="map-img">
+                </div>
+                <div class="store-list">
+                    <h4>Nearest Locations</h4>
+                    <ul>
+                        <li class="store-item">
+                            <div class="store-info">
+                                <p class="store-name">Alberto's - Main Street</p>
+                                <p class="store-address">123 Main St, Anytown</p>
+                                <p class="store-distance">1.2 km away</p>
+                            </div>
+                            <button class="select-store-btn">Select</button>
+                        </li>
+                        <li class="store-item">
+                            <div class="store-info">
+                                <p class="store-name">Alberto's - Downtown</p>
+                                <p class="store-address">456 Center Ave, Anytown</p>
+                                <p class="store-distance">2.5 km away</p>
+                            </div>
+                            <button class="select-store-btn">Select</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Shopping Cart -->
+            <div id="cartView" class="cart-container hidden">
+                <div class="cart-header">
+                    <button id="backToMenuFromCartBtn" class="icon-btn"><i class="fas fa-arrow-left"></i></button>
+                    <h3>Your Order</h3>
+                </div>
+                <div id="cartItems" class="cart-items">
+                    <!-- Cart items will be added here -->
+                </div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotalAmount">₱0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span id="deliveryFee">₱50.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="totalAmount">₱50.00</span>
+                    </div>
+                </div>
+                <button id="checkoutBtn" class="checkout-btn">Checkout</button>
+            </div>
+
+            <!-- Checkout View -->
+            <div id="checkoutView" class="checkout-container hidden">
+                <div class="checkout-header">
+                    <button id="backToCartBtn" class="icon-btn"><i class="fas fa-arrow-left"></i></button>
+                    <h3>Checkout</h3>
+                </div>
+                <div class="checkout-content">
+                    <div class="delivery-address">
+                        <h4>Delivery Address</h4>
+                        <textarea id="addressInput" placeholder="Enter your complete delivery address"></textarea>
+                    </div>
+                    <div class="payment-method">
+                        <h4>Payment Method</h4>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cash" checked>
+                                <span>Cash on Delivery</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card">
+                                <span>Credit/Debit Card</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="order-summary">
+                        <h4>Order Summary</h4>
+                        <div id="orderItemsList" class="order-items-list">
+                            <!-- Order items will be listed here -->
+                        </div>
+                        <div class="final-total">
+                            <span>Total:</span>
+                            <span id="finalAmount">₱0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="placeOrderBtn" class="place-order-btn">Place Order</button>
+            </div>
+
+            <!-- Order Confirmation -->
+            <div id="orderConfirmation" class="confirmation-container hidden">
+                <div class="confirmation-content">
+                    <i class="fas fa-check-circle confirmation-icon"></i>
+                    <h3>Order Placed Successfully!</h3>
+                    <p>Your order has been sent to Alberto's Pizza.</p>
+                    <p>Order #: <span id="orderNumber">12345</span></p>
+                    <p>Estimated delivery time: 30-45 minutes</p>
+                    <button id="backToHomeBtn" class="back-home-btn">Back to Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    
+    <!-- Load Facebook SDK -->
+    <script>
+        // Wait for device ready before initializing Facebook
+        document.addEventListener('deviceready', function() {
+            // Initialize Facebook
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId: '1048038436655118',
+                    cookie: true,
+                    xfbml: true,
+                    version: 'v18.0'
+                });
+                
+                // Additional initialization
+                FB.AppEvents.logPageView();
+                
+                // Check login status on init
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        // Log the login
+                        console.log('Logged in successfully');
+                        FB.AppEvents.logEvent('Login Success');
+                    }
+                });
+            };
+
+            // Load the Facebook SDK
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        }, false);
+    </script>
+    
+    <!-- Cordova -->
+    <script src="cordova.js"></script>
+    
+    <!-- PHP Currency Format Endpoint -->
+    <input type="hidden" id="phpEndpoint" value="currency_format.php">
+    
+    <!-- Your application code -->
+    <script src="js/script.js"></script>
+</body>
+</html>

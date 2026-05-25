@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey of Dried Fish</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- App Header -->
+        <header>
+            <div class="logo-container">
+                <img src="images/logo.png" alt="App Logo" class="app-logo">
+                <h1>The Journey of Dried Fish</h1>
+            </div>
+            <p class="tagline">Traditional Philippine Fish Drying Guide</p>
+        </header>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul class="nav-menu">
+                <li class="active" data-target="home">Home</li>
+                <li data-target="fish-types">Fish Types</li>
+                <li data-target="methods">Drying Methods</li>
+                <li data-target="recipes">Recipes</li>
+                <li data-target="about">About</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- Home Section -->
+            <section id="home" class="content-section active">
+                <h2>Welcome to The Journey of Dried Fish</h2>
+                <div class="hero-video">
+                    <video controls class="featured-video">
+                        <source src="videos/fish-drying-process.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">Traditional fish drying techniques in action</p>
+                </div>
+                <p>Discover the traditional art of drying fish from the Philippines with our comprehensive guide. Whether you're a beginner or experienced, learn everything about preserving fish the Filipino way.</p>
+                
+                <div class="featured-types">
+                    <h3>Popular Philippine Dried Fish</h3>
+                    <div class="fish-grid">
+                        <div class="fish-card">
+                            <img src="images/daing.png" alt="Daing" class="card-image">
+                            <h4>Daing</h4>
+                            <p>Split fish marinated in vinegar and salt</p>
+                        </div>
+                        <div class="fish-card">
+                            <img src="images/tuyo.png" alt="Tuyo" class="card-image">
+                            <h4>Tuyo</h4>
+                            <p>Salted dried fish, a breakfast staple</p>
+                        </div>
+                        <div class="fish-card">
+                            <img src="images/danggit.png" alt="Danggit" class="card-image">
+                            <h4>Danggit</h4>
+                            <p>Dried rabbitfish popular in Cebu</p>
+                        </div>
+                        <div class="fish-card">
+                            <img src="images/bulad.png" alt="Bulad" class="card-image">
+                            <h4>Bulad</h4>
+                            <p>Visayan term for various dried fish</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="get-started">
+                    <h3>Get Started</h3>
+                    <button class="start-button" data-target="methods">Learn Drying Methods</button>
+                </div>
+            </section>
+
+            <!-- Fish Types Section -->
+           <!-- Fish Types Section -->
+<section id="fish-types" class="content-section">
+    <h2>Philippine Fish Types for Drying</h2>
+    <p>The Philippines is rich with fish varieties that are perfect for drying. Here are some of the most commonly used species:</p>
+    
+    <div class="fish-list">
+        <div class="fish-item">
+            <img src="images/galunggong.png" alt="Galunggong" class="fish-image">
+            <div class="fish-details">
+                <h3>Galunggong (Mackerel Scad)</h3>
+                <p>A common fish used for making tuyo with an ideal oil content for drying.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 8-10 hours</li>
+                    <li><strong>Best Method:</strong> Salt-drying</li>
+                    <li><strong>Difficulty:</strong> Easy</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/dilis.png" alt="Dilis" class="fish-image">
+            <div class="fish-details">
+                <h3>Dilis (Anchovies)</h3>
+                <p>Small fish that dry quickly and are often consumed whole.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 4-6 hours</li>
+                    <li><strong>Best Method:</strong> Sun-drying</li>
+                    <li><strong>Difficulty:</strong> Very Easy</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/danggit-large.png" alt="Danggit" class="fish-image">
+            <div class="fish-details">
+                <h3>Danggit (Rabbitfish)</h3>
+                <p>A Cebuano delicacy known for its unique flavor when dried.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 6-8 hours</li>
+                    <li><strong>Best Method:</strong> Vinegar-salt marinade</li>
+                    <li><strong>Difficulty:</strong> Medium</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/tulingan.png" alt="Tulingan" class="fish-image">
+            <div class="fish-details">
+                <h3>Tulingan (Mackerel)</h3>
+                <p>Larger fish often split before drying for even preservation.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 10-12 hours</li>
+                    <li><strong>Best Method:</strong> Split-drying</li>
+                    <li><strong>Difficulty:</strong> Medium</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Added 6 new fish types -->
+        <div class="fish-item">
+            <img src="images/bangus.png" alt="Bangus" class="fish-image">
+            <div class="fish-details">
+                <h3>Bangus (Milkfish)</h3>
+                <p>National fish of the Philippines, perfect for daing when butterflied.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 8-10 hours</li>
+                    <li><strong>Best Method:</strong> Vinegar-salt marinade</li>
+                    <li><strong>Difficulty:</strong> Medium</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/tamban.png" alt="Tamban" class="fish-image">
+            <div class="fish-details">
+                <h3>Tamban (Sardines)</h3>
+                <p>Small, oily fish that make excellent tuyo with a rich flavor.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 5-7 hours</li>
+                    <li><strong>Best Method:</strong> Salt-drying</li>
+                    <li><strong>Difficulty:</strong> Easy</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/hasa-hasa.png" alt="Hasa-Hasa" class="fish-image">
+            <div class="fish-details">
+                <h3>Hasa-Hasa (Short Mackerel)</h3>
+                <p>Popular in Visayan regions, known for its tender meat when dried.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 7-9 hours</li>
+                    <li><strong>Best Method:</strong> Split-drying</li>
+                    <li><strong>Difficulty:</strong> Medium</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/alumahan.png" alt="Alumahan" class="fish-image">
+            <div class="fish-details">
+                <h3>Alumahan (Long-finned Mackerel)</h3>
+                <p>Firm-fleshed fish that holds its shape well during the drying process.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 9-11 hours</li>
+                    <li><strong>Best Method:</strong> Salt-drying</li>
+                    <li><strong>Difficulty:</strong> Medium</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/espada.png" alt="Espada" class="fish-image">
+            <div class="fish-details">
+                <h3>Espada (Swordfish)</h3>
+                <p>Often sliced into thin fillets before drying for quick and even results.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 6-8 hours</li>
+                    <li><strong>Best Method:</strong> Fillet-drying</li>
+                    <li><strong>Difficulty:</strong> Hard</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="fish-item">
+            <img src="images/bisugo.png" alt="Bisugo" class="fish-image">
+            <div class="fish-details">
+                <h3>Bisugo (Threadfin Bream)</h3>
+                <p>Produces delicate dried fish with a slightly sweet flavor profile.</p>
+                <ul class="fish-properties">
+                    <li><strong>Drying Time:</strong> 7-8 hours</li>
+                    <li><strong>Best Method:</strong> Sun-drying</li>
+                    <li><strong>Difficulty:</strong> Medium</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <!-- Drying Methods Section -->
+            <section id="methods" class="content-section">
+                <h2>Traditional Philippine Drying Methods</h2>
+                <p>Learn the authentic techniques used by generations of Filipino fisherfolk to preserve their catch.</p>
+                
+                <div class="method-container">
+                    <div class="method-card">
+                        <h3>Sun Drying (Pagbilad)</h3>
+                        <img src="images/sun-drying.png" alt="Sun Drying Method" class="method-image">
+                        <div class="video-tutorial">
+                            <h4>Video Tutorial:</h4>
+                            <video controls width="100%">
+                                <source src="videos/sun-drying-tutorial.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p class="video-caption">Step-by-step sun drying tutorial</p>
+                        </div>
+                        <div class="method-steps">
+                            <h4>Process:</h4>
+                            <ol>
+                                <li>Clean and gut the fish thoroughly</li>
+                                <li>Apply salt generously to the fish</li>
+                                <li>Arrange on bamboo racks or bilao (flat basket)</li>
+                                <li>Place under direct sunlight for 6-12 hours</li>
+                                <li>Turn fish occasionally for even drying</li>
+                                <li>Store in airtight containers when completely dry</li>
+                            </ol>
+                            <div class="method-tips">
+                                <h4>Tips:</h4>
+                                <ul>
+                                    <li>Choose dry, sunny days with low humidity</li>
+                                    <li>Protect from flies with thin mesh covers</li>
+                                    <li>Bring indoors if rain threatens</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <h3>Vinegar Curing (Daing)</h3>
+                        <img src="images/vinegar-curing.png" alt="Vinegar Curing Method" class="method-image">
+                        <div class="video-tutorial">
+                            <h4>Video Tutorial:</h4>
+                            <video controls width="100%">
+                                <source src="videos/vinegar-curing-tutorial.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p class="video-caption">Learn the traditional daing method</p>
+                        </div>
+                        <div class="method-steps">
+                            <h4>Process:</h4>
+                            <ol>
+                                <li>Clean and butterfly the fish</li>
+                                <li>Marinate in mixture of vinegar, salt, and garlic</li>
+                                <li>Let sit overnight in refrigerator</li>
+                                <li>Drain excess liquid</li>
+                                <li>Sun-dry for 4-8 hours until firm</li>
+                                <li>Store in clean, dry containers</li>
+                            </ol>
+                            <div class="method-tips">
+                                <h4>Tips:</h4>
+                                <ul>
+                                    <li>Use sukang Iloko (cane vinegar) for authentic flavor</li>
+                                    <li>Add crushed peppercorns for extra spice</li>
+                                    <li>Perfect for milkfish (bangus) and mackerel</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <h3>Salt-Drying (Tuyo Method)</h3>
+                        <img src="images/salt-drying.png" alt="Salt-Drying Method" class="method-image">
+                        <div class="video-tutorial">
+                            <h4>Video Tutorial:</h4>
+                            <video controls width="100%">
+                                <source src="videos/salt-drying-tutorial.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p class="video-caption">Complete guide to making tuyo</p>
+                        </div>
+                        <div class="method-steps">
+                            <h4>Process:</h4>
+                            <ol>
+                                <li>Clean fish but leave whole (for small fish)</li>
+                                <li>Create salt brine solution (1:3 salt to water)</li>
+                                <li>Soak fish in brine for 4-6 hours</li>
+                                <li>Remove and drain excess brine</li>
+                                <li>Sun-dry for 1-2 days until completely dry</li>
+                                <li>Store in dry, cool place</li>
+                            </ol>
+                            <div class="method-tips">
+                                <h4>Tips:</h4>
+                                <ul>
+                                    <li>The longer the brine time, the saltier the fish</li>
+                                    <li>Test dryness by pressing - should be firm with no give</li>
+                                    <li>Best for galunggong, dilis, and tamban</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recipes Section -->
+            <section id="recipes" class="content-section">
+                <h2>Delicious Dried Fish Recipes</h2>
+                <p>Try these authentic Filipino recipes featuring dried fish:</p>
+                
+                <div class="recipe-cards">
+                    <div class="recipe-card">
+                        <img src="images/sinangag-na-tuyo.png" alt="Sinangag na Tuyo" class="recipe-image">
+                        <h3>Sinangag na Tuyo</h3>
+                        <p class="recipe-description">Traditional Filipino garlic fried rice topped with crispy tuyo</p>
+                        <button class="view-recipe-btn" data-recipe="sinangag">View Recipe</button>
+                    </div>
+                    
+                    <div class="recipe-card">
+                        <img src="images/danggit-silog.png" alt="Danggit Silog" class="recipe-image">
+                        <h3>Danggit Silog</h3>
+                        <p class="recipe-description">Cebuano breakfast with danggit, fried rice, and egg</p>
+                        <button class="view-recipe-btn" data-recipe="danggit">View Recipe</button>
+                    </div>
+                    
+                    <div class="recipe-card">
+                        <img src="images/daing-na-bangus.png" alt="Daing na Bangus" class="recipe-image">
+                        <h3>Daing na Bangus</h3>
+                        <p class="recipe-description">Marinated milkfish fried to perfection</p>
+                        <button class="view-recipe-btn" data-recipe="bangus">View Recipe</button>
+                    </div>
+                </div>
+                
+                <div class="recipe-modal" id="recipe-modal">
+                    <div class="recipe-content">
+                        <span class="close-recipe">&times;</span>
+                        <div id="recipe-details">
+                            <!-- Recipe details will be loaded here by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="content-section">
+                <h2>About The Journey of Dried Fish</h2>
+                <div class="about-content">
+                    <img src="images/fishing-village.png" alt="Philippine Fishing Village" class="about-image">
+                    <p>This application is dedicated to preserving the traditional methods of fish drying that have been practiced in the Philippine islands for generations. Dried fish is not just food; it's an important part of Filipino culture and heritage.</p>
+                    <p>Our mission is to document and share these traditional techniques so they can be continued by future generations. We've traveled throughout the Philippine archipelago to learn from the masters of this craft.</p>
+                    
+                    <h3>Using This App Offline</h3>
+                    <p>This app is designed to work completely offline. Once downloaded, you can access all content without an internet connection, making it perfect for use in remote fishing villages or during actual fish drying sessions.</p>
+                    
+                    <h3>Contact Information</h3>
+                    <p>For questions or suggestions about this app, contact us at:</p>
+                    <p>Email: driedfish@example.com</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 The Journey of Dried Fish - Philippine Traditional Methods</p>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

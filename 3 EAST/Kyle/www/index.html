@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bantayan Island Gadget Repair Finder</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Bantayan Island Gadget Repair Finder</h1>
+            <p>Find trusted gadget repair shops in Madridejos, Bantayan, and Santa Fe</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="filters">
+                <h2>Find Repair Shops</h2>
+                
+                <div class="filter-group">
+                    <label for="search-input">Search</label>
+                    <input type="text" id="search-input" placeholder="Search by name, address, or category">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="location">Location</label>
+                    <select id="location">
+                        <option value="all">All Areas</option>
+                        <option value="bantayan">Bantayan</option>
+                        <option value="madridejos">Madridejos</option>
+                        <option value="santa-fe">Santa Fe</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="device-type">Device Type</label>
+                    <select id="device-type">
+                        <option value="all">All Devices</option>
+                        <option value="smartphone">Smartphone</option>
+                        <option value="laptop">Laptop</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="desktop">Desktop</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Service Type</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="screen-repair" value="screen-repair" checked>
+                            <label for="screen-repair">Screen Repair</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="battery-replacement" value="battery-replacement" checked>
+                            <label for="battery-replacement">Battery Replacement</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="water-damage" value="water-damage" checked>
+                            <label for="water-damage">Water Damage</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="software-issues" value="software-issues" checked>
+                            <label for="software-issues">Software Issues</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="rating">Minimum Rating</label>
+                    <select id="rating">
+                        <option value="0">Any Rating</option>
+                        <option value="3">3+ Stars</option>
+                        <option value="4">4+ Stars</option>
+                        <option value="4.5">4.5+ Stars</option>
+                    </select>
+                </div>
+                
+                <button id="search-button">Search Repair Shops</button>
+            </div>
+            
+            <div class="map-container">
+                <div id="map"></div>
+                
+                <div class="shop-list">
+                    <h2>Available Repair Shops</h2>
+                    <div id="shops" class="shops">
+                        <!-- Shop cards will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop Details Modal -->
+    <div id="shop-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modal-content">
+                <!-- Shop details will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

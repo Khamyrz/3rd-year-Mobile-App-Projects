@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalonIsla - Find Salons in Madridejos, Bantayan, and Sta. Fe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Salon Locator</h1>
+        </header>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search salons or services...">
+            </div>
+            <div class="location-filters">
+                <button class="filter-btn active" data-location="all">All</button>
+                <button class="filter-btn" data-location="madridejos">Madridejos</button>
+                <button class="filter-btn" data-location="bantayan">Bantayan</button>
+                <button class="filter-btn" data-location="sta-fe">Sta. Fe</button>
+            </div>
+        </div>
+        
+        <!-- Map Container -->
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button id="show-map-btn" class="action-btn">Show Map</button>
+            <button id="clear-filters-btn" class="action-btn">Clear Filters</button>
+        </div>
+        
+        <!-- Salon List -->
+        <div class="salon-list" id="salon-list">
+            <!-- Salon items will be added here dynamically -->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
