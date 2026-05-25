@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initialize BIOME Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #006994, #1ca4c9, #38b6b2);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: white;
+            text-align: center;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .success {
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+        }
+        .error {
+            background: rgba(220, 53, 69, 0.2);
+            border: 1px solid #dc3545;
+        }
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #ffc107;
+        }
+        .info {
+            background: rgba(23, 162, 184, 0.2);
+            border: 1px solid #17a2b8;
+        }
+        button {
+            background: #006994;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #005580;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        .collection-list {
+            margin-top: 20px;
+        }
+        .collection-item {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #console-output {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BIOME Database Initialization</h1>
+        
+        <div id="status" class="status"></div>
+        
+        <button id="initButton" onclick="initializeDb()">Initialize Database</button>
+        
+        <div id="console-output"></div>
+        
+        <div class="collection-list">
+            <h2>Collections to be created:</h2>
+            <div class="collection-item">
+                <h3>📁 categories</h3>
+                <p>Product categories (Fresh Fish, Dried Fish, Seafood)</p>
+            </div>
+            <div class="collection-item">
+                <h3>📁 markets</h3>
+                <p>Market locations and information</p>
+            </div>
+            <div class="collection-item">
+                <h3>📁 productTemplates</h3>
+                <p>Template products with price ranges</p>
+            </div>
+            <div class="collection-item">
+                <h3>📁 tourPackages</h3>
+                <p>Available tour packages and activities</p>
+            </div>
+            <div class="collection-item">
+                <h3>📁 serviceCategories</h3>
+                <p>Transportation and guide service categories</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+    
+    <!-- Database Initialization Script -->
+    <script src="js/db-init.js"></script>
+
+    <script>
+        // Console output handling
+        const consoleOutput = document.getElementById('console-output');
+        const originalConsole = {
+            log: console.log,
+            error: console.error,
+            warn: console.warn,
+            info: console.info
+        };
+
+        // Override console methods to display in UI
+        console.log = function() {
+            originalConsole.log.apply(console, arguments);
+            appendToConsole('LOG', ...arguments);
+        };
+        console.error = function() {
+            originalConsole.error.apply(console, arguments);
+            appendToConsole('ERROR', ...arguments);
+        };
+        console.warn = function() {
+            originalConsole.warn.apply(console, arguments);
+            appendToConsole('WARN', ...arguments);
+        };
+        console.info = function() {
+            originalConsole.info.apply(console, arguments);
+            appendToConsole('INFO', ...arguments);
+        };
+
+        function appendToConsole(type, ...args) {
+            const timestamp = new Date().toLocaleTimeString();
+            const message = args.map(arg => 
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+            
+            const line = `[${timestamp}] ${type}: ${message}\n`;
+            consoleOutput.textContent += line;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        // Function to check if required functions are available
+        function checkFunctionsAvailable() {
+            const requiredFunctions = ['initializeDatabase', 'isDatabaseEmpty', 'checkAndInitializeDatabase'];
+            const missingFunctions = requiredFunctions.filter(fn => typeof window[fn] !== 'function');
+            
+            if (missingFunctions.length > 0) {
+                console.error('Missing required functions:', missingFunctions);
+                updateStatus('error', `Missing required functions: ${missingFunctions.join(', ')}`);
+                return false;
+            }
+            return true;
+        }
+
+        function updateStatus(type, message) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = message;
+        }
+
+        async function initializeDb() {
+            const initButton = document.getElementById('initButton');
+            initButton.disabled = true;
+            
+            try {
+                if (!checkFunctionsAvailable()) {
+                    initButton.disabled = false;
+                    return;
+                }
+
+                updateStatus('info', 'Initializing database...');
+                console.info('Starting database initialization');
+
+                const result = await window.checkAndInitializeDatabase();
+                if (result) {
+                    updateStatus('success', 'Database initialized successfully!');
+                    console.log('Database initialization completed successfully');
+                }
+            } catch (error) {
+                console.error('Initialization error:', error);
+                updateStatus('error', `Error: ${error.message}\nCheck the console output below for details.`);
+            } finally {
+                initButton.disabled = false;
+            }
+        }
+
+        // Check functions availability when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            console.info('Checking initialization functions availability...');
+            checkFunctionsAvailable();
+        });
+    </script>
+</body>
+</html> 

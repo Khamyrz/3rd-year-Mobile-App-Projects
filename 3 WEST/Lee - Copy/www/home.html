@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Madridejos Poultry Farms</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      padding: 20px;
+      margin-bottom: 80px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    /* Enhanced Dropdown Styles */
+    .select-barangay {
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .custom-dropdown {
+      width: 180px;
+      margin: 0 auto;
+      cursor: pointer;
+      text-align: left;
+      position: relative;
+    }
+
+    .dropdown-selected {
+      padding: 12px 45px 12px 20px;
+      background-color: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      font-size: 16px;
+      color: #2c3e50;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-selected::after {
+      content: "\f078";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #7f8c8d;
+      transition: all 0.3s ease;
+    }
+
+    .custom-dropdown.active .dropdown-selected {
+      border-color: #4285F4;
+      box-shadow: 0 4px 20px rgba(66,133,244,0.2);
+    }
+
+    .custom-dropdown.active .dropdown-selected::after {
+      transform: translateY(-50%) rotate(180deg);
+      color: #4285F4;
+    }
+
+    .dropdown-options {
+      list-style: none;
+      position: absolute;
+      width: 95%;
+      background-color: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      margin-top: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+      animation: dropdownSlide 0.3s ease-out;
+    }
+
+    @keyframes dropdownSlide {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown-options li {
+      padding: 12px 20px;
+      font-size: 15px;
+      color: #34495e;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .dropdown-options li:hover {
+      background-color: #f8f9ff;
+      color: #4285F4;
+      padding-left: 25px;
+    }
+
+    .dropdown-options li[data-value="all"] {
+      font-weight: 600;
+      color: #4285F4;
+      background-color: #f8f9ff;
+    }
+
+    .dropdown-options::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .dropdown-options::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .dropdown-options::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+
+    .dropdown-options::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+
+    /* Farm Grid Styles */
+    .farms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      padding: 15px;
+    }
+
+    .farm-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .farm-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .farm-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .farm-info {
+      padding: 15px;
+    }
+
+    .farm-name {
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .farm-location {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #4285F4;
+      color: white;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background-color: #ffffff;
+      border-top: 1px solid #eeeeee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+      padding: 0 10px;
+      z-index: 1000;
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item i {
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item.active {
+      color: #4285F4;
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Body content remains the same -->
+  <div class="container">
+    <div class="header">
+      <h1>Madridejos Poultry Farms</h1>
+      <p>Discover local poultry suppliers</p>
+    </div>
+
+    <div class="select-barangay">
+      <label>Select Barangay:</label>
+      <div class="custom-dropdown">
+        <div class="dropdown-selected" id="dropdownSelected">All</div>
+        <ul class="dropdown-options" id="dropdownOptions">
+          <li data-value="all">All</li>
+          <li data-value="Tugas">Tugas</li>
+          <li data-value="Malbago">Malbago</li>
+          <li data-value="Kodia">Kodia</li>
+          <li data-value="Kangwayan">Kangwayan</li>
+          <li data-value="Tabagak">Tabagak</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="farms-grid" id="farmsGrid">
+      <!-- Farm cards will be generated here -->
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a href="home.html" class="nav-item active">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="map.html" class="nav-item">
+      <i class="fas fa-map-marked-alt"></i>
+      <span>Map</span>
+    </a>
+    <a href="settings.html" class="nav-item">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </div>
+
+  <script>
+    // JavaScript remains the same with enhanced dropdown interaction
+    const farms = [
+      { name: "Josephs Farm", location: "Brgy. Kangwayan, Madridejos", barangay: "Kangwayan", image: "joseph.jpg" },
+      { name: "JRCJL Poultry Farm", location: "Brgy. Kodia, Madridejos", barangay: "Kodia", image: "jrcjl.jpg" },
+      { name: "Palo Poultry Farm", location: "Brgy. Kodia, Madridejos", barangay: "Kodia", image: "palo.jpg" },
+      { name: "Calilap Poultry Farm", location: "Brgy. Kodia, Madridejos", barangay: "Kodia", image: "tagalog.jpg" },
+      { name: "AFI Poultry Farm", location: "Brgy. Kodia, Madridejos", barangay: "Kodia", image: "afi.jpg" },
+      { name: "SEAL-South East Asia Farm", location: "Brgy. Kangwayan, Madridejos", barangay: "Kangwayan", image: "seal.jpg" },
+      { name: "RVF Farm", location: "Brgy. Tugas, Madridejos", barangay: "Tugas", image: "rvf.jpg" },
+      { name: "JTAKS Poultry Farm", location: "Brgy. Tabagak, Madridejos", barangay: "Tabagak", image: "jtaks.jpg"},
+      { name: "Batayola Poultry Farm", location: "Brgy. Malbago, Madridejos", barangay: "Malbago", image: "batayola.jpg"},
+      { name: "Yama Poultry Farm", location: "Brgy. Tugas, Madridejos", barangay: "Tugas", image: "yama.jpg"},
+    ];
+
+    const farmsGrid = document.getElementById('farmsGrid');
+    const dropdownSelected = document.getElementById('dropdownSelected');
+    const dropdownOptions = document.getElementById('dropdownOptions');
+
+    function renderFarms(selectedBarangay = "all") {
+      farmsGrid.innerHTML = "";
+
+      const filtered = selectedBarangay === "all"
+        ? farms
+        : farms.filter(farm => farm.barangay === selectedBarangay);
+
+      filtered.forEach(farm => {
+        const card = `
+          <div class="farm-card">
+            <img src="${farm.image}" class="farm-image" alt="${farm.name}" />
+            <div class="farm-info">
+              <h3 class="farm-name">${farm.name}</h3>
+              <p class="farm-location">${farm.location}</p>
+              <button class="btn" onclick="viewDetails('${farm.name}')">View Details</button>
+            </div>
+          </div>
+        `;
+        farmsGrid.insertAdjacentHTML('beforeend', card);
+      });
+    }
+
+    function viewDetails(farmName) {
+      const encoded = encodeURIComponent(farmName);
+      window.location.href = `details.html?farm=${encoded}`;
+    }
+
+    // Enhanced dropdown interaction
+    dropdownSelected.addEventListener('click', () => {
+      const dropdown = document.querySelector('.custom-dropdown');
+      const isActive = dropdown.classList.contains('active');
+      dropdownOptions.style.display = isActive ? 'none' : 'block';
+      dropdown.classList.toggle('active', !isActive);
+    });
+
+    dropdownOptions.querySelectorAll('li').forEach(item => {
+      item.addEventListener('click', () => {
+        const value = item.getAttribute('data-value');
+        dropdownSelected.textContent = item.textContent;
+        dropdownOptions.style.display = 'none';
+        document.querySelector('.custom-dropdown').classList.remove('active');
+        renderFarms(value);
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.custom-dropdown')) {
+        dropdownOptions.style.display = 'none';
+        document.querySelector('.custom-dropdown').classList.remove('active');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFarms();
+    });
+  </script>
+</body>
+</html>

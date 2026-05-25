@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Guide Dashboard - BIOME</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>BIOME Guide</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-map-marked-alt"></i> My Tours</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Bookings</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Tourists</a></li>
+                <li><a href="#"><i class="fas fa-star"></i> Reviews</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Earnings</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search tours, bookings...">
+                </div>
+                <div class="user-profile">
+                    <span>Welcome, Guide</span>
+                    <img src="../images/guide-avatar.jpg" alt="Guide">
+                </div>
+            </header>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-info">
+                        <h3>Active Tours</h3>
+                        <p>8</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <div class="stat-info">
+                        <h3>Bookings</h3>
+                        <p>15</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <h3>Rating</h3>
+                        <p>4.9</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-wallet"></i>
+                    <div class="stat-info">
+                        <h3>Earnings</h3>
+                        <p>₱35,800</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="grid-item">
+                    <h3>Upcoming Tours</h3>
+                    <div class="tour-list">
+                        <div class="tour-item">
+                            <img src="../images/tour1.jpg" alt="Tour">
+                            <div class="tour-info">
+                                <h4>Historical City Walk</h4>
+                                <p><i class="fas fa-calendar"></i> June 15, 2024</p>
+                                <p><i class="fas fa-users"></i> 8 tourists</p>
+                                <p><i class="fas fa-clock"></i> 3 hours</p>
+                            </div>
+                            <div class="tour-actions">
+                                <button class="btn-view-details">View Details</button>
+                                <button class="btn-contact">Contact Tourists</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Recent Reviews</h3>
+                    <div class="review-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <img src="../images/tourist-avatar.jpg" alt="Tourist">
+                                    <p>Maria S.</p>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="review-text">Excellent knowledge of local history and culture. Made the tour very engaging!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Tour Requests</h3>
+                    <div class="request-list">
+                        <div class="request-item">
+                            <div class="request-info">
+                                <p>Mountain Trek Tour</p>
+                                <span>June 20, 2024 - Group of 5</span>
+                            </div>
+                            <div class="request-actions">
+                                <button class="btn-approve">Accept</button>
+                                <button class="btn-reject">Decline</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

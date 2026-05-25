@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Guide Dashboard</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="tours.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Tours</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#" onclick="logoutUser()" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search bookings, tours, or messages...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">5</span>
+            </div>
+            <span>Maria Santos</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="dashboard-header">
+            <h1>Welcome back, Maria!</h1>
+            <div class="quick-actions">
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Create Tour Package
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-calendar-alt"></i>
+                    View Schedule
+                </button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Today's Tours</h3>
+                    <p class="stat-value">0</p>
+                    <p class="stat-label">0 tourists</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Upcoming Bookings</h3>
+                    <p class="stat-value">0</p>
+                    <p class="stat-label">Next 7 days</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Rating</h3>
+                    <p class="stat-value">0.0</p>
+                    <p class="stat-label">0 reviews</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Earnings</h3>
+                    <p class="stat-value">₱0</p>
+                    <p class="stat-label">This month</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Today's Schedule</h2>
+                    <a href="schedule.html" class="btn btn-text">View All</a>
+                </div>
+                <div class="schedule-timeline">
+                    <div class="timeline-item active">
+                        <div class="timeline-time">09:00 AM</div>
+                        <div class="timeline-content">
+                            <h4>Cebu Heritage Walk</h4>
+                            <p>4 tourists • Meeting at Magellan's Cross</p>
+                            <div class="timeline-actions">
+                                <button class="btn btn-sm btn-outline">View Details</button>
+                                <button class="btn btn-sm btn-primary">Start Tour</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">01:00 PM</div>
+                        <div class="timeline-content">
+                            <h4>Food Trail Tour</h4>
+                            <p>6 tourists • Meeting at Larsian BBQ</p>
+                            <div class="timeline-actions">
+                                <button class="btn btn-sm btn-outline">View Details</button>
+                                <button class="btn btn-sm btn-primary">Start Tour</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">04:00 PM</div>
+                        <div class="timeline-content">
+                            <h4>Sunset City Tour</h4>
+                            <p>2 tourists • Meeting at Tops Lookout</p>
+                            <div class="timeline-actions">
+                                <button class="btn btn-sm btn-outline">View Details</button>
+                                <button class="btn btn-sm btn-primary">Start Tour</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Recent Bookings</h2>
+                    <a href="bookings.html" class="btn btn-text">View All</a>
+                </div>
+                <div class="bookings-list">
+                    <div class="booking-card">
+                        <div class="booking-info">
+                            <h4>Heritage Walk Tour</h4>
+                            <p>Tomorrow, 9:00 AM</p>
+                            <span class="booking-status confirmed">Confirmed</span>
+                        </div>
+                        <div class="booking-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>4 tourists</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-tag"></i>
+                                <span>₱6,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-card">
+                        <div class="booking-info">
+                            <h4>Food Trail Experience</h4>
+                            <p>Jun 20, 1:00 PM</p>
+                            <span class="booking-status pending">Pending</span>
+                        </div>
+                        <div class="booking-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>2 tourists</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-tag"></i>
+                                <span>₱2,400</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Recent Reviews</h2>
+                    <a href="reviews.html" class="btn btn-text">View All</a>
+                </div>
+                <div class="reviews-list">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="../../img/profile-placeholder.jpg" alt="Reviewer">
+                            <div class="reviewer-info">
+                                <h4>Sarah Johnson</h4>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">2 days ago</span>
+                        </div>
+                        <p class="review-text">Amazing tour! Maria's knowledge of Cebu's history made the experience unforgettable.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <img src="../../img/profile-placeholder.jpg" alt="Reviewer">
+                            <div class="reviewer-info">
+                                <h4>John Smith</h4>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">4 days ago</span>
+                        </div>
+                        <p class="review-text">The food tour was excellent! Maria took us to the best local spots.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Messages</h2>
+                    <a href="messages.html" class="btn btn-text">View All</a>
+                </div>
+                <div class="messages-list">
+                    <div class="message-card unread">
+                        <img src="../../img/profile-placeholder.jpg" alt="Sender">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <h4>David Lee</h4>
+                                <span class="message-time">10:30 AM</span>
+                            </div>
+                            <p>Hi Maria, I have a question about the heritage tour...</p>
+                        </div>
+                    </div>
+                    <div class="message-card">
+                        <img src="../../img/profile-placeholder.jpg" alt="Sender">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <h4>Emma Wilson</h4>
+                                <span class="message-time">Yesterday</span>
+                            </div>
+                            <p>Thank you for the wonderful tour recommendation!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/guides.js"></script>
+    <script>
+        // Initialize dashboard features
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load guide statistics
+            loadGuideStatistics();
+
+            // Initialize notifications
+            initializeNotifications();
+
+            // Update schedule timeline
+            updateScheduleTimeline();
+        });
+
+        const loadGuideStatistics = async () => {
+            try {
+                const guideId = 'current-guide-id'; // Replace with actual guide ID
+                const stats = await fetch(`/api/guides/${guideId}/statistics`).then(res => res.json());
+                updateDashboardStats(stats);
+            } catch (error) {
+                console.error('Error loading guide statistics:', error);
+            }
+        };
+
+        const initializeNotifications = () => {
+            const notificationBell = document.querySelector('.notifications');
+            notificationBell.addEventListener('click', () => {
+                // Implementation for showing notifications panel
+            });
+        };
+
+        const updateScheduleTimeline = () => {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const currentTime = new Date();
+
+            timelineItems.forEach(item => {
+                const timeString = item.querySelector('.timeline-time').textContent;
+                const itemTime = new Date();
+                const [hours, minutes, period] = timeString.match(/(\d+):(\d+) (AM|PM)/).slice(1);
+                
+                itemTime.setHours(
+                    period === 'PM' ? parseInt(hours) + 12 : parseInt(hours),
+                    parseInt(minutes)
+                );
+
+                if (currentTime >= itemTime) {
+                    item.classList.add('past');
+                } else if (item.classList.contains('active')) {
+                    item.classList.remove('past');
+                }
+            });
+        };
+
+        const updateDashboardStats = (stats) => {
+            // Implementation for updating dashboard statistics
+            document.querySelector('.stat-card:nth-child(1) .stat-value').textContent = stats.todayTours;
+            document.querySelector('.stat-card:nth-child(1) .stat-label').textContent = `${stats.todayTourists} tourists`;
+            document.querySelector('.stat-card:nth-child(2) .stat-value').textContent = stats.upcomingBookings;
+            document.querySelector('.stat-card:nth-child(3) .stat-value').textContent = stats.rating.toFixed(1);
+            document.querySelector('.stat-card:nth-child(3) .stat-label').textContent = `${stats.reviewCount} reviews`;
+            document.querySelector('.stat-card:nth-child(4) .stat-value').textContent = formatCurrency(stats.monthlyEarnings);
+        };
+
+        // Authentication check
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                // If not authenticated, redirect to login
+                window.location.href = '../../login.html';
+                return;
+            }
+
+            // Check if user has the correct role
+            db.collection('users').doc(user.uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        const role = doc.data().role;
+                        if (role.toLowerCase() !== 'guide') {
+                            // If wrong role, redirect to appropriate dashboard
+                            redirectBasedOnRole(role);
+                        }
+                    } else {
+                        // If no user document, redirect to registration
+                        window.location.href = '../../register.html';
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error checking user role:', error);
+                });
+        });
+    </script>
+</body>
+</html> 

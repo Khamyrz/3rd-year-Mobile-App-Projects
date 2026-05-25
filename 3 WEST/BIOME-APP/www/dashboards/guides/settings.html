@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Settings</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="tours.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Tours</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search settings...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">5</span>
+            </div>
+            <span>Maria Santos</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="settings-header">
+            <h1>Settings</h1>
+            <button class="btn btn-primary" id="saveSettingsBtn">
+                <i class="fas fa-save"></i>
+                Save Changes
+            </button>
+        </div>
+
+        <div class="settings-grid">
+            <div class="settings-nav">
+                <a href="#profile" class="settings-nav-item active">
+                    <i class="fas fa-user"></i>
+                    Profile
+                </a>
+                <a href="#account" class="settings-nav-item">
+                    <i class="fas fa-shield-alt"></i>
+                    Account Security
+                </a>
+                <a href="#notifications" class="settings-nav-item">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </a>
+                <a href="#availability" class="settings-nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    Availability
+                </a>
+                <a href="#payments" class="settings-nav-item">
+                    <i class="fas fa-wallet"></i>
+                    Payments
+                </a>
+                <a href="#preferences" class="settings-nav-item">
+                    <i class="fas fa-sliders-h"></i>
+                    Preferences
+                </a>
+            </div>
+
+            <div class="settings-content">
+                <section id="profile" class="settings-section active">
+                    <h2>Profile Information</h2>
+                    <div class="profile-photo-section">
+                        <img src="../../img/profile-placeholder.jpg" alt="Profile Photo" class="profile-photo">
+                        <div class="photo-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-upload"></i>
+                                Upload Photo
+                            </button>
+                            <button class="btn btn-outline">
+                                <i class="fas fa-trash"></i>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" value="Maria Santos">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" value="maria.santos@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" class="form-control" value="+63 912 345 6789">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Bio</label>
+                            <textarea class="form-control" rows="4">Passionate about sharing Cebu's rich cultural heritage with visitors from around the world. Licensed tour guide with over 5 years of experience.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Languages</label>
+                            <div class="language-chips">
+                                <div class="chip">
+                                    English
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="chip">
+                                    Filipino
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="chip">
+                                    Cebuano
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-plus"></i>
+                                    Add Language
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Expertise</label>
+                            <div class="expertise-chips">
+                                <div class="chip">
+                                    Heritage & Culture
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="chip">
+                                    Food & Culinary
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="chip">
+                                    Local History
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-plus"></i>
+                                    Add Expertise
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="account" class="settings-section">
+                    <h2>Account Security</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" class="form-control">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Two-Factor Authentication</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="2fa">
+                                <label for="2fa"></label>
+                                <span>Enable two-factor authentication for added security</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Login History</label>
+                            <div class="login-history">
+                                <div class="history-item">
+                                    <div class="device-info">
+                                        <i class="fas fa-laptop"></i>
+                                        <div>
+                                            <h4>Windows PC - Chrome</h4>
+                                            <p>Cebu City, Philippines</p>
+                                        </div>
+                                    </div>
+                                    <span class="login-time">Current Session</span>
+                                </div>
+                                <div class="history-item">
+                                    <div class="device-info">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <div>
+                                            <h4>iPhone - Safari</h4>
+                                            <p>Cebu City, Philippines</p>
+                                        </div>
+                                    </div>
+                                    <span class="login-time">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="notifications" class="settings-section">
+                    <h2>Notification Preferences</h2>
+                    <form class="settings-form">
+                        <div class="notification-group">
+                            <h3>Booking Notifications</h3>
+                            <div class="notification-option">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="newBooking" checked>
+                                    <label for="newBooking"></label>
+                                </div>
+                                <div class="notification-info">
+                                    <h4>New Booking Requests</h4>
+                                    <p>Get notified when tourists request to book your tours</p>
+                                </div>
+                            </div>
+                            <div class="notification-option">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="bookingReminder" checked>
+                                    <label for="bookingReminder"></label>
+                                </div>
+                                <div class="notification-info">
+                                    <h4>Booking Reminders</h4>
+                                    <p>Receive reminders about upcoming tours</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-group">
+                            <h3>Message Notifications</h3>
+                            <div class="notification-option">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="newMessage" checked>
+                                    <label for="newMessage"></label>
+                                </div>
+                                <div class="notification-info">
+                                    <h4>New Messages</h4>
+                                    <p>Get notified when tourists send you messages</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-group">
+                            <h3>Review Notifications</h3>
+                            <div class="notification-option">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="newReview" checked>
+                                    <label for="newReview"></label>
+                                </div>
+                                <div class="notification-info">
+                                    <h4>New Reviews</h4>
+                                    <p>Get notified when tourists leave reviews</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="availability" class="settings-section">
+                    <h2>Availability Settings</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>Working Hours</label>
+                            <div class="working-hours">
+                                <div class="day-schedule">
+                                    <span class="day">Monday</span>
+                                    <div class="hours">
+                                        <select class="form-control">
+                                            <option>9:00 AM</option>
+                                        </select>
+                                        <span>to</span>
+                                        <select class="form-control">
+                                            <option>5:00 PM</option>
+                                        </select>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="monday" checked>
+                                        <label for="monday"></label>
+                                    </div>
+                                </div>
+                                <!-- Repeat for other days -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Break Time</label>
+                            <div class="break-time">
+                                <select class="form-control">
+                                    <option>12:00 PM</option>
+                                </select>
+                                <span>to</span>
+                                <select class="form-control">
+                                    <option>1:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Advance Booking</label>
+                            <select class="form-control">
+                                <option>At least 24 hours in advance</option>
+                                <option>At least 48 hours in advance</option>
+                                <option>At least 72 hours in advance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Service Area</label>
+                            <div class="service-area-chips">
+                                <div class="chip">
+                                    Cebu City
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="chip">
+                                    Mactan
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-plus"></i>
+                                    Add Area
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="payments" class="settings-section">
+                    <h2>Payment Settings</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>Default Payment Method</label>
+                            <select class="form-control">
+                                <option>GCash (****1234)</option>
+                                <option>BPI Bank Account (****5678)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Automatic Withdrawals</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="autoWithdraw" checked>
+                                <label for="autoWithdraw"></label>
+                                <span>Automatically withdraw earnings when balance reaches ₱5,000</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tax Information</label>
+                            <input type="text" class="form-control" placeholder="TIN Number">
+                        </div>
+                    </form>
+                </section>
+
+                <section id="preferences" class="settings-section">
+                    <h2>System Preferences</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>Language</label>
+                            <select class="form-control">
+                                <option>English</option>
+                                <option>Filipino</option>
+                                <option>Cebuano</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Time Zone</label>
+                            <select class="form-control">
+                                <option>Philippine Time (GMT+8)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Currency</label>
+                            <select class="form-control">
+                                <option>Philippine Peso (₱)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Theme</label>
+                            <div class="theme-options">
+                                <div class="theme-option active">
+                                    <div class="theme-preview light"></div>
+                                    <span>Light</span>
+                                </div>
+                                <div class="theme-option">
+                                    <div class="theme-preview dark"></div>
+                                    <span>Dark</span>
+                                </div>
+                                <div class="theme-option">
+                                    <div class="theme-preview system"></div>
+                                    <span>System</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/guides.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle settings navigation
+            const navItems = document.querySelectorAll('.settings-nav-item');
+            const sections = document.querySelectorAll('.settings-section');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = item.getAttribute('href').substring(1);
+                    
+                    navItems.forEach(i => i.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    item.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+            // Handle chip removal
+            document.querySelectorAll('.chip .fa-times').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('.chip').remove();
+                });
+            });
+
+            // Handle theme selection
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                    option.classList.add('active');
+                    // Implementation for theme change
+                });
+            });
+
+            // Handle form submission
+            document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+                // Implementation for saving settings
+                alert('Settings saved successfully!');
+            });
+        });
+    </script>
+</body>
+</html>

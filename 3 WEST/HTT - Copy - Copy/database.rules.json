@@ -1,0 +1,42 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "users": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "riders": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "customers": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "rides": {
+      "$rideId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "pendingVerifications": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "passwordResets": {
+      "$resetId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+} 

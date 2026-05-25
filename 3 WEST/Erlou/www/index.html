@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgianSaIsda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-fish"></i>
+                <h1>TideCatcher</h1>
+            </div>
+            <div class="toggle-sidebar">
+                <i class="fas fa-bars"></i>
+            </div>
+        </header>
+
+        <main>
+            <div class="content">
+                <div id="map"></div>
+                
+                <div class="dashboard">
+                    <div class="location-info panel">
+                        <h2><i class="fas fa-location-dot"></i> Location</h2>
+                        <div class="info-content">
+                            <p id="current-location">Searching for your location...</p>
+                            <p id="coordinates">Coordinates: --</p>
+                        </div>
+                    </div>
+
+                    <div class="tide-info panel">
+                        <h2><i class="fas fa-water"></i> Tide Information</h2>
+                        <div class="info-content">
+                            <div class="tide-status">
+                                <div>
+                                    <span class="label">Current:</span>
+                                    <span id="tide-status">Loading...</span>
+                                </div>
+                                <div>
+                                    <span class="label">Next:</span>
+                                    <span id="next-tide">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="tide-chart-container">
+                                <canvas id="tide-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="weather-info panel">
+                        <h2><i class="fas fa-cloud-sun"></i> Weather</h2>
+                        <div class="info-content">
+                            <div class="weather-main">
+                                <div id="weather-icon"><i class="fas fa-spinner fa-spin"></i></div>
+                                <div class="weather-temp-container">
+                                    <span id="weather-temp">--</span>
+                                    <span id="weather-desc">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="weather-details">
+                                <div class="weather-detail">
+                                    <i class="fas fa-wind"></i>
+                                    <span id="wind-speed">-- mph</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-compass"></i>
+                                    <span id="wind-direction">--</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-tint"></i>
+                                    <span id="humidity">--%</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span id="pressure">-- hPa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Settings</h2>
+                <button class="close-sidebar"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="sidebar-content">
+                <div class="setting-group">
+                    <h3>Map Settings</h3>
+                    <div class="setting">
+                        <label for="map-type">Map Type</label>
+                        <select id="map-type">
+                            <option value="street">Street</option>
+                            <option value="satellite">Satellite</option>
+                            <option value="terrain">Terrain</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>Location</h3>
+                    <div class="setting">
+                        <label for="search-location">Search Location</label>
+                        <input type="text" id="search-location" placeholder="Enter location...">
+                        <button id="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <button id="current-position-btn" class="btn-primary">
+                        <i class="fas fa-crosshairs"></i> My Location
+                    </button>
+                </div>
+                <div class="setting-group">
+                    <h3>Units</h3>
+                    <div class="setting">
+                        <label for="temp-unit">Temperature</label>
+                        <select id="temp-unit">
+                            <option value="celsius">Celsius</option>
+                            <option value="fahrenheit">Fahrenheit</option>
+                        </select>
+                    </div>
+                    <div class="setting">
+                        <label for="distance-unit">Distance</label>
+                        <select id="distance-unit">
+                            <option value="metric">Kilometers</option>
+                            <option value="imperial">Miles</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>Saved Locations</h3>
+                    <div id="saved-locations-list">
+                        <p>No saved locations</p>
+                    </div>
+                    <button id="save-location-btn" class="btn-primary">
+                        <i class="fas fa-bookmark"></i> Save Current Location
+                    </button>
+                </div>
+                <div class="about">
+                    <h3>About TideCatcher</h3>
+                    <p>Version 1.0.0</p>
+                    <p>A companion app for fishermen to track location, tides, and weather.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

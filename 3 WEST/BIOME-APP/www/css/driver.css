@@ -1,0 +1,718 @@
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #1976D2;
+    --success-color: #4CAF50;
+    --warning-color: #FFC107;
+    --danger-color: #F44336;
+    --text-color: #333;
+    --text-secondary: #666;
+    --border-color: #dee2e6;
+    --background-light: #f8f9fa;
+}
+
+/* Driver-specific button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--background-light);
+}
+
+.btn-outline.active {
+    background-color: var(--background-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+}
+
+/* Driver status indicators */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-badge.active {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.status-badge.busy {
+    background-color: #FFF3CD;
+    color: #856404;
+}
+
+.status-badge.offline {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+/* Trip card styles */
+.trip-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.trip-card .trip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.trip-card .trip-type {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.trip-card .trip-amount {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Vehicle status styles */
+.vehicle-status-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.vehicle-status-card .status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.vehicle-status-card .status-item:last-child {
+    border-bottom: none;
+}
+
+.vehicle-status-card .status-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.vehicle-status-card .status-value {
+    font-weight: 500;
+}
+
+/* Earnings summary styles */
+.earnings-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.earnings-card .earnings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.earnings-card .earnings-amount {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.earnings-card .earnings-period {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Review card styles */
+.review-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.review-card .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.review-card .reviewer-info {
+    display: flex;
+    gap: 12px;
+}
+
+.review-card .reviewer-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-card .reviewer-name {
+    font-weight: 500;
+    margin: 0 0 4px;
+}
+
+.review-card .review-date {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.review-card .review-rating {
+    color: var(--warning-color);
+}
+
+.review-card .review-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Schedule calendar styles */
+.schedule-calendar {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.schedule-calendar .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.schedule-calendar .calendar-navigation {
+    display: flex;
+    gap: 12px;
+}
+
+.schedule-calendar .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.schedule-calendar .calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.schedule-calendar .calendar-day:hover {
+    background-color: var(--background-light);
+}
+
+.schedule-calendar .calendar-day.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .trip-card .trip-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .earnings-card .earnings-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .schedule-calendar .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: 0.875rem;
+    }
+}
+
+/* Driver Dashboard Specific Styles */
+
+/* Trip Management */
+.trip-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.trip-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.trip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.trip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.trip-type {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.trip-amount {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.trip-status {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+}
+
+.status-upcoming {
+    background: var(--primary-color);
+}
+
+.status-ongoing {
+    background: var(--warning-color);
+}
+
+.status-completed {
+    background: var(--success-color);
+}
+
+.status-cancelled {
+    background: var(--danger-color);
+}
+
+.trip-route {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--background-light);
+    border-radius: var(--radius-md);
+}
+
+.route-point {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.route-line {
+    flex: 0 0 100px;
+    height: 2px;
+    background: var(--border-color);
+    position: relative;
+}
+
+.route-line::before,
+.route-line::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.route-line::before {
+    left: 0;
+}
+
+.route-line::after {
+    right: 0;
+}
+
+.route-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.route-value {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.trip-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--gray-100);
+    border-radius: var(--radius-md);
+    margin: 1rem 0;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+}
+
+.detail-value {
+    font-weight: 500;
+    color: var(--gray-900);
+}
+
+/* Vehicle Management */
+.vehicle-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.vehicle-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.vehicle-image {
+    position: relative;
+    padding-top: 60%;
+    background: var(--background-light);
+}
+
+.vehicle-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vehicle-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    background: var(--primary-color);
+}
+
+.vehicle-details {
+    padding: 1.5rem;
+}
+
+.vehicle-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--background-light);
+    border-radius: var(--radius-md);
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.info-value {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Maintenance Timeline */
+.maintenance-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item:last-child::before {
+    display: none;
+}
+
+.timeline-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.timeline-content {
+    flex: 1;
+    background: var(--background-light);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Earnings Dashboard */
+.earnings-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.earnings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.earnings-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.earnings-chart {
+    height: 300px;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--background-light);
+    border-radius: var(--radius-md);
+}
+
+.earnings-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--background-light);
+    border-radius: var(--radius-md);
+}
+
+.summary-item {
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.summary-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.summary-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .vehicle-info,
+    .earnings-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .trip-route {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .route-line {
+        width: 2px;
+        height: 50px;
+        margin-left: 10px;
+    }
+    
+    .route-line::before,
+    .route-line::after {
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    
+    .route-line::before {
+        top: 0;
+    }
+    
+    .route-line::after {
+        top: 100%;
+    }
+    
+    .earnings-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vehicle-info,
+    .earnings-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .trip-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .timeline-item {
+        gap: 1rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #ffffff;
+        --text-secondary: #a0a0a0;
+        --background-light: #2d2d2d;
+        --border-color: #404040;
+    }
+
+    .trip-card,
+    .vehicle-card,
+    .earnings-card,
+    .maintenance-timeline,
+    .summary-item {
+        background: var(--gray-800);
+    }
+    
+    .trip-route,
+    .vehicle-info,
+    .timeline-content,
+    .earnings-chart,
+    .earnings-summary {
+        background: var(--gray-700);
+    }
+    
+    .route-line {
+        background: var(--gray-600);
+    }
+    
+    .timeline-item::before {
+        background: var(--gray-600);
+    }
+} 

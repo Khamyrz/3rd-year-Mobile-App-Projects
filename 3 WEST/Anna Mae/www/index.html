@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IslandPal - Bantayan Island Travel Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="nav-bottom">
+            <div class="nav-item active" data-screen="dashboard">
+                <i class="icon">☀️</i>
+                <span>IslandPal</span>
+            </div>
+            <div class="nav-item" data-screen="maps">
+                <i class="icon">🗺️</i>
+                <span>Offline Maps</span>
+            </div>
+            <div class="nav-item" data-screen="checklist">
+                <i class="icon">✓</i>
+                <span>Travel Checklist</span>
+            </div>
+            <div class="nav-item" data-screen="phrases">
+                <i class="icon">💬</i>
+                <span>Local Phrases</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Screen -->
+        <div id="dashboard" class="screen active">
+            <div class="header blue">
+                <h1>BantayanGo</h1>
+                <p>Bantayan Island Travel Guide</p>
+            </div>
+            <div class="weather-box">
+                <p class="weather-info">Currently 28°C, Sunny</p>
+                <p class="weather-time">High: 31°C | Current: 28°C | Low: 25°C</p>
+            </div>
+            <div class="categories">
+                <div class="category yellow">
+                    <span>Hotels & Resorts</span>
+                </div>
+                <div class="category blue">
+                    <span>Food & Restaurants</span>
+                </div>
+                <div class="category orange">
+                    <span>Tours & Activities</span>
+                </div>
+                <div class="category red">
+                    <span>Emergency Contacts</span>
+                </div>
+            </div>
+            <div class="section-header">
+                <h2>Featured Attractions</h2>
+            </div>
+            <div class="attractions">
+                <div class="attraction">
+                    <div class="attraction-image"></div>
+                    <div class="attraction-info">
+                        <h3>Kota Beach</h3>
+                        <p>White sand beach • 2km away</p>
+                    </div>
+                </div>
+                <div class="attraction">
+                    <div class="attraction-image"></div>
+                    <div class="attraction-info">
+                        <h3>Lawis Lighthouse</h3>
+                        <p>Historical landmark • 3km away</p>
+                    </div>
+                </div>
+                <div class="attraction">
+                    <div class="attraction-image"></div>
+                    <div class="attraction-info">
+                        <h3>Kota Park</h3>
+                        <p>"The most charming view on the north side"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maps Screen -->
+        <div id="maps" class="screen">
+            <div class="header yellow">
+                <h1>Offline Maps</h1>
+                <p>Destinations, food, and accommodations</p>
+            </div>
+            <div class="map-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="beaches">Beaches</button>
+                <button class="filter-btn" data-filter="restaurants">Restaurants</button>
+                <button class="filter-btn" data-filter="hotels">Hotels</button>
+                <button class="filter-btn" data-filter="transport">Transport</button>
+            </div>
+            <div id="map"></div>
+            <div class="map-actions">
+                <button class="action-btn">Get Directions</button>
+                <button class="action-btn">Save Favorite</button>
+            </div>
+        </div>
+
+        <!-- Checklist Screen -->
+        <div id="checklist" class="screen">
+            <div class="header orange">
+                <h1>Travel Checklist</h1>
+                <p>Stay organized for your trip</p>
+            </div>
+            <div class="checklist-categories">
+                <button class="category-btn active">Trip Tips</button>
+                <button class="category-btn">2-3 Days</button>
+                <button class="category-btn">Weekly</button>
+            </div>
+            <div class="checklist-section">
+                <h2>Beach Essentials</h2>
+                <ul class="checklist">
+                    <li class="checked">
+                        <input type="checkbox" id="item1" checked>
+                        <label for="item1">Reef-safe sunscreen</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="item2">
+                        <label for="item2">Light clothing</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="item3">
+                        <label for="item3">Water bottle</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="item4">
+                        <label for="item4">Travel-sized first aid kit</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="checklist-section">
+                <h2>Local Transportation</h2>
+                <ul class="checklist">
+                    <li>
+                        <input type="checkbox" id="item5">
+                        <label for="item5">Download routes of jeepneys</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="item6">
+                        <label for="item6">Save tricycle hotlines</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="checklist-section">
+                <h2>Local Regulations</h2>
+                <div class="regulations">
+                    <p>- No littering at public or beach areas</p>
+                    <p>- Swimming as designated areas only</p>
+                    <p>- No photography of protected areas</p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 35%;"></div>
+                </div>
+                <p class="progress-text">Progress: 3/10 items packed</p>
+            </div>
+        </div>
+
+        <!-- Phrases Screen -->
+        <div id="phrases" class="screen">
+            <div class="header green">
+                <h1>Local Phrases</h1>
+                <p>Find common phrases in the local dialect in Bantayan</p>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Find a phrase...">
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Maayong Buntag!</h3>
+                    <p>Good morning!</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="good_morning">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Tagpila ni?</h3>
+                    <p>How much is this?</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="how_much">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Salamat</h3>
+                    <p>Thank you</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="thank_you">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Asa ang baybayon?</h3>
+                    <p>Where is the beach?</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="where_is_beach">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Lami kaayo!</h3>
+                    <p>Delicious food!</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="delicious_food">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Oo palihug</h3>
+                    <p>Yes please</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="yes_please">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Dili salamat</h3>
+                    <p>No thank you</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="no_thank_you">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Agi ko</h3>
+                    <p>Excuse me</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="excuse_me">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Maayong gabii</h3>
+                    <p>Good evening</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="good_evening">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Nalipay ko nga nakaila nimo</h3>
+                    <p>Nice to meet you</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="nice_to_meet_you">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Asa ang merkado?</h3>
+                    <p>Where is the market?</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="where_is_market">🔊</button>
+                </div>
+            </div>
+            <div class="phrase-item">
+                <div class="phrase-left">
+                    <h3>Tubig palihug</h3>
+                    <p>Water please</p>
+                </div>
+                <div class="phrase-right">
+                    <button class="audio-btn" data-phrase="water_please">🔊</button>
+                </div>
+            </div>
+            <p class="add-phrase">Tap any phrase to add to favorites</p>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

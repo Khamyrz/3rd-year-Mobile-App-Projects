@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Tour Management</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="guides.html" class="nav-item">
+                <i class="fas fa-user-tie"></i>
+                <span>Guides</span>
+            </a>
+            <a href="tours.html" class="nav-item active">
+                <i class="fas fa-route"></i>
+                <span>Tours</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search tours by name, location, or guide...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">8</span>
+            </div>
+            <span>Admin</span>
+            <img src="../../img/admin-profile.jpg" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="tours-header">
+            <h1>Tour Management</h1>
+            <div class="header-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-filter"></i>
+                    Filters
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-download"></i>
+                    Export
+                </button>
+                <button class="btn btn-primary" id="addTourBtn">
+                    <i class="fas fa-plus"></i>
+                    Add Tour
+                </button>
+            </div>
+        </div>
+
+        <div class="tours-filters">
+            <div class="filter-group">
+                <label>Location</label>
+                <select class="form-control">
+                    <option value="">All Locations</option>
+                    <option value="cebu">Cebu</option>
+                    <option value="palawan">Palawan</option>
+                    <option value="boracay">Boracay</option>
+                    <option value="bohol">Bohol</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Category</label>
+                <select class="form-control">
+                    <option value="">All Categories</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="cultural">Cultural</option>
+                    <option value="food">Food & Culinary</option>
+                    <option value="nature">Nature & Wildlife</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Duration</label>
+                <select class="form-control">
+                    <option value="">All Durations</option>
+                    <option value="half-day">Half Day</option>
+                    <option value="full-day">Full Day</option>
+                    <option value="multi-day">Multi-Day</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Status</label>
+                <select class="form-control">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="pending">Pending Review</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="tours-grid">
+            <div class="tour-card">
+                <div class="tour-header">
+                    <img src="../../img/tour-placeholder.jpg" alt="Tour" class="tour-image">
+                    <div class="tour-badges">
+                        <span class="badge featured">Featured</span>
+                        <span class="badge trending">Trending</span>
+                    </div>
+                </div>
+                <div class="tour-content">
+                    <h3>Palawan Island Hopping Adventure</h3>
+                    <div class="tour-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Palawan</span>
+                        <span><i class="fas fa-clock"></i> Full Day</span>
+                        <span><i class="fas fa-users"></i> Max: 12</span>
+                    </div>
+                    <div class="tour-stats">
+                        <div class="stat">
+                            <span class="stat-value">4.9</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">256</span>
+                            <span class="stat-label">Bookings</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">₱3,500</span>
+                            <span class="stat-label">Price</span>
+                        </div>
+                    </div>
+                    <div class="tour-guide">
+                        <img src="../../img/profile-placeholder.jpg" alt="Guide" class="guide-avatar">
+                        <div class="guide-info">
+                            <h4>John Rivera</h4>
+                            <span>Local Expert</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tour-actions">
+                    <button class="btn btn-outline btn-sm">View Details</button>
+                    <button class="btn btn-outline btn-sm">Edit</button>
+                    <button class="btn btn-danger btn-sm">Deactivate</button>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-header">
+                    <img src="../../img/tour-placeholder.jpg" alt="Tour" class="tour-image">
+                    <div class="tour-badges">
+                        <span class="badge new">New</span>
+                    </div>
+                </div>
+                <div class="tour-content">
+                    <h3>Chocolate Hills Adventure Tour</h3>
+                    <div class="tour-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Bohol</span>
+                        <span><i class="fas fa-clock"></i> Full Day</span>
+                        <span><i class="fas fa-users"></i> Max: 15</span>
+                    </div>
+                    <div class="tour-stats">
+                        <div class="stat">
+                            <span class="stat-value">4.8</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">124</span>
+                            <span class="stat-label">Bookings</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">₱2,800</span>
+                            <span class="stat-label">Price</span>
+                        </div>
+                    </div>
+                    <div class="tour-guide">
+                        <img src="../../img/profile-placeholder.jpg" alt="Guide" class="guide-avatar">
+                        <div class="guide-info">
+                            <h4>Maria Santos</h4>
+                            <span>Adventure Guide</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tour-actions">
+                    <button class="btn btn-outline btn-sm">View Details</button>
+                    <button class="btn btn-outline btn-sm">Edit</button>
+                    <button class="btn btn-danger btn-sm">Deactivate</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="btn btn-outline">Previous</button>
+            <div class="page-numbers">
+                <button class="btn btn-outline active">1</button>
+                <button class="btn btn-outline">2</button>
+                <button class="btn btn-outline">3</button>
+                <span>...</span>
+                <button class="btn btn-outline">10</button>
+            </div>
+            <button class="btn btn-outline">Next</button>
+        </div>
+
+        <!-- Add/Edit Tour Modal -->
+        <div class="modal" id="tourModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add New Tour</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <form class="tour-form">
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+                        <div class="form-group">
+                            <label>Tour Name</label>
+                            <input type="text" class="form-control" placeholder="Enter tour name">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Location</label>
+                                <select class="form-control">
+                                    <option value="">Select Location</option>
+                                    <option value="cebu">Cebu</option>
+                                    <option value="palawan">Palawan</option>
+                                    <option value="boracay">Boracay</option>
+                                    <option value="bohol">Bohol</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control">
+                                    <option value="">Select Category</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="cultural">Cultural</option>
+                                    <option value="food">Food & Culinary</option>
+                                    <option value="nature">Nature & Wildlife</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <select class="form-control">
+                                    <option value="">Select Duration</option>
+                                    <option value="half-day">Half Day</option>
+                                    <option value="full-day">Full Day</option>
+                                    <option value="multi-day">Multi-Day</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Max Participants</label>
+                                <input type="number" class="form-control" min="1" placeholder="Enter max participants">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Pricing</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Regular Price (₱)</label>
+                                <input type="number" class="form-control" min="0" placeholder="Enter regular price">
+                            </div>
+                            <div class="form-group">
+                                <label>Discounted Price (₱)</label>
+                                <input type="number" class="form-control" min="0" placeholder="Enter discounted price">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Tour Details</h3>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" placeholder="Enter tour description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Highlights</label>
+                            <textarea class="form-control" rows="4" placeholder="Enter tour highlights"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Inclusions</label>
+                            <textarea class="form-control" rows="4" placeholder="Enter tour inclusions"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Media</h3>
+                        <div class="form-group">
+                            <label>Tour Images</label>
+                            <div class="image-upload">
+                                <input type="file" multiple accept="image/*">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag and drop images here or click to upload</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Settings</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control">
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="pending">Pending Review</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Featured</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="featured">
+                                    <label for="featured"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Tour</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('tourModal');
+            const addTourBtn = document.getElementById('addTourBtn');
+            const closeBtn = modal.querySelector('.close-btn');
+            const editButtons = document.querySelectorAll('.btn-outline');
+            const tourForm = document.querySelector('.tour-form');
+
+            // Show modal for adding new tour
+            addTourBtn.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modal.querySelector('h2').textContent = 'Add New Tour';
+                tourForm.reset();
+            });
+
+            // Close modal
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Edit tour
+            editButtons.forEach(button => {
+                if (button.textContent === 'Edit') {
+                    button.addEventListener('click', () => {
+                        modal.style.display = 'block';
+                        modal.querySelector('h2').textContent = 'Edit Tour';
+                        // Load tour data into form
+                        loadTourData(button.closest('.tour-card'));
+                    });
+                }
+            });
+
+            // Form submission
+            tourForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Save tour implementation
+                modal.style.display = 'none';
+            });
+
+            // Initialize filters
+            document.querySelectorAll('.form-control').forEach(select => {
+                select.addEventListener('change', () => {
+                    // Filter tours implementation
+                });
+            });
+
+            // Initialize search
+            const searchInput = document.querySelector('.search-bar input');
+            searchInput.addEventListener('input', (e) => {
+                // Search tours implementation
+            });
+
+            // Image upload preview
+            const imageUpload = document.querySelector('.image-upload input');
+            const uploadPlaceholder = document.querySelector('.upload-placeholder');
+
+            imageUpload.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    uploadPlaceholder.innerHTML = `
+                        <p>${e.target.files.length} image(s) selected</p>
+                        <button class="btn btn-outline btn-sm">Change</button>
+                    `;
+                }
+            });
+        });
+
+        function loadTourData(tourCard) {
+            const form = document.querySelector('.tour-form');
+            const name = tourCard.querySelector('h3').textContent;
+            const location = tourCard.querySelector('.fas.fa-map-marker-alt').nextSibling.textContent.trim();
+            const duration = tourCard.querySelector('.fas.fa-clock').nextSibling.textContent.trim();
+            const maxParticipants = tourCard.querySelector('.fas.fa-users').nextSibling.textContent.trim().split(':')[1];
+            const price = tourCard.querySelector('.stat-value').textContent.replace('₱', '');
+
+            form.querySelector('input[type="text"]').value = name;
+            form.querySelectorAll('select')[0].value = location.toLowerCase();
+            form.querySelectorAll('select')[2].value = duration.toLowerCase().replace(' ', '-');
+            form.querySelector('input[type="number"]').value = maxParticipants;
+            form.querySelectorAll('input[type="number"]')[1].value = price;
+        }
+    </script>
+</body>
+</html> 

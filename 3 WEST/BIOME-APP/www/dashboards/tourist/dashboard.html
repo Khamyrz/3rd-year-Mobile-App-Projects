@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Tourist Dashboard</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/tourist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+                <span class="trip-badge">2</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="experiences.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Experiences</span>
+            </a>
+            <a href="saved.html" class="nav-item">
+                <i class="fas fa-heart"></i>
+                <span>Saved Places</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search destinations, experiences...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <span>John Tourist</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="dashboard-header">
+            <h1>Welcome back, John!</h1>
+            <button class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Plan New Trip
+            </button>
+        </div>
+
+        <div class="upcoming-trip">
+            <div class="trip-banner" style="background-image: url('../../img/destination-placeholder.jpg')">
+                <div class="trip-info">
+                    <div class="trip-details">
+                        <h2>Your Next Adventure</h2>
+                        <h3>Exploring Cebu</h3>
+                        <p><i class="fas fa-calendar"></i> June 15 - June 20, 2024</p>
+                    </div>
+                    <div class="trip-actions">
+                        <button class="btn btn-light">View Itinerary</button>
+                        <button class="btn btn-light">Modify Trip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="grid-item upcoming-bookings">
+                <div class="item-header">
+                    <h2>Upcoming Bookings</h2>
+                    <a href="bookings.html" class="btn btn-text">View All</a>
+                </div>
+                <div class="booking-list">
+                    <div class="booking-item">
+                        <img src="../../img/activity-placeholder.jpg" alt="Island Hopping">
+                        <div class="booking-info">
+                            <h4>Island Hopping Adventure</h4>
+                            <p><i class="fas fa-calendar"></i> June 16, 2024 • 8:00 AM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Mactan, Cebu</p>
+                            <span class="booking-status confirmed">Confirmed</span>
+                        </div>
+                        <div class="booking-actions">
+                            <button class="btn btn-secondary btn-sm">View Details</button>
+                        </div>
+                    </div>
+                    <div class="booking-item">
+                        <img src="../../img/activity-placeholder.jpg" alt="Food Tour">
+                        <div class="booking-info">
+                            <h4>Local Food Tour</h4>
+                            <p><i class="fas fa-calendar"></i> June 17, 2024 • 2:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Cebu City</p>
+                            <span class="booking-status pending">Pending</span>
+                        </div>
+                        <div class="booking-actions">
+                            <button class="btn btn-secondary btn-sm">Complete Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item recommended-experiences">
+                <div class="item-header">
+                    <h2>Recommended for You</h2>
+                    <a href="experiences.html" class="btn btn-text">View All</a>
+                </div>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="experience-image">
+                            <img src="../../img/experience-placeholder.jpg" alt="Waterfall Tour">
+                            <button class="save-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="experience-info">
+                            <h4>Kawasan Falls Canyoneering</h4>
+                            <p class="experience-location"><i class="fas fa-map-marker-alt"></i> Badian, Cebu</p>
+                            <div class="experience-meta">
+                                <span class="experience-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.8 (156 reviews)
+                                </span>
+                                <span class="experience-price">From ₱2,500</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="experience-image">
+                            <img src="../../img/experience-placeholder.jpg" alt="Cultural Show">
+                            <button class="save-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="experience-info">
+                            <h4>Traditional Dance Show</h4>
+                            <p class="experience-location"><i class="fas fa-map-marker-alt"></i> Cebu City</p>
+                            <div class="experience-meta">
+                                <span class="experience-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.6 (98 reviews)
+                                </span>
+                                <span class="experience-price">From ₱1,200</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item recent-reviews">
+                <div class="item-header">
+                    <h2>Recent Reviews</h2>
+                    <a href="reviews.html" class="btn btn-text">View All</a>
+                </div>
+                <div class="review-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-title">
+                                <h4>Magellan's Cross Tour</h4>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">2 days ago</span>
+                        </div>
+                        <p class="review-text">Amazing historical tour! Our guide was very knowledgeable and made the experience memorable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item travel-stats">
+                <div class="item-header">
+                    <h2>Your Travel Stats</h2>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Places Visited</h4>
+                            <p>12</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-hiking"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Activities Done</h4>
+                            <p>8</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Reviews Given</h4>
+                            <p>15</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Places Saved</h4>
+                            <p>24</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .upcoming-trip {
+            margin-bottom: 30px;
+        }
+
+        .trip-banner {
+            height: 200px;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trip-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .trip-details h2 {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .trip-details h3 {
+            margin: 5px 0;
+            font-size: 1.5rem;
+        }
+
+        .trip-details p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .trip-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-light {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-light:hover {
+            background: white;
+        }
+
+        .booking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .booking-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .booking-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .booking-info {
+            flex: 1;
+        }
+
+        .booking-info h4 {
+            margin: 0 0 5px;
+        }
+
+        .booking-info p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .booking-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .booking-status.confirmed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .booking-status.pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .experience-image {
+            position: relative;
+            padding-top: 66.67%;
+        }
+
+        .experience-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .save-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .experience-info {
+            padding: 15px;
+        }
+
+        .experience-info h4 {
+            margin: 0 0 5px;
+        }
+
+        .experience-location {
+            color: #666;
+            font-size: 0.875rem;
+            margin: 0 0 10px;
+        }
+
+        .experience-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .experience-rating {
+            color: #666;
+        }
+
+        .experience-rating i {
+            color: #ffc107;
+        }
+
+        .experience-price {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .stat-info h4 {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .stat-info p {
+            margin: 5px 0 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .trip-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        // Save experience functionality
+        document.querySelectorAll('.save-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                icon.classList.toggle('far');
+                icon.classList.toggle('fas');
+                // Implementation for saving experience
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - BIOME Vendor</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>BIOME Vendor</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="products.html"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li class="active"><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="date-range-picker">
+                    <select id="timeRange">
+                        <option value="7">Last 7 days</option>
+                        <option value="30">Last 30 days</option>
+                        <option value="90">Last 3 months</option>
+                        <option value="365">Last year</option>
+                    </select>
+                </div>
+                <div class="user-profile">
+                    <span>Welcome, Vendor</span>
+                    <img src="../images/vendor-avatar.jpg" alt="Vendor">
+                </div>
+            </header>
+
+            <div class="analytics-dashboard">
+                <div class="analytics-header">
+                    <h2>Analytics Overview</h2>
+                    <button class="btn-secondary" onclick="downloadReport()">
+                        <i class="fas fa-download"></i> Download Report
+                    </button>
+                </div>
+
+                <div class="analytics-summary">
+                    <div class="summary-card">
+                        <div class="card-header">
+                            <h3>Total Revenue</h3>
+                            <span class="trend positive">+12.5%</span>
+                        </div>
+                        <p class="amount">₱45,250</p>
+                        <p class="comparison">vs ₱40,220 last period</p>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-header">
+                            <h3>Orders</h3>
+                            <span class="trend positive">+8.3%</span>
+                        </div>
+                        <p class="amount">156</p>
+                        <p class="comparison">vs 144 last period</p>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-header">
+                            <h3>Average Order Value</h3>
+                            <span class="trend positive">+4.2%</span>
+                        </div>
+                        <p class="amount">₱290</p>
+                        <p class="comparison">vs ₱278 last period</p>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-header">
+                            <h3>Conversion Rate</h3>
+                            <span class="trend negative">-1.5%</span>
+                        </div>
+                        <p class="amount">3.8%</p>
+                        <p class="comparison">vs 4.1% last period</p>
+                    </div>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="grid-item chart-container">
+                        <h3>Revenue Trend</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+
+                    <div class="grid-item chart-container">
+                        <h3>Top Products</h3>
+                        <canvas id="productsChart"></canvas>
+                    </div>
+
+                    <div class="grid-item">
+                        <h3>Sales by Category</h3>
+                        <div class="category-stats">
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Handicrafts</span>
+                                    <span class="category-value">₱18,500</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Local Food</span>
+                                    <span class="category-value">₱12,300</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 28%;"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Textiles</span>
+                                    <span class="category-value">₱9,800</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 22%;"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-info">
+                                    <span class="category-name">Accessories</span>
+                                    <span class="category-value">₱4,650</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 10%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <h3>Customer Demographics</h3>
+                        <canvas id="demographicsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analytics-insights">
+                    <h3>Key Insights</h3>
+                    <div class="insights-list">
+                        <div class="insight-item positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <div class="insight-content">
+                                <h4>Sales Growth</h4>
+                                <p>Your sales have increased by 12.5% compared to last period.</p>
+                            </div>
+                        </div>
+                        <div class="insight-item warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div class="insight-content">
+                                <h4>Stock Alert</h4>
+                                <p>3 products are running low on stock. Consider restocking soon.</p>
+                            </div>
+                        </div>
+                        <div class="insight-item neutral">
+                            <i class="fas fa-lightbulb"></i>
+                            <div class="insight-content">
+                                <h4>Recommendation</h4>
+                                <p>Consider adding more handicraft products as they show the highest profit margin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Initialize charts when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Revenue Trend Chart
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [12000, 19000, 15000, 25000, 22000, 30000],
+                        borderColor: '#2196F3',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Top Products Chart
+            const productsCtx = document.getElementById('productsChart').getContext('2d');
+            new Chart(productsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Handwoven Bag', 'Local Delicacies', 'Traditional Scarf', 'Bamboo Crafts'],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [45, 38, 25, 20],
+                        backgroundColor: '#4CAF50'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Demographics Chart
+            const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
+            new Chart(demographicsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['18-24', '25-34', '35-44', '45+'],
+                    datasets: [{
+                        data: [15, 40, 25, 20],
+                        backgroundColor: ['#FF9800', '#2196F3', '#4CAF50', '#9C27B0']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+
+        // Time range change handler
+        document.getElementById('timeRange').addEventListener('change', function(e) {
+            // Implement time range filter logic
+            console.log('Time range changed:', e.target.value);
+            updateCharts(e.target.value);
+        });
+
+        function updateCharts(timeRange) {
+            // Implement chart update logic based on time range
+            console.log('Updating charts for time range:', timeRange);
+        }
+
+        function downloadReport() {
+            // Implement report download logic
+            console.log('Downloading analytics report');
+        }
+    </script>
+</body>
+</html> 

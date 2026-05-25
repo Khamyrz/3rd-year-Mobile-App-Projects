@@ -1,0 +1,290 @@
+/* General Styles */
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #27ae60;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+    --text-color: #2c3e50;
+    --light-gray: #ecf0f1;
+    --border-color: #bdc3c7;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container Styles */
+.auth-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.auth-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+/* Header Styles */
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.auth-header h1 {
+    color: var(--text-color);
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.auth-header p {
+    color: #666;
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Form Styles */
+.auth-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-control:invalid {
+    border-color: var(--error-color);
+}
+
+.form-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Password Input Styles */
+.password-input {
+    position: relative;
+}
+
+.password-input button {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.password-input button:hover {
+    color: var(--primary-color);
+}
+
+/* Form Validation Styles */
+.form-control:invalid:not(:placeholder-shown) {
+    border-color: var(--error-color);
+}
+
+.form-control:valid:not(:placeholder-shown) {
+    border-color: var(--success-color);
+}
+
+.form-group .validation-message {
+    display: none;
+    font-size: 12px;
+    margin-top: 5px;
+    color: var(--error-color);
+}
+
+.form-control:invalid:not(:placeholder-shown) + .validation-message {
+    display: block;
+}
+
+/* Form Options Styles */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Social Login Buttons */
+.social-login {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-google {
+    background-color: #db4437;
+    color: var(--white);
+}
+
+.btn-google:hover {
+    background-color: #c53929;
+}
+
+.btn-facebook {
+    background-color: #4267B2;
+    color: var(--white);
+}
+
+.btn-facebook:hover {
+    background-color: #365899;
+}
+
+.social-login .btn i {
+    margin-right: 10px;
+}
+
+/* Footer Styles */
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--light-gray);
+}
+
+.auth-footer p {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Notification Styles */
+.notification {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.notification.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.notification.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Additional Fields Styles */
+#additionalFields {
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 10px;
+    }
+
+    .auth-card {
+        padding: 20px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+} 

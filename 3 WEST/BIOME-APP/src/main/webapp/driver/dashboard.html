@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Dashboard - BIOME</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>BIOME Driver</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-route"></i> My Trips</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+                <li><a href="#"><i class="fas fa-car"></i> Vehicle</a></li>
+                <li><a href="#"><i class="fas fa-star"></i> Reviews</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Earnings</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search trips, bookings...">
+                </div>
+                <div class="user-profile">
+                    <span>Welcome, Driver</span>
+                    <img src="../images/driver-avatar.jpg" alt="Driver">
+                </div>
+            </header>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-route"></i>
+                    <div class="stat-info">
+                        <h3>Today's Trips</h3>
+                        <p>5</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-info">
+                        <h3>Passengers</h3>
+                        <p>12</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <h3>Rating</h3>
+                        <p>4.8</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-wallet"></i>
+                    <div class="stat-info">
+                        <h3>Today's Earnings</h3>
+                        <p>₱2,850</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="grid-item">
+                    <h3>Upcoming Trips</h3>
+                    <div class="transport-list">
+                        <div class="transport-item">
+                            <div class="transport-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="info">
+                                    <h4>Airport Transfer</h4>
+                                    <p>2:30 PM - Terminal 3</p>
+                                    <p>3 passengers</p>
+                                </div>
+                            </div>
+                            <div class="transport-price">
+                                <p>₱950</p>
+                                <button class="btn-view-details">Details</button>
+                            </div>
+                        </div>
+                        <div class="transport-item">
+                            <div class="transport-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="info">
+                                    <h4>City Tour</h4>
+                                    <p>4:00 PM - Hotel Pickup</p>
+                                    <p>4 passengers</p>
+                                </div>
+                            </div>
+                            <div class="transport-price">
+                                <p>₱1,200</p>
+                                <button class="btn-view-details">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Vehicle Status</h3>
+                    <div class="vehicle-info">
+                        <div class="info-item">
+                            <i class="fas fa-car"></i>
+                            <div class="details">
+                                <h4>Toyota Innova</h4>
+                                <p>Plate: ABC 123</p>
+                                <p>Status: Active</p>
+                                <p>Last Maintenance: June 1, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Recent Reviews</h3>
+                    <div class="review-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <img src="../images/passenger-avatar.jpg" alt="Passenger">
+                                    <p>Alex M.</p>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="review-text">Very professional and punctual. Clean vehicle and smooth ride.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

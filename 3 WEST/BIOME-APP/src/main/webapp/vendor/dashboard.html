@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard - BIOME</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>BIOME Vendor</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="#"><i class="fas fa-star"></i> Reviews</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products, orders...">
+                </div>
+                <div class="user-profile">
+                    <span>Welcome, Vendor</span>
+                    <img src="../images/vendor-avatar.jpg" alt="Vendor">
+                </div>
+            </header>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="stat-info">
+                        <h3>Total Sales</h3>
+                        <p>₱45,250</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-box"></i>
+                    <div class="stat-info">
+                        <h3>Products</h3>
+                        <p>24</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="stat-info">
+                        <h3>Orders</h3>
+                        <p>18</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <h3>Rating</h3>
+                        <p>4.8</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="grid-item">
+                    <h3>Recent Orders</h3>
+                    <div class="order-list">
+                        <div class="order-item">
+                            <div class="order-info">
+                                <p>Order #12345</p>
+                                <span>June 10, 2024 - 2:30 PM</span>
+                            </div>
+                            <div class="order-status">
+                                <span class="status-pending">Pending</span>
+                                <p class="order-amount">₱1,250</p>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-info">
+                                <p>Order #12344</p>
+                                <span>June 10, 2024 - 1:15 PM</span>
+                            </div>
+                            <div class="order-status">
+                                <span class="status-delivered">Delivered</span>
+                                <p class="order-amount">₱2,800</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Top Products</h3>
+                    <div class="product-items">
+                        <div class="product-item">
+                            <img src="../images/product1.jpg" alt="Product">
+                            <div class="product-info">
+                                <p>Handwoven Bag</p>
+                                <span>₱850</span>
+                                <div class="product-stats">
+                                    <span><i class="fas fa-shopping-cart"></i> 45 sold</span>
+                                    <span><i class="fas fa-star"></i> 4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="../images/product2.jpg" alt="Product">
+                            <div class="product-info">
+                                <p>Local Delicacies Pack</p>
+                                <span>₱450</span>
+                                <div class="product-stats">
+                                    <span><i class="fas fa-shopping-cart"></i> 38 sold</span>
+                                    <span><i class="fas fa-star"></i> 4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Recent Reviews</h3>
+                    <div class="review-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <img src="../images/user-avatar.jpg" alt="Reviewer">
+                                    <p>John D.</p>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="review-text">Great quality products and fast delivery!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

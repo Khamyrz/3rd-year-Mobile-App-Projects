@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Earnings</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="tours.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Tours</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="earnings.html" class="nav-item active">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search transactions...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">5</span>
+            </div>
+            <span>Maria Santos</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="earnings-header">
+            <h1>Earnings Overview</h1>
+            <div class="date-filter">
+                <button class="btn btn-outline active">This Month</button>
+                <button class="btn btn-outline">Last Month</button>
+                <button class="btn btn-outline">Last 3 Months</button>
+                <button class="btn btn-outline">This Year</button>
+                <button class="btn btn-outline">Custom</button>
+            </div>
+        </div>
+
+        <div class="earnings-summary">
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="summary-info">
+                    <h3>Total Earnings</h3>
+                    <p class="amount">₱45,750</p>
+                    <span class="trend positive">
+                        <i class="fas fa-arrow-up"></i>
+                        12% vs last month
+                    </span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="summary-info">
+                    <h3>Total Tourists</h3>
+                    <p class="amount">78</p>
+                    <span class="trend positive">
+                        <i class="fas fa-arrow-up"></i>
+                        8% vs last month
+                    </span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+                <div class="summary-info">
+                    <h3>Tours Completed</h3>
+                    <p class="amount">25</p>
+                    <span class="trend positive">
+                        <i class="fas fa-arrow-up"></i>
+                        15% vs last month
+                    </span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="summary-info">
+                    <h3>Average Rating</h3>
+                    <p class="amount">4.9</p>
+                    <span class="trend neutral">
+                        <i class="fas fa-minus"></i>
+                        Same as last month
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="earnings-grid">
+            <div class="earnings-chart-card">
+                <div class="card-header">
+                    <h2>Earnings Trend</h2>
+                    <select class="chart-filter">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+                <canvas id="earningsChart"></canvas>
+            </div>
+
+            <div class="tour-earnings-card">
+                <div class="card-header">
+                    <h2>Earnings by Tour</h2>
+                    <select class="chart-filter">
+                        <option value="amount">By Amount</option>
+                        <option value="bookings">By Bookings</option>
+                    </select>
+                </div>
+                <canvas id="tourEarningsChart"></canvas>
+            </div>
+
+            <div class="transactions-card">
+                <div class="card-header">
+                    <h2>Recent Transactions</h2>
+                    <button class="btn btn-text">View All</button>
+                </div>
+                <div class="transactions-list">
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>Heritage Walk Tour</h4>
+                            <p>4 tourists • June 15, 2024</p>
+                        </div>
+                        <div class="transaction-amount positive">
+                            +₱6,000
+                        </div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>Food Trail Tour</h4>
+                            <p>6 tourists • June 14, 2024</p>
+                        </div>
+                        <div class="transaction-amount positive">
+                            +₱7,200
+                        </div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>Platform Fee</h4>
+                            <p>Service charge • June 14, 2024</p>
+                        </div>
+                        <div class="transaction-amount negative">
+                            -₱660
+                        </div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>Withdrawal</h4>
+                            <p>To GCash • June 13, 2024</p>
+                        </div>
+                        <div class="transaction-amount negative">
+                            -₱15,000
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-methods-card">
+                <div class="card-header">
+                    <h2>Payment Methods</h2>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-plus"></i>
+                        Add Method
+                    </button>
+                </div>
+                <div class="payment-methods-list">
+                    <div class="payment-method-item">
+                        <div class="payment-method-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="payment-method-info">
+                            <h4>GCash</h4>
+                            <p>****1234</p>
+                        </div>
+                        <button class="btn btn-icon">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                    <div class="payment-method-item">
+                        <div class="payment-method-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="payment-method-info">
+                            <h4>Bank Account</h4>
+                            <p>BPI ****5678</p>
+                        </div>
+                        <button class="btn btn-icon">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="withdrawal-card">
+                <div class="card-header">
+                    <h2>Available for Withdrawal</h2>
+                </div>
+                <div class="withdrawal-amount">
+                    <h3>₱32,290</h3>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-money-bill-wave"></i>
+                        Withdraw
+                    </button>
+                </div>
+                <div class="withdrawal-schedule">
+                    <p>Next automatic withdrawal: June 30, 2024</p>
+                    <a href="#" class="btn btn-text">Change Schedule</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize earnings chart
+            const earningsCtx = document.getElementById('earningsChart').getContext('2d');
+            const earningsChart = new Chart(earningsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1', '5', '10', '15', '20', '25', '30'],
+                    datasets: [{
+                        label: 'Earnings (₱)',
+                        data: [5000, 8000, 12000, 15000, 20000, 25000, 45750],
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: value => '₱' + value.toLocaleString()
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Initialize tour earnings chart
+            const tourEarningsCtx = document.getElementById('tourEarningsChart').getContext('2d');
+            const tourEarningsChart = new Chart(tourEarningsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Heritage Walk', 'Food Trail', 'Sunset City Tour'],
+                    datasets: [{
+                        data: [20000, 15750, 10000],
+                        backgroundColor: [
+                            '#2196F3',
+                            '#4CAF50',
+                            '#FFC107'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Handle date filter buttons
+            const dateFilters = document.querySelectorAll('.date-filter .btn');
+            dateFilters.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    dateFilters.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    updateEarningsData(btn.textContent.toLowerCase());
+                });
+            });
+
+            // Handle chart type changes
+            document.querySelectorAll('.chart-filter').forEach(select => {
+                select.addEventListener('change', (e) => {
+                    updateChartData(e.target.closest('.card-header').querySelector('h2').textContent, e.target.value);
+                });
+            });
+        });
+
+        function updateEarningsData(period) {
+            // Implementation for updating earnings data based on selected period
+            console.log(`Updating earnings data for ${period}`);
+        }
+
+        function updateChartData(chart, type) {
+            // Implementation for updating chart data based on selected type
+            console.log(`Updating ${chart} with type ${type}`);
+        }
+    </script>
+</body>
+</html> 

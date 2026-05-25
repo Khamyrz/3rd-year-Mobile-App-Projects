@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews Management - BIOME Vendor</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>BIOME Vendor</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="products.html"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li class="active"><a href="reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search reviews...">
+                </div>
+                <div class="user-profile">
+                    <span>Welcome, Vendor</span>
+                    <img src="../images/vendor-avatar.jpg" alt="Vendor">
+                </div>
+            </header>
+
+            <div class="reviews-dashboard">
+                <div class="reviews-header">
+                    <h2>Reviews & Ratings</h2>
+                    <div class="rating-summary">
+                        <div class="overall-rating">
+                            <span class="rating-number">4.8</span>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="total-reviews">Based on 156 reviews</span>
+                        </div>
+                        <div class="rating-breakdown">
+                            <div class="rating-bar">
+                                <span class="stars">5 <i class="fas fa-star"></i></span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 75%;"></div>
+                                </div>
+                                <span class="count">98</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">4 <i class="fas fa-star"></i></span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 15%;"></div>
+                                </div>
+                                <span class="count">35</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">3 <i class="fas fa-star"></i></span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 8%;"></div>
+                                </div>
+                                <span class="count">15</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">2 <i class="fas fa-star"></i></span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 2%;"></div>
+                                </div>
+                                <span class="count">5</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">1 <i class="fas fa-star"></i></span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 1%;"></div>
+                                </div>
+                                <span class="count">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews-filters">
+                    <select id="productFilter">
+                        <option value="">All Products</option>
+                        <option value="handwoven-bag">Handwoven Bag</option>
+                        <option value="local-delicacies">Local Delicacies Pack</option>
+                        <option value="traditional-scarf">Traditional Scarf</option>
+                    </select>
+                    <select id="ratingFilter">
+                        <option value="">All Ratings</option>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="1">1 Star</option>
+                    </select>
+                    <select id="responseFilter">
+                        <option value="">All Reviews</option>
+                        <option value="responded">Responded</option>
+                        <option value="pending">Pending Response</option>
+                    </select>
+                    <button class="btn-filter">Apply Filters</button>
+                </div>
+
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <img src="../images/user-avatar.jpg" alt="Customer">
+                                <div class="reviewer-details">
+                                    <h4>Maria Garcia</h4>
+                                    <span class="review-date">June 10, 2024</span>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <img src="../images/product1.jpg" alt="Product">
+                                <span>Handwoven Bag</span>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">Beautiful craftsmanship! The bag is exactly as described and the quality is excellent. Very happy with my purchase.</p>
+                            <div class="review-images">
+                                <img src="../images/review-image1.jpg" alt="Review Image">
+                                <img src="../images/review-image2.jpg" alt="Review Image">
+                            </div>
+                        </div>
+                        <div class="vendor-response">
+                            <p>Thank you for your wonderful review! We're glad you love our handwoven bag.</p>
+                            <span class="response-date">June 11, 2024</span>
+                        </div>
+                    </div>
+
+                    <div class="review-item pending-response">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <img src="../images/user-avatar2.jpg" alt="Customer">
+                                <div class="reviewer-details">
+                                    <h4>John Smith</h4>
+                                    <span class="review-date">June 9, 2024</span>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <img src="../images/product2.jpg" alt="Product">
+                                <span>Local Delicacies Pack</span>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <p class="review-text">Great selection of local treats! Would love to see more variety in the future.</p>
+                        </div>
+                        <div class="response-actions">
+                            <textarea placeholder="Write your response..."></textarea>
+                            <button class="btn-submit" onclick="submitResponse(2)">Submit Response</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                    <button class="btn-page active">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">3</button>
+                    <span>...</span>
+                    <button class="btn-page">10</button>
+                    <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Review Management Functions
+        function submitResponse(reviewId) {
+            const responseText = document.querySelector('.response-actions textarea').value;
+            if (responseText.trim()) {
+                // Implement response submission logic
+                console.log('Submitting response for review:', reviewId, responseText);
+            }
+        }
+
+        // Filter functionality
+        document.querySelector('.btn-filter').addEventListener('click', function() {
+            const product = document.getElementById('productFilter').value;
+            const rating = document.getElementById('ratingFilter').value;
+            const response = document.getElementById('responseFilter').value;
+            // Implement filter logic
+            console.log('Filtering reviews:', { product, rating, response });
+        });
+
+        // Search functionality
+        document.querySelector('.search-bar input').addEventListener('input', function(e) {
+            // Implement search logic
+            console.log('Searching reviews:', e.target.value);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Poultry Farm Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+
+    .details-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background: #4285F4;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .back-button:hover {
+      background: #357abd;
+      transform: translateY(-1px);
+    }
+
+    .detail-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    #farmImage {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .farm-title {
+      margin: 20px 0;
+      color: #2c3e50;
+      font-size: 1.8rem;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .detail-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .info-group {
+      margin-bottom: 15px;
+      padding: 12px;
+      border-left: 2px solid #4285F4;
+    }
+
+    .info-label {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+
+    .info-value {
+      color: #2c3e50;
+      font-size: 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .offer-badge {
+      background: #4285F4;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="details-container">
+    <a href="javascript:history.back()" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back</span>
+    </a>
+
+    <div class="detail-header">
+      <img id="farmImage" alt="Farm Image">
+      <h1 class="farm-title" id="farmName"></h1>
+    </div>
+
+    <div class="detail-grid" id="contentContainer">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+  </div>
+
+  <script>
+    // Farm Data Repository
+    const farms = {
+      "JRCJL Poultry Farm": {
+        image: "jrcjl.jpg",
+        location: "Sitio Kanay, Purok Lumboy",
+         offers: ["Cull Chickens", "Eggs"]
+      },
+      "Palo Poultry Farm": {
+        image: "Palo.jpg",
+        location: "Proper Kodia, Purok Tugas",
+         offers: ["Cull Chickens", "Eggs"]
+      },
+      "Calilap Poultry Farm": {
+        image: "tagalog.jpg",
+        location: "Sitio Greenhills, Purok Dita",
+        offers: ["Cull Chickens", "Eggs"]
+      },
+      "Josephs Farm": {
+        image: "joseph.jpg",
+        location: "Sitio Lutak",
+        offers: ["Cull Chickens", "Eggs"]
+      },
+      "AFI Poultry Farm": {
+        image: "afi.jpg",
+        location: "Highway, Purok Dita",
+         offers: ["Cull Chickens", "Eggs"]
+      },
+      "SEAL-South East Asia Farm": {
+        image: "seal.jpg",
+        location: "Sitio Tagaytay",
+         offers: ["Cull Chickens", "Eggs"]
+      },
+      "RVF Farm": {
+        image: "rvf.jpg",
+        location: "Sitio Tugas",
+         offers: ["Cull Chickens", "Eggs"]
+      },
+      "JTAKS Poultry Farm": {
+        image: "jtaks.jpg",
+        location: "Crossing Tabagak",
+        offers: ["Cull Chickens", "Eggs"]
+      },
+      "Batayola Poultry Farm": {
+        image: "batayola.jpg",
+        location: "Purok Bangus",
+        offers: ["Cull Chickens", "Eggs", "Reject"]
+      },
+      "Yama Poultry Farm": {
+        image: "yama.jpg",
+        location: "Crossing Tugas",
+        offers: ["Cull Chickens", "Eggs"]
+      }
+    };
+
+    // DOM Elements
+    const domElements = {
+      farmName: document.getElementById('farmName'),
+      farmImage: document.getElementById('farmImage'),
+      contentContainer: document.getElementById('contentContainer'),
+      errorMessage: document.getElementById('errorMessage')
+    };
+
+    // Utility Functions
+    const createElement = (tag, attributes = {}) => {
+      const element = document.createElement(tag);
+      Object.entries(attributes).forEach(([key, value]) => {
+        element[key] = value;
+      });
+      return element;
+    };
+
+    const renderOfferItems = (offers) => {
+      const list = createElement('ul', { className: 'feature-list' });
+      offers.forEach(offer => {
+        const listItem = createElement('li', { className: 'feature-item' });
+        listItem.innerHTML = `
+          <span>${offer}</span>
+          <span class="offer-badge">Available</span>
+        `;
+        list.appendChild(listItem);
+      });
+      return list;
+    };
+
+    const renderFarmDetails = (farmData) => {
+      const detailsFragment = document.createDocumentFragment();
+
+      // Location Card
+      const locationCard = createElement('div', { className: 'detail-card' });
+      locationCard.innerHTML = `
+        <div class="info-group">
+          <div class="info-label">Location</div>
+          <div class="info-value">${farmData.location}</div>
+        </div>
+      `;
+
+      // Offers Card
+      const offersCard = createElement('div', { className: 'detail-card' });
+      const offersTitle = createElement('h3', { 
+        textContent: 'Products & Offers',
+        style: 'margin-bottom: 15px;'
+      });
+      offersCard.appendChild(offersTitle);
+      offersCard.appendChild(renderOfferItems(farmData.offers));
+
+      detailsFragment.appendChild(locationCard);
+      detailsFragment.appendChild(offersCard);
+      domElements.contentContainer.appendChild(detailsFragment);
+    };
+
+    // Initialization
+    const init = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const farmName = urlParams.get('farm');
+
+      if (!farmName || !farms[farmName]) {
+        domElements.errorMessage.textContent = 'Farm not found';
+        domElements.contentContainer.style.display = 'none';
+        return;
+      }
+
+      const farmData = farms[farmName];
+      domElements.farmName.textContent = farmName;
+      domElements.farmImage.src = farmData.image;
+      renderFarmDetails(farmData);
+    };
+
+    // Start the application
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

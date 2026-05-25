@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
+    <style>
+        .settings-nav .nav-link {
+            padding: 1rem;
+            border-radius: 0;
+            border-left: 3px solid transparent;
+        }
+        .settings-nav .nav-link.active {
+            background-color: #f8f9fa;
+            border-left-color: #0d6efd;
+        }
+        .avatar-upload {
+            position: relative;
+            max-width: 200px;
+        }
+        .avatar-upload img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .avatar-upload .avatar-edit {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        .verification-badge {
+            color: #198754;
+            margin-left: 10px;
+        }
+        .delete-account {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        .delete-account:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-home"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.html">
+                                <i class="fas fa-shopping-bag"></i> My Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wishlist.html">
+                                <i class="fas fa-heart"></i> Wishlist
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reviews.html">
+                                <i class="fas fa-star"></i> My Reviews
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="settings.html">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Settings</h1>
+                </div>
+
+                <div class="row">
+                    <!-- Settings Navigation -->
+                    <div class="col-md-3">
+                        <div class="settings-nav">
+                            <div class="nav flex-column nav-pills" role="tablist">
+                                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#profile">
+                                    <i class="fas fa-user"></i> Profile
+                                </button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#security">
+                                    <i class="fas fa-shield-alt"></i> Security
+                                </button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#notifications">
+                                    <i class="fas fa-bell"></i> Notifications
+                                </button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#preferences">
+                                    <i class="fas fa-sliders-h"></i> Preferences
+                                </button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#privacy">
+                                    <i class="fas fa-lock"></i> Privacy
+                                </button>
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#billing">
+                                    <i class="fas fa-credit-card"></i> Billing
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <!-- Profile Settings -->
+                            <div class="tab-pane fade show active" id="profile">
+                                <h3>Profile Settings</h3>
+                                <form id="profileForm" class="mt-4">
+                                    <div class="mb-4">
+                                        <div class="avatar-upload">
+                                            <img src="../../img/profile-placeholder.jpg" alt="Profile" id="profileImage">
+                                            <div class="avatar-edit">
+                                                <button type="button" class="btn btn-primary btn-sm rounded-circle" onclick="document.getElementById('avatarUpload').click()">
+                                                    <i class="fas fa-camera"></i>
+                                                </button>
+                                                <input type="file" id="avatarUpload" hidden accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" value="John">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" value="Smith">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" value="john.smith@email.com" readonly>
+                                            <span class="input-group-text">
+                                                <i class="fas fa-check-circle verification-badge"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" value="+63 912 345 6789">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Bio</label>
+                                        <textarea class="form-control" rows="3">Adventure enthusiast and nature lover.</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" value="Manila, Philippines">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </form>
+                            </div>
+
+                            <!-- Security Settings -->
+                            <div class="tab-pane fade" id="security">
+                                <h3>Security Settings</h3>
+                                <div class="mt-4">
+                                    <h5>Change Password</h5>
+                                    <form id="passwordForm" class="mt-3">
+                                        <div class="mb-3">
+                                            <label class="form-label">Current Password</label>
+                                            <input type="password" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">New Password</label>
+                                            <input type="password" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Confirm New Password</label>
+                                            <input type="password" class="form-control" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update Password</button>
+                                    </form>
+
+                                    <hr class="my-4">
+
+                                    <h5>Two-Factor Authentication</h5>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="twoFactorToggle">
+                                        <label class="form-check-label" for="twoFactorToggle">Enable Two-Factor Authentication</label>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <h5>Login History</h5>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Device</th>
+                                                    <th>Location</th>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Chrome on Windows</td>
+                                                    <td>Manila, Philippines</td>
+                                                    <td>Mar 15, 2024</td>
+                                                    <td><span class="badge bg-success">Current</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Safari on iPhone</td>
+                                                    <td>Cebu, Philippines</td>
+                                                    <td>Mar 14, 2024</td>
+                                                    <td><span class="badge bg-secondary">Past</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notification Settings -->
+                            <div class="tab-pane fade" id="notifications">
+                                <h3>Notification Settings</h3>
+                                <div class="mt-4">
+                                    <h5>Email Notifications</h5>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="bookingNotif" checked>
+                                        <label class="form-check-label" for="bookingNotif">Booking confirmations and updates</label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="promoNotif" checked>
+                                        <label class="form-check-label" for="promoNotif">Promotions and deals</label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="reviewNotif" checked>
+                                        <label class="form-check-label" for="reviewNotif">Review reminders</label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="newsletterNotif">
+                                        <label class="form-check-label" for="newsletterNotif">Newsletter</label>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <h5>Push Notifications</h5>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="pushBooking" checked>
+                                        <label class="form-check-label" for="pushBooking">Booking updates</label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="pushChat" checked>
+                                        <label class="form-check-label" for="pushChat">Chat messages</label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="pushPromo">
+                                        <label class="form-check-label" for="pushPromo">Promotions</label>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary">Save Preferences</button>
+                                </div>
+                            </div>
+
+                            <!-- Preferences Settings -->
+                            <div class="tab-pane fade" id="preferences">
+                                <h3>Preferences</h3>
+                                <div class="mt-4">
+                                    <h5>Language</h5>
+                                    <select class="form-select mb-4">
+                                        <option value="en">English</option>
+                                        <option value="fil">Filipino</option>
+                                        <option value="ceb">Cebuano</option>
+                                    </select>
+
+                                    <h5>Currency</h5>
+                                    <select class="form-select mb-4">
+                                        <option value="PHP">Philippine Peso (₱)</option>
+                                        <option value="USD">US Dollar ($)</option>
+                                        <option value="EUR">Euro (€)</option>
+                                    </select>
+
+                                    <h5>Time Zone</h5>
+                                    <select class="form-select mb-4">
+                                        <option value="Asia/Manila">Philippines (GMT+8)</option>
+                                        <option value="UTC">UTC</option>
+                                    </select>
+
+                                    <h5>Tour Preferences</h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Preferred Categories</label>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="prefAdventure" checked>
+                                            <label class="form-check-label" for="prefAdventure">Adventure</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="prefCultural" checked>
+                                            <label class="form-check-label" for="prefCultural">Cultural</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="prefFood">
+                                            <label class="form-check-label" for="prefFood">Food & Culinary</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="prefNature" checked>
+                                            <label class="form-check-label" for="prefNature">Nature & Wildlife</label>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary">Save Preferences</button>
+                                </div>
+                            </div>
+
+                            <!-- Privacy Settings -->
+                            <div class="tab-pane fade" id="privacy">
+                                <h3>Privacy Settings</h3>
+                                <div class="mt-4">
+                                    <h5>Profile Visibility</h5>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="radio" name="profileVisibility" id="visibilityPublic" checked>
+                                        <label class="form-check-label" for="visibilityPublic">
+                                            Public - Anyone can see your profile
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="radio" name="profileVisibility" id="visibilityPrivate">
+                                        <label class="form-check-label" for="visibilityPrivate">
+                                            Private - Only you can see your profile
+                                        </label>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <h5>Review Privacy</h5>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="showName" checked>
+                                        <label class="form-check-label" for="showName">
+                                            Show my name on reviews
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="showPhoto" checked>
+                                        <label class="form-check-label" for="showPhoto">
+                                            Show my photo on reviews
+                                        </label>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <h5>Data Usage</h5>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="dataAnalytics" checked>
+                                        <label class="form-check-label" for="dataAnalytics">
+                                            Allow data usage for analytics
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="dataPersonalization" checked>
+                                        <label class="form-check-label" for="dataPersonalization">
+                                            Allow personalized recommendations
+                                        </label>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary">Save Privacy Settings</button>
+
+                                    <hr class="my-4">
+
+                                    <h5>Account Deletion</h5>
+                                    <p class="text-muted">Once you delete your account, there is no going back. Please be certain.</p>
+                                    <button type="button" class="btn btn-outline-danger delete-account" onclick="confirmDelete()">
+                                        Delete Account
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Billing Settings -->
+                            <div class="tab-pane fade" id="billing">
+                                <h3>Billing Settings</h3>
+                                <div class="mt-4">
+                                    <h5>Payment Methods</h5>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <i class="fab fa-cc-visa fa-2x me-2"></i>
+                                                    <span>•••• •••• •••• 1234</span>
+                                                    <span class="badge bg-primary ms-2">Default</span>
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn-sm btn-outline-danger">Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-primary mb-4">
+                                        <i class="fas fa-plus"></i> Add Payment Method
+                                    </button>
+
+                                    <h5>Billing History</h5>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Tour</th>
+                                                    <th>Amount</th>
+                                                    <th>Status</th>
+                                                    <th>Invoice</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Mar 15, 2024</td>
+                                                    <td>Cebu City Heritage Walk</td>
+                                                    <td>₱2,500</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fas fa-download"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mar 10, 2024</td>
+                                                    <td>Palawan Island Hopping</td>
+                                                    <td>₱3,500</td>
+                                                    <td><span class="badge bg-success">Paid</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fas fa-download"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Delete Account Confirmation Modal -->
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDelete" required>
+                        <label class="form-check-label" for="confirmDelete">
+                            I understand that this action is permanent
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Please type "DELETE" to confirm</label>
+                        <input type="text" class="form-control" id="deleteConfirmation" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteAccount()" disabled id="deleteBtn">
+                        Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Profile image upload preview
+            document.getElementById('avatarUpload').addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profileImage').src = e.target.result;
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+
+            // Form submissions
+            document.getElementById('profileForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Implement profile update
+                alert('Profile updated successfully!');
+            });
+
+            document.getElementById('passwordForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Implement password change
+                alert('Password updated successfully!');
+            });
+
+            // Delete account confirmation
+            const deleteConfirmInput = document.getElementById('deleteConfirmation');
+            const deleteBtn = document.getElementById('deleteBtn');
+            const confirmDeleteCheckbox = document.getElementById('confirmDelete');
+
+            function checkDeleteConfirmation() {
+                deleteBtn.disabled = !(deleteConfirmInput.value === 'DELETE' && confirmDeleteCheckbox.checked);
+            }
+
+            deleteConfirmInput.addEventListener('input', checkDeleteConfirmation);
+            confirmDeleteCheckbox.addEventListener('change', checkDeleteConfirmation);
+        });
+
+        function confirmDelete() {
+            const modal = new bootstrap.Modal(document.getElementById('deleteAccountModal'));
+            modal.show();
+        }
+
+        function deleteAccount() {
+            // Implement account deletion
+            alert('Account deleted successfully!');
+            window.location.href = '../../index.html';
+        }
+    </script>
+</body>
+</html> 

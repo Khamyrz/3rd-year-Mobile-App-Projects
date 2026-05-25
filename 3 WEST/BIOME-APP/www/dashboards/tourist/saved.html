@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Saved Places</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/tourist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="experiences.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Experiences</span>
+            </a>
+            <a href="saved.html" class="nav-item active">
+                <i class="fas fa-heart"></i>
+                <span>Saved Places</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search saved items...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <span>John Tourist</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="saved-header">
+            <h1>Saved Places</h1>
+            <div class="saved-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-share-alt"></i>
+                    Share List
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-download"></i>
+                    Export
+                </button>
+            </div>
+        </div>
+
+        <div class="saved-categories">
+            <button class="category-btn active">All (24)</button>
+            <button class="category-btn">Experiences (12)</button>
+            <button class="category-btn">Accommodations (6)</button>
+            <button class="category-btn">Restaurants (4)</button>
+            <button class="category-btn">Attractions (2)</button>
+        </div>
+
+        <div class="saved-grid">
+            <!-- Experience Item -->
+            <div class="saved-card">
+                <div class="saved-image">
+                    <img src="../../img/experience-placeholder.jpg" alt="Kawasan Falls">
+                    <button class="remove-btn">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <span class="saved-type">Experience</span>
+                </div>
+                <div class="saved-content">
+                    <h3>Kawasan Falls Canyoneering</h3>
+                    <p class="saved-location"><i class="fas fa-map-marker-alt"></i> Badian, Cebu</p>
+                    <div class="saved-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8 (156 reviews)</span>
+                        </div>
+                        <span class="price">From ₱2,500</span>
+                    </div>
+                    <div class="saved-actions">
+                        <button class="btn btn-primary">Book Now</button>
+                        <button class="btn btn-outline">Add to Trip</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accommodation Item -->
+            <div class="saved-card">
+                <div class="saved-image">
+                    <img src="../../img/experience-placeholder.jpg" alt="Luxury Resort">
+                    <button class="remove-btn">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <span class="saved-type">Accommodation</span>
+                </div>
+                <div class="saved-content">
+                    <h3>Luxury Beach Resort</h3>
+                    <p class="saved-location"><i class="fas fa-map-marker-alt"></i> Panglao, Bohol</p>
+                    <div class="saved-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.7 (203 reviews)</span>
+                        </div>
+                        <span class="price">From ₱6,000/night</span>
+                    </div>
+                    <div class="saved-actions">
+                        <button class="btn btn-primary">Check Availability</button>
+                        <button class="btn btn-outline">Add to Trip</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurant Item -->
+            <div class="saved-card">
+                <div class="saved-image">
+                    <img src="../../img/experience-placeholder.jpg" alt="Local Restaurant">
+                    <button class="remove-btn">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <span class="saved-type">Restaurant</span>
+                </div>
+                <div class="saved-content">
+                    <h3>Traditional Filipino Restaurant</h3>
+                    <p class="saved-location"><i class="fas fa-map-marker-alt"></i> Cebu City</p>
+                    <div class="saved-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.5 (89 reviews)</span>
+                        </div>
+                        <span class="price">₱₱</span>
+                    </div>
+                    <div class="saved-actions">
+                        <button class="btn btn-primary">Reserve Table</button>
+                        <button class="btn btn-outline">Add to Trip</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attraction Item -->
+            <div class="saved-card">
+                <div class="saved-image">
+                    <img src="../../img/experience-placeholder.jpg" alt="Historical Site">
+                    <button class="remove-btn">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <span class="saved-type">Attraction</span>
+                </div>
+                <div class="saved-content">
+                    <h3>Magellan's Cross</h3>
+                    <p class="saved-location"><i class="fas fa-map-marker-alt"></i> Cebu City</p>
+                    <div class="saved-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.6 (312 reviews)</span>
+                        </div>
+                        <span class="price">Free</span>
+                    </div>
+                    <div class="saved-actions">
+                        <button class="btn btn-primary">View Details</button>
+                        <button class="btn btn-outline">Add to Trip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more">
+            <button class="btn btn-outline btn-lg">Load More Places</button>
+        </div>
+    </main>
+
+    <style>
+        .saved-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .saved-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .saved-categories {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            background: white;
+            color: #495057;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .category-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .saved-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .saved-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .saved-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .saved-image {
+            position: relative;
+            padding-top: 66.67%;
+        }
+
+        .saved-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: var(--primary-color);
+        }
+
+        .saved-type {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 8px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .saved-content {
+            padding: 20px;
+        }
+
+        .saved-content h3 {
+            margin: 0 0 8px;
+            font-size: 1.25rem;
+        }
+
+        .saved-location {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 12px;
+        }
+
+        .saved-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.875rem;
+        }
+
+        .rating i {
+            color: #ffc107;
+        }
+
+        .price {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .saved-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .saved-actions .btn {
+            flex: 1;
+        }
+
+        .load-more {
+            text-align: center;
+        }
+
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .saved-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .saved-actions {
+                width: 100%;
+            }
+
+            .saved-actions .btn {
+                flex: 1;
+            }
+
+            .saved-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        // Category switching
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Implementation for filtering by category
+            });
+        });
+
+        // Remove saved item
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.saved-card');
+                card.style.opacity = '0';
+                setTimeout(() => card.remove(), 300);
+                // Implementation for removing saved item
+            });
+        });
+
+        // Load more functionality
+        document.querySelector('.load-more button').addEventListener('click', function() {
+            // Implementation for loading more saved items
+        });
+    </script>
+</body>
+</html> 

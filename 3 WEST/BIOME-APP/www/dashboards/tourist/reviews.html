@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - My Reviews</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/tourist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="experiences.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Experiences</span>
+            </a>
+            <a href="saved.html" class="nav-item">
+                <i class="fas fa-heart"></i>
+                <span>Saved Places</span>
+            </a>
+            <a href="reviews.html" class="nav-item active">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search your reviews...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <span>John Tourist</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="reviews-header">
+            <h1>My Reviews</h1>
+            <div class="reviews-stats">
+                <div class="stat-item">
+                    <span class="stat-value">15</span>
+                    <span class="stat-label">Total Reviews</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">4.7</span>
+                    <span class="stat-label">Average Rating</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">8</span>
+                    <span class="stat-label">Helpful Votes</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-filters">
+            <div class="filter-group">
+                <label>Filter by:</label>
+                <select class="filter-select">
+                    <option value="all">All Reviews</option>
+                    <option value="experiences">Experiences</option>
+                    <option value="accommodations">Accommodations</option>
+                    <option value="restaurants">Restaurants</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sort by:</label>
+                <select class="filter-select">
+                    <option value="recent">Most Recent</option>
+                    <option value="rating-high">Highest Rating</option>
+                    <option value="rating-low">Lowest Rating</option>
+                    <option value="helpful">Most Helpful</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="reviews-list">
+            <!-- Pending Review -->
+            <div class="review-card pending">
+                <div class="review-header">
+                    <div class="review-image">
+                        <img src="../../img/experience-placeholder.jpg" alt="Island Hopping">
+                    </div>
+                    <div class="review-info">
+                        <h3>Island Hopping Adventure</h3>
+                        <p class="review-meta">
+                            <i class="fas fa-map-marker-alt"></i> Mactan, Cebu
+                            <span class="separator">•</span>
+                            <i class="fas fa-calendar"></i> Visited June 16, 2024
+                        </p>
+                    </div>
+                    <div class="review-status">
+                        <span class="status-badge pending">Review Pending</span>
+                        <button class="btn btn-primary">Write Review</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Published Review -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-image">
+                        <img src="../../img/experience-placeholder.jpg" alt="Kawasan Falls">
+                    </div>
+                    <div class="review-info">
+                        <h3>Kawasan Falls Canyoneering</h3>
+                        <p class="review-meta">
+                            <i class="fas fa-map-marker-alt"></i> Badian, Cebu
+                            <span class="separator">•</span>
+                            <i class="fas fa-calendar"></i> Visited May 20, 2024
+                        </p>
+                    </div>
+                    <div class="review-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-date">Posted 2 days ago</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Amazing experience! The guides were very professional and safety-conscious. The water was crystal clear and the jumps were thrilling. Highly recommend this adventure to anyone visiting Cebu.</p>
+                    <div class="review-photos">
+                        <img src="../../img/experience-placeholder.jpg" alt="Review Photo 1">
+                        <img src="../../img/experience-placeholder.jpg" alt="Review Photo 2">
+                        <img src="../../img/experience-placeholder.jpg" alt="Review Photo 3">
+                    </div>
+                </div>
+                <div class="review-footer">
+                    <div class="review-helpful">
+                        <span>3 people found this helpful</span>
+                        <button class="btn btn-text">
+                            <i class="fas fa-pen"></i>
+                            Edit Review
+                        </button>
+                    </div>
+                    <div class="review-actions">
+                        <button class="btn btn-outline">Share</button>
+                        <button class="btn btn-outline delete">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Another Published Review -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-image">
+                        <img src="../../img/experience-placeholder.jpg" alt="Restaurant">
+                    </div>
+                    <div class="review-info">
+                        <h3>Traditional Filipino Restaurant</h3>
+                        <p class="review-meta">
+                            <i class="fas fa-map-marker-alt"></i> Cebu City
+                            <span class="separator">•</span>
+                            <i class="fas fa-calendar"></i> Visited May 15, 2024
+                        </p>
+                    </div>
+                    <div class="review-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-date">Posted 1 week ago</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Great local food with authentic flavors. The lechon was crispy and the seafood was fresh. Service was good but the place was quite crowded during dinner time.</p>
+                    <div class="review-photos">
+                        <img src="../../img/experience-placeholder.jpg" alt="Review Photo 1">
+                        <img src="../../img/experience-placeholder.jpg" alt="Review Photo 2">
+                    </div>
+                </div>
+                <div class="review-footer">
+                    <div class="review-helpful">
+                        <span>2 people found this helpful</span>
+                        <button class="btn btn-text">
+                            <i class="fas fa-pen"></i>
+                            Edit Review
+                        </button>
+                    </div>
+                    <div class="review-actions">
+                        <button class="btn btn-outline">Share</button>
+                        <button class="btn btn-outline delete">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more">
+            <button class="btn btn-outline btn-lg">Load More Reviews</button>
+        </div>
+    </main>
+
+    <style>
+        .reviews-header {
+            margin-bottom: 24px;
+        }
+
+        .reviews-stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .reviews-filters {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background: white;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .review-card.pending {
+            background: #fff3cd;
+            border: 1px dashed #ffc107;
+        }
+
+        .review-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .review-image {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .review-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .review-info h3 {
+            margin: 0 0 8px;
+            font-size: 1.25rem;
+        }
+
+        .review-meta {
+            color: #666;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .separator {
+            margin: 0 8px;
+        }
+
+        .review-status {
+            text-align: right;
+        }
+
+        .status-badge {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.875rem;
+        }
+
+        .status-badge.pending {
+            color: #856404;
+        }
+
+        .review-rating {
+            text-align: right;
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 4px;
+        }
+
+        .rating-date {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .review-content {
+            margin-bottom: 16px;
+        }
+
+        .review-content p {
+            margin: 0 0 16px;
+            line-height: 1.5;
+        }
+
+        .review-photos {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .review-photos img {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .review-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .review-helpful {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .review-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn.delete {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn.delete:hover {
+            background: #dc3545;
+            color: white;
+        }
+
+        .load-more {
+            text-align: center;
+        }
+
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-stats {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .reviews-filters {
+                flex-direction: column;
+            }
+
+            .review-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .review-image {
+                width: 100%;
+                height: 160px;
+            }
+
+            .review-status, .review-rating {
+                text-align: left;
+            }
+
+            .review-footer {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .review-helpful {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .review-actions {
+                width: 100%;
+            }
+
+            .review-actions .btn {
+                flex: 1;
+            }
+        }
+    </style>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                // Implementation for filtering reviews
+            });
+        });
+
+        // Delete review functionality
+        document.querySelectorAll('.btn.delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this review?')) {
+                    const card = this.closest('.review-card');
+                    card.style.opacity = '0';
+                    setTimeout(() => card.remove(), 300);
+                    // Implementation for deleting review
+                }
+            });
+        });
+
+        // Load more functionality
+        document.querySelector('.load-more button').addEventListener('click', function() {
+            // Implementation for loading more reviews
+        });
+    </script>
+</body>
+</html> 

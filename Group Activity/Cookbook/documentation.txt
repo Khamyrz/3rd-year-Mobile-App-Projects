@@ -1,0 +1,17 @@
+Recipe Book Mobile App Overview
+This is a complete mobile application built using Apache Cordova that showcases famous dishes from around the world. The app provides a user-friendly interface with the following key features:
+
+Featured Recipes Display: The app includes 10 famous global dishes with detailed information including ingredients, instructions, and cooking times.
+Search Functionality: Users can search for specific dishes by name, origin, or tags.
+Category Filtering: Recipes can be browsed by regional cuisine (Italian, Asian, Mexican, etc.).
+Favorites System: Users can save their favorite recipes for quick access later.
+Detailed Recipe View: Each recipe includes a complete view with:
+
+High-quality image
+Preparation and cooking times
+Serving size
+Ingredients list
+Step-by-step instructions
+
+
+

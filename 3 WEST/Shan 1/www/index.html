@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BasaBasa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jaro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <img src="logo.png" alt="Logo" class="logo" />
+  </div>
+  
+  <div id="main-content">
+    <div class="logo-container">
+        <h1>📖 BasaBasa</h1>
+        <p>Welcome to BasaBasa!</p>
+        <p class="subtitle">Access free eBooks and AudioBooks and more!</p>
+    </div>
+
+    <div class="book-icons">
+        <div class="icon-box" onclick="selectOption('ebooks')">
+            <img src="book.png" alt="eBooks" />
+            <span>eBooks</span>
+        </div>
+        <div class="icon-box" onclick="selectOption('audiobooks')">
+            <img src="head.png" alt="AudioBooks" />
+            <span>AudioBooks</span>
+        </div>
+    </div>
+    
+    <!-- Navigation only appears during selection -->
+    <nav class="bottom-nav" id="selection-nav">
+        <a href="#" class="nav-item" data-screen="home"><i class="icon-home"></i></a>
+        <a href="#" class="nav-item" data-screen="library"><i class="   "></i></a>
+        <a href="#" class="nav-item active" data-screen="profile"><i class="icon-user"></i></a>
+    </nav>
+  </div>
+
+    <!-- Library Screen -->
+    <div id="library-screen" class="screen">
+        <header>
+            <button class="back-btn">←</button>
+            <h2>Library</h2>
+        </header>
+        
+        <div class="language-filter">
+            <button class="language-btn active" data-lang="English">English</button>
+            <button class="language-btn" data-lang="Tagalog">Tagalog</button>
+        </div>
+        
+        <div class="content-tabs">
+            <button class="tab-btn active" data-tab="ebooks">eBooks</button>
+            <button class="tab-btn" data-tab="audiobooks">AudioBooks</button>
+        </div>
+
+        <div class="book-list">
+            <!-- Books will be populated dynamically -->
+            <div class="book-item">
+                <div class="book-cover"></div>
+                <div class="book-details">
+                    <h3>Book Title</h3>
+                    <p>Author</p>
+                </div>
+            </div>
+            <div class="book-item">
+                <div class="book-cover"></div>
+                <div class="book-details">
+                    <h3>Book Title</h3>
+                    <p>Author</p>
+                </div>
+            </div>
+            <div class="book-item">
+                <div class="book-cover"></div>
+                <div class="book-details">
+                    <h3>Book Title</h3>
+                    <p>Author</p>
+                </div>
+            </div>
+            <div class="book-item">
+                <div class="book-cover"></div>
+                <div class="book-details">
+                    <h3>Book Title</h3>
+                    <p>Author</p>
+                </div>
+            </div>
+            <div class="book-item">
+                <div class="book-cover"></div>
+                <div class="book-details">
+                    <h3>Book Title</h3>
+                    <p>Author</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reading Challenge Screen -->
+    <div id="challenge-screen" class="screen">
+        <header>
+            <h2>Reading Challenge</h2>
+        </header>
+
+        <div class="challenge-container">
+            <div class="daily-goal">
+                <h3>Daily Goal</h3>
+                <div class="timer">0:10 min</div>
+            </div>
+
+            <div class="badges-section">
+                <h3>Badges</h3>
+                <div class="badges">
+                    <div class="badge-item">
+                        <span class="badge-icon">★</span>
+                        <span class="badge-label">First Read</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-icon">★</span>
+                        <span class="badge-label">3 Days</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-icon">📚</span>
+                        <span class="badge-label">10 Days</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3>Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Screen -->
+    <div id="profile-screen" class="screen">
+        <header>
+            <h2>Profile</h2>
+        </header>
+
+        <div class="profile-container">
+            <div class="reading-stats">
+                <h3>Reading Stats</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Time Read</span>
+                    <span class="stat-value">2h 45m</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Books Read</span>
+                    <span class="stat-value">7</span>
+                </div>
+            </div>
+
+            <div class="achievements-section">
+                <h3>Achievements</h3>
+                <div class="badges">
+                    <div class="badge-item">
+                        <span class="badge-icon">★</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-icon">★</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-icon">📚</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="language-section">
+                <h3>Language</h3>
+                <div class="language-selector">
+                    <button class="language-selected">English</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Reader Screen -->
+    <div id="reader-screen" class="screen">
+        <header>
+            <button class="close-btn">✕</button>
+            <h2 class="book-title">Book Title</h2>
+            <button class="options-btn">⋮</button>
+        </header>
+
+        <div class="reader-container">
+            <button class="page-btn prev-btn">←</button>
+            <div class="book-content">
+                <!-- Content will be populated dynamically -->
+                <div class="page">
+                    <h3>Chapter 1</h3>
+                </div>
+            </div>
+            <button class="page-btn next-btn">→</button>
+        </div>
+
+        <div class="reader-controls">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="page-info">
+                <span class="current-page">1</span> / <span class="total-pages">245</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player Screen -->
+    <div id="audio-screen" class="screen">
+        <header>
+            <button class="close-btn">✕</button>
+            <h2 class="book-title">Audiobook Title</h2>
+            <button class="options-btn">⋮</button>
+        </header>
+
+        <div class="audio-container">
+            <div class="book-cover-large"></div>
+            
+            <div class="audio-controls">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="time-info">
+                    <span class="current-time">0:00</span> / <span class="total-time">45:30</span>
+                </div>
+                <div class="player-controls">
+                    <button class="rewind-btn">⏪</button>
+                    <button class="play-pause-btn">⏯</button>
+                    <button class="forward-btn">⏩</button>
+                </div>
+                <div class="speed-control">
+                    <label>Speed:</label>
+                    <select class="speed-select">
+                        <option value="0.5">0.5x</option>
+                        <option value="0.75">0.75x</option>
+                        <option value="1" selected>1x</option>
+                        <option value="1.25">1.25x</option>
+                        <option value="1.5">1.5x</option>
+                        <option value="2">2x</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selection Modal -->
+    <div id="language-modal" class="modal">
+        <div class="modal-content">
+            <h3>Select Language</h3>
+            <div class="lang-options">
+                <div class="lang-option" data-lang="en">English</div>
+                <div class="lang-option" data-lang="tl">Tagalog</div>
+                <div class="lang-option" data-lang="bi">Bisaya</div>
+                <div class="lang-option" data-lang="other">Other Language</div>
+            </div>
+            <button class="confirm-lang-btn">Confirm</button>
+        </div>
+    </div>
+    
+    <script>
+        // Add JavaScript to control when the navigation appears
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectionNav = document.getElementById('selection-nav');
+            
+            // Function to show navigation during selection phase
+            function showNavigationForSelection() {
+                selectionNav.style.display = 'flex';
+            }
+            
+            // Function to hide navigation when leaving selection phase
+            function hideNavigation() {
+                selectionNav.style.display = 'none';
+            }
+            
+            // Initially hide the navigation
+            hideNavigation();
+            
+            // Show navigation when entering main content/selection screen
+            document.querySelector('.book-icons').addEventListener('mouseenter', showNavigationForSelection);
+            
+            // Hide navigation when leaving main content or selecting an option
+            document.querySelectorAll('.icon-box').forEach(box => {
+                box.addEventListener('click', hideNavigation);
+            });
+            
+            // Original selectOption function might need to be modified in app.js
+            // This is a placeholder that should be integrated with your existing code
+            window.selectOption = function(option) {
+                hideNavigation();
+                // Your existing code to handle option selection
+                
+                // For example:
+                if (option === 'ebooks') {
+                    document.getElementById('library-screen').classList.add('active');
+                    document.getElementById('main-content').classList.remove('active');
+                } else if (option === 'audiobooks') {
+                    document.getElementById('audio-screen').classList.add('active');
+                    document.getElementById('main-content').classList.remove('active');
+                }
+            };
+            
+            // Back button functionality
+            document.querySelectorAll('.back-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Hide all screens
+                    document.querySelectorAll('.screen').forEach(screen => {
+                        screen.classList.remove('active');
+                    });
+                    
+                    // Show main content and navigation
+                    document.getElementById('main-content').classList.add('active');
+                    showNavigationForSelection();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

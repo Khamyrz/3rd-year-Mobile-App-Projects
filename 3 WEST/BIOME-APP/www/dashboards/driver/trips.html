@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Driver Trips</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/driver.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item active">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Schedule</span>
+            </a>
+            <a href="vehicle.html" class="nav-item">
+                <i class="fas fa-car"></i>
+                <span>Vehicle</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search trips by ID, passenger name, or location...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span>Juan Driver</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="trips-header">
+            <h1>My Trips</h1>
+            <div class="trips-filter">
+                <div class="filter-group">
+                    <label>Status:</label>
+                    <select class="filter-select">
+                        <option value="all">All Trips</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Type:</label>
+                    <select class="filter-select">
+                        <option value="all">All Types</option>
+                        <option value="airport">Airport Transfer</option>
+                        <option value="tour">City Tour</option>
+                        <option value="charter">Private Charter</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Date Range:</label>
+                    <div class="date-inputs">
+                        <input type="date" class="date-input">
+                        <span>to</span>
+                        <input type="date" class="date-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trips-stats">
+            <div class="stat-card">
+                <i class="fas fa-calendar-check"></i>
+                <div class="stat-info">
+                    <h3>Today's Trips</h3>
+                    <p>5</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="stat-info">
+                    <h3>Hours Driven</h3>
+                    <p>12.5</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-road"></i>
+                <div class="stat-info">
+                    <h3>Distance</h3>
+                    <p>180 km</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-wallet"></i>
+                <div class="stat-info">
+                    <h3>Earnings</h3>
+                    <p>₱4,500</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="trips-section">
+            <h2>Current Trip</h2>
+            <div class="trip-card active">
+                <div class="trip-header">
+                    <div class="trip-info">
+                        <span class="trip-id">#TR-2024-06-001</span>
+                        <span class="trip-type">Airport Transfer</span>
+                        <span class="trip-status active">In Progress</span>
+                    </div>
+                    <div class="trip-amount">₱950</div>
+                </div>
+                <div class="trip-details">
+                    <div class="passenger-info">
+                        <img src="../../img/profile-placeholder.jpg" alt="Passenger" class="passenger-photo">
+                        <div class="passenger-details">
+                            <h4>Maria Santos</h4>
+                            <p>3 passengers • 2 luggage</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 • 24 trips</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-phone"></i>
+                            Contact
+                        </button>
+                    </div>
+                    <div class="trip-route">
+                        <div class="route-point pickup">
+                            <i class="fas fa-circle"></i>
+                            <div class="point-details">
+                                <p class="point-label">Pickup</p>
+                                <p class="point-address">Mactan-Cebu International Airport, Terminal 2</p>
+                                <p class="point-time">2:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="route-line"></div>
+                        <div class="route-point dropoff">
+                            <i class="fas fa-circle"></i>
+                            <div class="point-details">
+                                <p class="point-label">Drop-off</p>
+                                <p class="point-address">Shangri-La Mactan Resort & Spa</p>
+                                <p class="point-time">3:15 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trip-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Navigation
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fas fa-check"></i>
+                            Complete Trip
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trips-section">
+            <h2>Upcoming Trips</h2>
+            <div class="trip-card">
+                <div class="trip-header">
+                    <div class="trip-info">
+                        <span class="trip-id">#TR-2024-06-002</span>
+                        <span class="trip-type">City Tour</span>
+                        <span class="trip-status upcoming">Upcoming</span>
+                    </div>
+                    <div class="trip-amount">₱1,200</div>
+                </div>
+                <div class="trip-details">
+                    <div class="passenger-info">
+                        <img src="../../img/profile-placeholder.jpg" alt="Passenger" class="passenger-photo">
+                        <div class="passenger-details">
+                            <h4>John Lee</h4>
+                            <p>4 passengers • 3 hours</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7 • 12 trips</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-phone"></i>
+                            Contact
+                        </button>
+                    </div>
+                    <div class="trip-schedule">
+                        <div class="schedule-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Today, 4:00 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Pickup: Radisson Blu Cebu</span>
+                        </div>
+                        <div class="schedule-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 3 hours</span>
+                        </div>
+                    </div>
+                    <div class="trip-actions">
+                        <button class="btn btn-primary">View Details</button>
+                        <button class="btn btn-outline">Cancel Trip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trips-section">
+            <div class="section-header">
+                <h2>Trip History</h2>
+                <div class="section-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i>
+                        Export
+                    </button>
+                </div>
+            </div>
+            <div class="trip-history">
+                <div class="trip-card completed">
+                    <div class="trip-header">
+                        <div class="trip-info">
+                            <span class="trip-id">#TR-2024-06-000</span>
+                            <span class="trip-type">Private Charter</span>
+                            <span class="trip-status completed">Completed</span>
+                        </div>
+                        <div class="trip-amount">₱3,500</div>
+                    </div>
+                    <div class="trip-details">
+                        <div class="trip-summary">
+                            <div class="summary-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>June 15, 2024</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-clock"></i>
+                                <span>9:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>South Cebu Tour</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-users"></i>
+                                <span>6 passengers</span>
+                            </div>
+                        </div>
+                        <div class="trip-feedback">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="feedback-text">"Excellent service and very knowledgeable about the local attractions!"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trip-card completed">
+                    <div class="trip-header">
+                        <div class="trip-info">
+                            <span class="trip-id">#TR-2024-05-999</span>
+                            <span class="trip-type">Airport Transfer</span>
+                            <span class="trip-status completed">Completed</span>
+                        </div>
+                        <div class="trip-amount">₱850</div>
+                    </div>
+                    <div class="trip-details">
+                        <div class="trip-summary">
+                            <div class="summary-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>June 14, 2024</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10:30 AM - 11:15 AM</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Airport to Waterfront Hotel</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-users"></i>
+                                <span>2 passengers</span>
+                            </div>
+                        </div>
+                        <div class="trip-feedback">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="feedback-text">"Very punctual and professional. Clean vehicle and smooth ride."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn-outline btn-lg">Load More Trips</button>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .trips-header {
+            margin-bottom: 24px;
+        }
+
+        .trips-filter {
+            display: flex;
+            gap: 20px;
+            margin-top: 16px;
+            padding: 16px;
+            background: var(--background-light);
+            border-radius: 8px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: white;
+            min-width: 160px;
+        }
+
+        .date-inputs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .date-input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: white;
+        }
+
+        .trips-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .trips-section {
+            margin-bottom: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .trip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .trip-card.active {
+            border: 2px solid var(--primary-color);
+        }
+
+        .trip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .trip-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .trip-id {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .trip-type {
+            font-weight: 500;
+        }
+
+        .trip-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .trip-status.active {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .trip-status.upcoming {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .trip-status.completed {
+            background: #E2E3E5;
+            color: #383D41;
+        }
+
+        .trip-amount {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .passenger-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .passenger-photo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .passenger-details {
+            flex: 1;
+        }
+
+        .passenger-details h4 {
+            margin: 0 0 4px;
+        }
+
+        .passenger-details p {
+            margin: 0 0 4px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .rating {
+            color: var(--warning-color);
+            font-size: 0.875rem;
+        }
+
+        .trip-route {
+            margin-bottom: 24px;
+        }
+
+        .route-point {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .route-line {
+            width: 2px;
+            height: 40px;
+            background: var(--border-color);
+            margin: 8px 0 8px 5px;
+        }
+
+        .point-details {
+            flex: 1;
+        }
+
+        .point-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .point-address {
+            margin: 4px 0;
+            font-weight: 500;
+        }
+
+        .point-time {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .trip-schedule {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .trip-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .trip-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .trip-feedback {
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feedback-text {
+            margin: 8px 0 0;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .load-more {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .trips-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trips-filter {
+                flex-direction: column;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            .date-inputs {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .trips-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .trip-info {
+                flex-wrap: wrap;
+            }
+
+            .passenger-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .trip-actions {
+                flex-direction: column;
+            }
+
+            .trip-actions .btn {
+                width: 100%;
+            }
+
+            .trip-summary {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                // Implementation for filtering trips
+            });
+        });
+
+        // Date range filter
+        document.querySelectorAll('.date-input').forEach(input => {
+            input.addEventListener('change', function() {
+                // Implementation for date range filtering
+            });
+        });
+
+        // Trip completion
+        document.querySelector('.btn-success')?.addEventListener('click', function() {
+            if (confirm('Are you sure you want to complete this trip?')) {
+                // Implementation for completing trip
+            }
+        });
+
+        // Load more functionality
+        document.querySelector('.load-more button').addEventListener('click', function() {
+            // Implementation for loading more trips
+        });
+    </script>
+</body>
+</html>

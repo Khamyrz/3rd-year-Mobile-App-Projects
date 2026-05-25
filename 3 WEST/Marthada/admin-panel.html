@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Marthada</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container admin">
+        <header class="admin-header">
+            <div class="logo-section">
+                <img src="img/logo.png" alt="Marthada Logo" class="logo">
+                <h2>MARTHADA ADMIN</h2>
+            </div>
+            <div class="admin-actions">
+                <div class="admin-user">
+                    <span>Admin Name</span>
+                    <img src="img/admin-profile.png" alt="Admin Profile" class="admin-pic">
+                </div>
+                <button id="adminLogout" class="btn btn-outline-primary">Logout</button>
+            </div>
+        </header>
+
+        <div class="admin-container">
+            <div class="admin-sidebar">
+                <nav class="admin-nav">
+                    <ul>
+                        <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="#" id="managementLink"><i class="fas fa-users"></i> User Management</a></li>
+                        <li><a href="#" id="riderVerificationLink"><i class="fas fa-check-circle"></i> Rider Verification</a></li>
+                        <li><a href="#" id="resetPasswordLink"><i class="fas fa-key"></i> Reset Password</a></li>
+                        <li><a href="#" id="reportingLink"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                        <li><a href="#" id="settingsLink"><i class="fas fa-cog"></i> Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="admin-content">
+                <div class="dashboard-section">
+                    <h3>Dashboard Overview</h3>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalUsers">0</span>
+                                <span class="stat-label">Total Users</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-motorcycle"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalRiders">0</span>
+                                <span class="stat-label">Total Riders</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-route"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalRides">0</span>
+                                <span class="stat-label">Total Rides</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" id="pendingVerifications">0</span>
+                                <span class="stat-label">Pending Verifications</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New User Registration</h4>
+                                    <p>John Doe registered as a customer</p>
+                                    <span class="activity-time">5 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-motorcycle"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New Rider Registration</h4>
+                                    <p>Jane Smith registered as a rider</p>
+                                    <span class="activity-time">15 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Ride Completed</h4>
+                                    <p>Michael Brown completed a ride</p>
+                                    <span class="activity-time">30 minutes ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-management-section hidden" id="userManagementSection">
+                    <h3>User Management</h3>
+                    <div class="search-filter">
+                        <input type="text" placeholder="Search users...">
+                        <select>
+                            <option value="all">All Users</option>
+                            <option value="customers">Customers</option>
+                            <option value="riders">Riders</option>
+                        </select>
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+
+                    <div class="user-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>001</td>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>Customer</td>
+                                    <td><span class="badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>002</td>
+                                    <td>Jane Smith</td>
+                                    <td>jane@example.com</td>
+                                    <td>Rider</td>
+                                    <td><span class="badge active">Active</span></td>
+                                    <td>
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>003</td>
+                                    <td>Michael Brown</td>
+                                    <td>michael@example.com</td>
+                                    <td>Rider</td>
+                                    <td><span class="badge inactive">Inactive</span></td>
+                                    <td>
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <button>&laquo;</button>
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>&raquo;</button>
+                    </div>
+                </div>
+
+                <div class="rider-verification-section hidden" id="riderVerificationSection">
+                    <h3>Rider Verification</h3>
+                    <div class="verification-filters">
+                        <select>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <div class="verification-cards">
+                        <div class="verification-card">
+                            <div class="verification-header">
+                                <img src="img/default-profile.png" alt="Rider Profile" class="rider-pic">
+                                <div class="rider-info">
+                                    <h4>Jane Smith</h4>
+                                    <p>jane@example.com</p>
+                                    <p>+1 234-567-8901</p>
+                                </div>
+                                <span class="badge pending">Pending</span>
+                            </div>
+                            <div class="verification-details">
+                                <div class="detail-group">
+                                    <span class="detail-label">Age:</span>
+                                    <span class="detail-value">28</span>
+                                </div>
+                                <div class="detail-group">
+                                    <span class="detail-label">Address:</span>
+                                    <span class="detail-value">123 Main St, Anytown, USA</span>
+                                </div>
+                                <div class="detail-group">
+                                    <span class="detail-label">Registered:</span>
+                                    <span class="detail-value">April 20, 2025</span>
+                                </div>
+                            </div>
+                            <div class="document-previews">
+                                <div class="document">
+                                    <span>License</span>
+                                    <img src="img/license-placeholder.png" alt="License">
+                                    <button class="btn btn-sm btn-secondary">View</button>
+                                </div>
+                                <div class="document">
+                                    <span>Vehicle</span>
+                                    <img src="img/vehicle-placeholder.png" alt="Vehicle">
+                                    <button class="btn btn-sm btn-secondary">View</button>
+                                </div>
+                            </div>
+                            <div class="verification-actions">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </div>
+                        </div>
+
+                        <div class="verification-card">
+                            <div class="verification-header">
+                                <img src="img/default-profile.png" alt="Rider Profile" class="rider-pic">
+                                <div class="rider-info">
+                                    <h4>Michael Brown</h4>
+                                    <p>michael@example.com</p>
+                                    <p>+1 345-678-9012</p>
+                                </div>
+                                <span class="badge pending">Pending</span>
+                            </div>
+                            <div class="verification-details">
+                                <div class="detail-group">
+                                    <span class="detail-label">Age:</span>
+                                    <span class="detail-value">32</span>
+                                </div>
+                                <div class="detail-group">
+                                    <span class="detail-label">Address:</span>
+                                    <span class="detail-value">456 Oak Ave, Somewhere, USA</span>
+                                </div>
+                                <div class="detail-group">
+                                    <span class="detail-label">Registered:</span>
+                                    <span class="detail-value">April 21, 2025</span>
+                                </div>
+                            </div>
+                            <div class="document-previews">
+                                <div class="document">
+                                    <span>License</span>
+                                    <img src="img/license-placeholder.png" alt="License">
+                                    <button class="btn btn-sm btn-secondary">View</button>
+                                </div>
+                                <div class="document">
+                                    <span>Vehicle</span>
+                                    <img src="img/vehicle-placeholder.png" alt="Vehicle">
+                                    <button class="btn btn-sm btn-secondary">View</button>
+                                </div>
+                            </div>
+                            <div class="verification-actions">
+                                <button class="btn btn-success">Approve</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reset-password-section hidden" id="resetPasswordSection">
+                    <h3>Reset Password</h3>
+                    <div class="search-user">
+                        <div class="form-group">
+                            <label for="userEmail">User Email</label>
+                            <input type="email" id="userEmail" placeholder="Enter user email">
+                        </div>
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+
+                    <div class="user-info-card hidden" id="userInfoCard">
+                        <div class="user-info-header">
+                            <img src="img/default-profile.png" alt="User Profile" class="user-pic">
+                            <div class="user-info">
+                                <h4>John Doe</h4>
+                                <p>john@example.com</p>
+                                <p>Customer</p>
+                            </div>
+                        </div>
+                        <div class="password-reset-form">
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" placeholder="Enter new password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword">Confirm New Password</label>
+                                <input type="password" id="confirmNewPassword" placeholder="Confirm new password">
+                            </div>
+                            <button class="btn btn-primary">Reset Password</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

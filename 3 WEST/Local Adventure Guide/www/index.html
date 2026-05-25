@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Local Adventure Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Including Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        
+        <!-- Splash Screen -->
+        <div id="splash-screen">
+            <img src="img/logo.png" alt="Local Adventure Guide" class="logo">
+            <h1>Local Adventure Guide</h1>
+            <p>Discover hidden gems around you</p>
+        </div>
+
+        <!-- Main Navigation -->
+        <div id="nav-bar">
+            <div class="nav-item active" data-target="explore">
+                <i class="fas fa-compass"></i>
+                <span>Explore</span>
+            </div>
+            <div class="nav-item" data-target="favorites">
+                <i class="fas fa-heart"></i>
+                <span>Favorites</span>
+            </div>
+            <div class="nav-item" data-target="nearby">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Nearby</span>
+            </div>
+            <div class="nav-item" data-target="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div id="content">
+            <!-- Explore Screen -->
+            <div id="explore" class="screen active">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for adventures..." id="search-input">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="category-filters">
+                    <div class="category-item active" data-category="all">All</div>
+                    <div class="category-item" data-category="hiking"><i class="fas fa-hiking"></i> Hiking</div>
+                    <div class="category-item" data-category="food"><i class="fas fa-utensils"></i> Food</div>
+                    <div class="category-item" data-category="quirky"><i class="fas fa-hat-wizard"></i> Quirky</div>
+                    <div class="category-item" data-category="outdoor"><i class="fas fa-tree"></i> Outdoor</div>
+                </div>
+                
+                <div class="adventure-list" id="adventure-list">
+                    <!-- Adventure cards will be populated here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Favorites Screen -->
+            <div id="favorites" class="screen">
+                <h2>Your Favorite Adventures</h2>
+                <div class="adventure-list" id="favorites-list">
+                    <!-- Favorite adventures will be populated here -->
+                    <div class="empty-state">
+                        <i class="fas fa-heart-broken"></i>
+                        <p>You haven't added any favorites yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nearby Screen -->
+            <div id="nearby" class="screen">
+                <h2>Adventures Near You</h2>
+                <div id="map-container">
+                    <div id="map"></div>
+                </div>
+                <div class="adventure-list" id="nearby-list">
+                    <!-- Nearby adventures will be populated here -->
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+            <div id="profile" class="screen">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h2>Adventure Seeker</h2>
+                    <p>Member since <span id="member-since">2025</span></p>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">0</span>
+                        <span class="stat-label">Adventures Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">0</span>
+                        <span class="stat-label">Reviews</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">0</span>
+                        <span class="stat-label">Photos</span>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Settings</h3>
+                    <div class="setting-item">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <i class="fas fa-globe"></i>
+                        <span>Location Services</span>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                        <label class="toggle">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="btn-logout">Log Out</button>
+            </div>
+
+            <!-- Adventure Detail Screen -->
+            <div id="adventure-detail" class="screen">
+                <div class="detail-header">
+                    <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="detail-content">
+                    <!-- Detail content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates for dynamic content -->
+    <template id="adventure-card-template">
+        <div class="adventure-card" data-id="">
+            <div class="card-image">
+                <img src="" alt="">
+                <div class="card-category"></div>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title"></h3>
+                <div class="card-rating">
+                    <span class="rating-value"></span>
+                    <div class="rating-stars"></div>
+                    <span class="rating-count"></span>
+                </div>
+                <p class="card-description"></p>
+                <div class="card-distance"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+</body>
+</html>

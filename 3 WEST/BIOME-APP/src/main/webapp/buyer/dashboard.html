@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard - BIOME</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>BIOME Buyer</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-store"></i> Marketplace</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> My Orders</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> Wishlist</a></li>
+                <li><a href="#"><i class="fas fa-star"></i> Reviews</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products...">
+                </div>
+                <div class="user-profile">
+                    <span>Welcome, Buyer</span>
+                    <img src="../images/buyer-avatar.jpg" alt="Buyer">
+                </div>
+            </header>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="stat-info">
+                        <h3>Total Orders</h3>
+                        <p>12</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-heart"></i>
+                    <div class="stat-info">
+                        <h3>Wishlist</h3>
+                        <p>8</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-box-open"></i>
+                    <div class="stat-info">
+                        <h3>Pending</h3>
+                        <p>3</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-medal"></i>
+                    <div class="stat-info">
+                        <h3>Member Status</h3>
+                        <p>Gold</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="grid-item">
+                    <h3>Order Tracking</h3>
+                    <div class="tracking-list">
+                        <div class="tracking-item">
+                            <div class="tracking-status">
+                                <i class="fas fa-shipping-fast"></i>
+                                <div class="status-info">
+                                    <p>Order #12346</p>
+                                    <span>In Transit - Arriving Today</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn-track">Track</a>
+                        </div>
+                        <div class="tracking-item">
+                            <div class="tracking-status">
+                                <i class="fas fa-box"></i>
+                                <div class="status-info">
+                                    <p>Order #12345</p>
+                                    <span>Processing</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn-track">Track</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Recent Purchases</h3>
+                    <div class="product-items">
+                        <div class="product-item">
+                            <img src="../images/product1.jpg" alt="Product">
+                            <div class="product-info">
+                                <p>Handwoven Bag</p>
+                                <span>₱850</span>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>Write a Review</span>
+                                </div>
+                            </div>
+                            <button class="btn-add-cart">Buy Again</button>
+                        </div>
+                        <div class="product-item">
+                            <img src="../images/product2.jpg" alt="Product">
+                            <div class="product-info">
+                                <p>Local Delicacies Pack</p>
+                                <span>₱450</span>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>Write a Review</span>
+                                </div>
+                            </div>
+                            <button class="btn-add-cart">Buy Again</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Wishlist</h3>
+                    <div class="product-items">
+                        <div class="product-item">
+                            <img src="../images/product3.jpg" alt="Product">
+                            <div class="product-info">
+                                <p>Traditional Scarf</p>
+                                <span>₱550</span>
+                                <div class="product-stats">
+                                    <span><i class="fas fa-star"></i> 4.8</span>
+                                    <span><i class="fas fa-shopping-cart"></i> 120 sold</span>
+                                </div>
+                            </div>
+                            <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                        <div class="product-item">
+                            <img src="../images/product4.jpg" alt="Product">
+                            <div class="product-info">
+                                <p>Bamboo Crafts Set</p>
+                                <span>₱750</span>
+                                <div class="product-stats">
+                                    <span><i class="fas fa-star"></i> 4.7</span>
+                                    <span><i class="fas fa-shopping-cart"></i> 85 sold</span>
+                                </div>
+                            </div>
+                            <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

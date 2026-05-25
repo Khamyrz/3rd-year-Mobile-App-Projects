@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Driver Earnings</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/driver.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Schedule</span>
+            </a>
+            <a href="vehicle.html" class="nav-item">
+                <i class="fas fa-car"></i>
+                <span>Vehicle</span>
+            </a>
+            <a href="earnings.html" class="nav-item active">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search transactions...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span>Juan Driver</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="earnings-header">
+            <h1>My Earnings</h1>
+            <div class="earnings-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-download"></i>
+                    Download Statement
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-wallet"></i>
+                    Withdraw Earnings
+                </button>
+            </div>
+        </div>
+
+        <div class="earnings-overview">
+            <div class="overview-card total-earnings">
+                <div class="card-header">
+                    <h3>Total Earnings</h3>
+                    <select class="period-select">
+                        <option value="week">This Week</option>
+                        <option value="month" selected>This Month</option>
+                        <option value="year">This Year</option>
+                    </select>
+                </div>
+                <div class="card-amount">₱45,750</div>
+                <div class="card-stats">
+                    <div class="stat-item positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>12% vs last month</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-car"></i>
+                        <span>85 trips</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-card available-balance">
+                <div class="card-header">
+                    <h3>Available Balance</h3>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-wallet"></i>
+                        Withdraw
+                    </button>
+                </div>
+                <div class="card-amount">₱12,500</div>
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Next payout: Tomorrow</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-card pending-earnings">
+                <div class="card-header">
+                    <h3>Pending Earnings</h3>
+                    <span class="info-badge">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                </div>
+                <div class="card-amount">₱3,250</div>
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>From 5 trips</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-card expenses">
+                <div class="card-header">
+                    <h3>Expenses</h3>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-plus"></i>
+                        Add
+                    </button>
+                </div>
+                <div class="card-amount">₱8,500</div>
+                <div class="card-stats">
+                    <div class="stat-item negative">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>8% vs last month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="earnings-charts">
+            <div class="chart-card">
+                <div class="card-header">
+                    <h2>Earnings Trend</h2>
+                    <div class="chart-actions">
+                        <div class="btn-group">
+                            <button class="btn btn-outline btn-sm active">Daily</button>
+                            <button class="btn btn-outline btn-sm">Weekly</button>
+                            <button class="btn btn-outline btn-sm">Monthly</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="earningsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="card-header">
+                    <h2>Trip Types Distribution</h2>
+                    <div class="chart-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="tripTypesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="transactions-section">
+            <div class="section-header">
+                <h2>Recent Transactions</h2>
+                <div class="header-actions">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-filter"></i>
+                        Filter
+                    </button>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-sort"></i>
+                        Sort
+                    </button>
+                </div>
+            </div>
+
+            <div class="transactions-list">
+                <div class="transaction-item">
+                    <div class="transaction-icon earnings">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <h3>Airport Transfer</h3>
+                        <p>Mactan Airport → Shangri-La Mactan</p>
+                        <span class="transaction-date">Today, 2:30 PM</span>
+                    </div>
+                    <div class="transaction-amount positive">
+                        +₱950
+                    </div>
+                </div>
+
+                <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <h3>Fuel Expense</h3>
+                        <p>Shell Station - Cebu City</p>
+                        <span class="transaction-date">Today, 11:45 AM</span>
+                    </div>
+                    <div class="transaction-amount negative">
+                        -₱1,500
+                    </div>
+                </div>
+
+                <div class="transaction-item">
+                    <div class="transaction-icon earnings">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <h3>City Tour</h3>
+                        <p>Cebu City Heritage Tour</p>
+                        <span class="transaction-date">Yesterday, 4:15 PM</span>
+                    </div>
+                    <div class="transaction-amount positive">
+                        +₱2,500
+                    </div>
+                </div>
+
+                <div class="transaction-item">
+                    <div class="transaction-icon withdrawal">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="transaction-info">
+                        <h3>Withdrawal</h3>
+                        <p>To BPI Account ****1234</p>
+                        <span class="transaction-date">Yesterday, 10:00 AM</span>
+                    </div>
+                    <div class="transaction-amount neutral">
+                        -₱5,000
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn-outline btn-lg">Load More Transactions</button>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .earnings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .earnings-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .earnings-overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .overview-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .period-select {
+            padding: 4px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.875rem;
+            background: white;
+        }
+
+        .card-amount {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 16px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-item.positive {
+            color: var(--success-color);
+        }
+
+        .stat-item.negative {
+            color: var(--danger-color);
+        }
+
+        .info-badge {
+            color: var(--text-secondary);
+            cursor: help;
+        }
+
+        .earnings-charts {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .chart-container {
+            height: 300px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 4px;
+        }
+
+        .transactions-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .transactions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .transaction-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--background-light);
+            border-radius: 8px;
+        }
+
+        .transaction-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .transaction-icon.earnings {
+            background: var(--success-color);
+        }
+
+        .transaction-icon.expense {
+            background: var(--danger-color);
+        }
+
+        .transaction-icon.withdrawal {
+            background: var(--primary-color);
+        }
+
+        .transaction-info {
+            flex: 1;
+        }
+
+        .transaction-info h3 {
+            margin: 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .transaction-info p {
+            margin: 0 0 4px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .transaction-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .transaction-amount.positive {
+            color: var(--success-color);
+        }
+
+        .transaction-amount.negative {
+            color: var(--danger-color);
+        }
+
+        .transaction-amount.neutral {
+            color: var(--primary-color);
+        }
+
+        .load-more {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .earnings-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .earnings-charts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .earnings-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .earnings-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .earnings-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .transaction-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .transaction-amount {
+                align-self: flex-end;
+            }
+        }
+    </style>
+
+    <script>
+        // Initialize earnings chart
+        const earningsCtx = document.getElementById('earningsChart').getContext('2d');
+        new Chart(earningsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Daily Earnings',
+                    data: [4500, 3800, 5200, 4900, 6100, 5500, 4800],
+                    borderColor: '#2196F3',
+                    backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '₱' + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Initialize trip types chart
+        const tripTypesCtx = document.getElementById('tripTypesChart').getContext('2d');
+        new Chart(tripTypesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Airport Transfer', 'City Tour', 'Private Charter', 'Others'],
+                datasets: [{
+                    data: [35, 25, 30, 10],
+                    backgroundColor: [
+                        '#2196F3',
+                        '#4CAF50',
+                        '#FFC107',
+                        '#9E9E9E'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Period select functionality
+        document.querySelector('.period-select').addEventListener('change', function() {
+            // Implementation for period change
+        });
+
+        // Chart period buttons
+        document.querySelectorAll('.btn-group .btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.btn-group .btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                // Implementation for period change
+            });
+        });
+
+        // Load more transactions
+        document.querySelector('.load-more button').addEventListener('click', function() {
+            // Implementation for loading more transactions
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,189 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isValidCategory() {
+      let validFields = ['id', 'name', 'description', 'icon', 'image', 'banner', 'parentId', 
+                        'subCategories', 'metadata', 'stats', 'seasonality', 'isActive', 
+                        'order', 'createdAt', 'updatedAt'];
+      return request.resource.data.keys().hasAll(validFields) &&
+             request.resource.data.name.size() > 0 &&
+             request.resource.data.description.size() > 0;
+    }
+    
+    function isValidEmail(email) {
+      return email.matches('^[^@]+@[^@]+\\.[^@]+$');
+    }
+
+    function isValidPhoneNumber(phone) {
+      return phone.matches('^(\\+63|0)[0-9]{10}$');
+    }
+
+    function isValidUserData(data) {
+      let validRoles = ['vendor', 'buyer', 'tourist', 'guide', 'admin'];
+      let requiredFields = ['role', 'email', 'displayName', 'phoneNumber', 'address', 
+                           'barangay', 'idType', 'idNumber', 'profileImage', 'isActive'];
+      
+      return data.keys().hasAll(requiredFields) &&
+             data.role in validRoles &&
+             isValidEmail(data.email) &&
+             isValidPhoneNumber(data.phoneNumber) &&
+             data.displayName.size() > 0 &&
+             data.address.size() > 0;
+    }
+
+    function isValidVendorData(data) {
+      return data.role == 'vendor' &&
+             data.businessInfo != null &&
+             data.businessInfo.type != null &&
+             data.businessInfo.stallNumber != null;
+    }
+
+    function isValidBuyerData(data) {
+      return data.role == 'buyer' &&
+             data.businessInfo != null &&
+             data.businessInfo.purchaseType in ['wholesale', 'retail', 'both'];
+    }
+
+    function isValidTouristData(data) {
+      return data.role == 'tourist' &&
+             data.touristInfo != null &&
+             data.touristInfo.nationality != null &&
+             data.touristInfo.visitPurpose in ['leisure', 'business', 'education', 'other'];
+    }
+
+    function isValidGuideData(data) {
+      return data.role == 'guide' &&
+             data.guideInfo != null &&
+             data.guideInfo.licenseNumber != null &&
+             data.guideInfo.vehicleType in ['motorcycle', 'tricycle', 'boat', 'van'];
+    }
+
+    // Allow read/write access during development
+    match /{document=**} {
+      allow read, write: if true;
+    }
+
+    // Production rules (commented out for now)
+    // match /categories/{categoryId} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null && request.auth.token.admin == true;
+    // }
+    
+    // match /markets/{marketId} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null && request.auth.token.admin == true;
+    // }
+    
+    // match /productTemplates/{templateId} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null && request.auth.token.admin == true;
+    // }
+    
+    // match /tourPackages/{packageId} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null && request.auth.token.admin == true;
+    // }
+    
+    // match /serviceCategories/{categoryId} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null && request.auth.token.admin == true;
+    // }
+    
+    // Test collection for development
+    match /test/{document=**} {
+      allow read, write: if true;
+    }
+    
+    // User profiles
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && 
+                   isOwner(userId) && 
+                   isValidUserData(request.resource.data) &&
+                   (
+                     isValidVendorData(request.resource.data) ||
+                     isValidBuyerData(request.resource.data) ||
+                     isValidTouristData(request.resource.data) ||
+                     isValidGuideData(request.resource.data) ||
+                     request.resource.data.role == 'admin'
+                   );
+      allow update: if (isOwner(userId) || isAdmin()) && 
+                   isValidUserData(request.resource.data);
+      allow delete: if isAdmin();
+    }
+    
+    // Products/Items (for vendors)
+    match /products/{productId} {
+      allow read: if true; // Anyone can view products
+      allow create: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'vendor';
+      allow update, delete: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'vendor' &&
+        resource.data.vendorId == request.auth.uid;
+    }
+    
+    // Orders
+    match /orders/{orderId} {
+      allow read: if request.auth != null && (
+        resource.data.buyerId == request.auth.uid ||
+        resource.data.vendorId == request.auth.uid
+      );
+      allow create: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'buyer' ||
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'tourist');
+      allow update: if request.auth != null && (
+        resource.data.buyerId == request.auth.uid ||
+        resource.data.vendorId == request.auth.uid
+      );
+      allow delete: if false; // Prevent order deletion, use status updates instead
+    }
+    
+    // Reviews and Ratings
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Tour Bookings
+    match /tourBookings/{bookingId} {
+      allow read: if request.auth != null && (
+        resource.data.touristId == request.auth.uid ||
+        resource.data.guideId == request.auth.uid
+      );
+      allow create: if request.auth != null &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'tourist';
+      allow update: if request.auth != null && (
+        resource.data.touristId == request.auth.uid ||
+        resource.data.guideId == request.auth.uid
+      );
+      allow delete: if false; // Use status updates instead of deletion
+    }
+
+    // Categories collection
+    match /categories/{categoryId} {
+      allow read: if true;  // Anyone can read categories
+      allow create, update: if isAdmin() && isValidCategory();
+      allow delete: if isAdmin();
+    }
+  }
+} 

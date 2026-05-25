@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Messages</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="tours.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Tours</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="messages.html" class="nav-item active">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search messages...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">5</span>
+            </div>
+            <span>Maria Santos</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content messages-layout">
+        <div class="messages-sidebar">
+            <div class="messages-header">
+                <h2>Messages</h2>
+                <div class="messages-actions">
+                    <button class="btn btn-icon" title="Mark all as read">
+                        <i class="fas fa-check-double"></i>
+                    </button>
+                    <button class="btn btn-icon" title="Filter messages">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="messages-filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Unread</button>
+                <button class="filter-btn">Bookings</button>
+                <button class="filter-btn">Inquiries</button>
+            </div>
+
+            <div class="conversations-list">
+                <div class="conversation-item active unread">
+                    <img src="../../img/profile-placeholder.jpg" alt="David Lee">
+                    <div class="conversation-content">
+                        <div class="conversation-header">
+                            <h4>David Lee</h4>
+                            <span class="message-time">10:30 AM</span>
+                        </div>
+                        <p class="last-message">Hi Maria, I have a question about the heritage tour...</p>
+                        <span class="message-status">
+                            <i class="fas fa-circle"></i>
+                            Booking Inquiry
+                        </span>
+                    </div>
+                </div>
+
+                <div class="conversation-item">
+                    <img src="../../img/profile-placeholder.jpg" alt="Emma Wilson">
+                    <div class="conversation-content">
+                        <div class="conversation-header">
+                            <h4>Emma Wilson</h4>
+                            <span class="message-time">Yesterday</span>
+                        </div>
+                        <p class="last-message">Thank you for the wonderful tour recommendation!</p>
+                        <span class="message-status">
+                            <i class="fas fa-check-double"></i>
+                            Confirmed Booking
+                        </span>
+                    </div>
+                </div>
+
+                <div class="conversation-item">
+                    <img src="../../img/profile-placeholder.jpg" alt="John Smith">
+                    <div class="conversation-content">
+                        <div class="conversation-header">
+                            <h4>John Smith</h4>
+                            <span class="message-time">2 days ago</span>
+                        </div>
+                        <p class="last-message">Can you accommodate a group of 6 for the food tour?</p>
+                        <span class="message-status">
+                            <i class="fas fa-check-double"></i>
+                            Inquiry
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="messages-main">
+            <div class="chat-header">
+                <div class="chat-user-info">
+                    <img src="../../img/profile-placeholder.jpg" alt="David Lee">
+                    <div>
+                        <h3>David Lee</h3>
+                        <span class="user-status online">Online</span>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn btn-icon" title="View booking">
+                        <i class="fas fa-calendar"></i>
+                    </button>
+                    <button class="btn btn-icon" title="View profile">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="btn btn-icon" title="More options">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <div class="message-date-divider">
+                    <span>Today</span>
+                </div>
+
+                <div class="message received">
+                    <img src="../../img/profile-placeholder.jpg" alt="David Lee">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender">David Lee</span>
+                            <span class="time">10:15 AM</span>
+                        </div>
+                        <p>Hi Maria! I'm interested in your Cebu Heritage Walk tour.</p>
+                    </div>
+                </div>
+
+                <div class="message received">
+                    <img src="../../img/profile-placeholder.jpg" alt="David Lee">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender">David Lee</span>
+                            <span class="time">10:16 AM</span>
+                        </div>
+                        <p>Do you have any availability next weekend? We're a group of 4.</p>
+                    </div>
+                </div>
+
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="time">10:20 AM</span>
+                        </div>
+                        <p>Hello David! Thank you for your interest in the Heritage Walk tour. 😊</p>
+                    </div>
+                </div>
+
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="time">10:21 AM</span>
+                        </div>
+                        <p>Yes, I have slots available next weekend! Would you prefer Saturday or Sunday? The tour starts at 9:00 AM and takes about 4 hours.</p>
+                    </div>
+                </div>
+
+                <div class="message received">
+                    <img src="../../img/profile-placeholder.jpg" alt="David Lee">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender">David Lee</span>
+                            <span class="time">10:30 AM</span>
+                        </div>
+                        <p>Saturday would be perfect! What's included in the tour package?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <div class="input-toolbar">
+                    <button class="btn btn-icon" title="Attach file">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="btn btn-icon" title="Insert emoji">
+                        <i class="fas fa-smile"></i>
+                    </button>
+                    <button class="btn btn-icon" title="Quick responses">
+                        <i class="fas fa-reply"></i>
+                    </button>
+                </div>
+                <div class="input-wrapper">
+                    <textarea placeholder="Type your message..." rows="1"></textarea>
+                    <button class="btn btn-primary send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="messages-details">
+            <div class="details-header">
+                <h3>Booking Details</h3>
+            </div>
+            <div class="booking-preview">
+                <img src="../../img/tour-placeholder.jpg" alt="Cebu Heritage Walk">
+                <h4>Cebu Heritage Walk</h4>
+                <div class="booking-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>Saturday, June 22, 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>9:00 AM - 1:00 PM</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>4 people</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-tag"></i>
+                        <span>₱6,000 total</span>
+                    </div>
+                </div>
+                <div class="booking-actions">
+                    <button class="btn btn-primary btn-block">Confirm Booking</button>
+                    <button class="btn btn-outline btn-block">Suggest Alternative</button>
+                </div>
+            </div>
+
+            <div class="quick-responses">
+                <h4>Quick Responses</h4>
+                <button class="response-btn">
+                    Thank you for your interest! 😊
+                </button>
+                <button class="response-btn">
+                    The tour includes entrance fees and refreshments.
+                </button>
+                <button class="response-btn">
+                    Would you like to proceed with the booking?
+                </button>
+                <button class="response-btn">
+                    Let me check the availability.
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/guides.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize chat features
+            initializeChat();
+
+            // Handle message sending
+            const chatInput = document.querySelector('.chat-input textarea');
+            const sendButton = document.querySelector('.send-btn');
+
+            chatInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+
+            sendButton.addEventListener('click', () => {
+                const message = chatInput.value.trim();
+                if (message) {
+                    sendMessage(message);
+                    chatInput.value = '';
+                    chatInput.style.height = 'auto';
+                }
+            });
+
+            // Handle quick responses
+            const quickResponses = document.querySelectorAll('.response-btn');
+            quickResponses.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    chatInput.value = btn.textContent.trim();
+                    chatInput.focus();
+                });
+            });
+
+            // Handle conversation selection
+            const conversations = document.querySelectorAll('.conversation-item');
+            conversations.forEach(conv => {
+                conv.addEventListener('click', () => {
+                    conversations.forEach(c => c.classList.remove('active'));
+                    conv.classList.remove('unread');
+                    conv.classList.add('active');
+                    loadConversation(conv.querySelector('h4').textContent);
+                });
+            });
+
+            // Handle message filters
+            const filters = document.querySelectorAll('.filter-btn');
+            filters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    filters.forEach(f => f.classList.remove('active'));
+                    filter.classList.add('active');
+                    filterMessages(filter.textContent.toLowerCase());
+                });
+            });
+        });
+
+        function initializeChat() {
+            // Scroll to bottom of chat
+            const chatMessages = document.querySelector('.chat-messages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Initialize emoji picker
+            const emojiButton = document.querySelector('.fa-smile').parentElement;
+            emojiButton.addEventListener('click', () => {
+                // Implementation for emoji picker
+            });
+
+            // Initialize file attachment
+            const attachButton = document.querySelector('.fa-paperclip').parentElement;
+            attachButton.addEventListener('click', () => {
+                // Implementation for file attachment
+            });
+        }
+
+        function sendMessage(message) {
+            const chatMessages = document.querySelector('.chat-messages');
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+
+            const messageHTML = `
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="time">${timeString}</span>
+                        </div>
+                        <p>${message}</p>
+                    </div>
+                </div>
+            `;
+
+            chatMessages.insertAdjacentHTML('beforeend', messageHTML);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function loadConversation(userName) {
+            // Implementation for loading conversation history
+            console.log(`Loading conversation with ${userName}`);
+        }
+
+        function filterMessages(filter) {
+            // Implementation for filtering messages
+            console.log(`Filtering messages by ${filter}`);
+        }
+    </script>
+</body>
+</html> 

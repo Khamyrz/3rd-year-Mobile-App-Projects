@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bantayan Island Pizza Shop Finder</title>
+  <!-- Importing Fira Code from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+      background-color: #ff6b6b; /* Vibrant red background */
+      color: #333;
+      padding-bottom: 60px;
+    }
+
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #a9def9; /* Pastel blue loading screen */
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    /* Navigation Footer */
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+      z-index: 999;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ff7f50; /* Coral pastel hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">Madridejos Poultry Finder</div>
+
+  <!-- Navigation Footer -->
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="map.html">Map</a>
+    <a href="setting.html">Settings</a>
+  </nav>
+
+  <!-- Redirect Script -->
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        // Redirect to home.html after loading
+        window.location.href = 'home.html';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

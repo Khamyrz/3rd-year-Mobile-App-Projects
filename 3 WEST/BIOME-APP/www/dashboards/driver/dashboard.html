@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Driver Dashboard</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/driver.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Schedule</span>
+            </a>
+            <a href="vehicle.html" class="nav-item">
+                <i class="fas fa-car"></i>
+                <span>Vehicle</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search trips, bookings...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span>Juan Driver</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="dashboard-header">
+            <div class="status-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="onlineStatus" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span class="status-text online">Online</span>
+            </div>
+            <div class="quick-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-clock"></i>
+                    Start Break
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-phone"></i>
+                    Support
+                </button>
+            </div>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <i class="fas fa-route"></i>
+                <div class="stat-info">
+                    <h3>Today's Trips</h3>
+                    <p>5</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-info">
+                    <h3>Total Passengers</h3>
+                    <p>12</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <div class="stat-info">
+                    <h3>Rating</h3>
+                    <p>4.8</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-wallet"></i>
+                <div class="stat-info">
+                    <h3>Today's Earnings</h3>
+                    <p>₱2,850</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Current/Next Trip -->
+            <div class="grid-item current-trip">
+                <div class="section-header">
+                    <h3>Current Trip</h3>
+                    <span class="trip-status active">In Progress</span>
+                </div>
+                <div class="trip-details">
+                    <div class="passenger-info">
+                        <img src="../../img/profile-placeholder.jpg" alt="Passenger" class="passenger-photo">
+                        <div class="passenger-details">
+                            <h4>Maria Santos</h4>
+                            <p>Airport Transfer • 3 passengers</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 • 24 trips</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trip-route">
+                        <div class="route-point pickup">
+                            <i class="fas fa-circle"></i>
+                            <div class="point-details">
+                                <p class="point-label">Pickup</p>
+                                <p class="point-address">Mactan-Cebu International Airport, Terminal 2</p>
+                                <p class="point-time">2:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="route-line"></div>
+                        <div class="route-point dropoff">
+                            <i class="fas fa-circle"></i>
+                            <div class="point-details">
+                                <p class="point-label">Drop-off</p>
+                                <p class="point-address">Shangri-La Mactan Resort & Spa</p>
+                                <p class="point-time">3:15 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trip-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-phone"></i>
+                            Contact Passenger
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Navigation
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Trips -->
+            <div class="grid-item upcoming-trips">
+                <div class="section-header">
+                    <h3>Upcoming Trips</h3>
+                    <a href="trips.html" class="view-all">View All</a>
+                </div>
+                <div class="trips-list">
+                    <div class="trip-item">
+                        <div class="trip-time">
+                            <p class="time">4:00 PM</p>
+                            <p class="date">Today</p>
+                        </div>
+                        <div class="trip-info">
+                            <h4>City Tour</h4>
+                            <p>4 passengers • 3 hours</p>
+                            <p class="pickup">From: Radisson Blu Cebu</p>
+                        </div>
+                        <div class="trip-price">
+                            <p class="amount">₱1,200</p>
+                            <button class="btn btn-outline btn-sm">Details</button>
+                        </div>
+                    </div>
+                    <div class="trip-item">
+                        <div class="trip-time">
+                            <p class="time">9:00 AM</p>
+                            <p class="date">Tomorrow</p>
+                        </div>
+                        <div class="trip-info">
+                            <h4>Temple Tour</h4>
+                            <p>2 passengers • 4 hours</p>
+                            <p class="pickup">From: Crown Regency Hotel</p>
+                        </div>
+                        <div class="trip-price">
+                            <p class="amount">₱1,500</p>
+                            <button class="btn btn-outline btn-sm">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle Status -->
+            <div class="grid-item vehicle-status">
+                <div class="section-header">
+                    <h3>Vehicle Status</h3>
+                    <a href="vehicle.html" class="view-all">Details</a>
+                </div>
+                <div class="vehicle-info">
+                    <div class="vehicle-header">
+                        <i class="fas fa-car"></i>
+                        <div class="vehicle-details">
+                            <h4>Toyota Innova 2022</h4>
+                            <p>Plate: ABC 123</p>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <div class="vehicle-stats">
+                        <div class="stat">
+                            <p class="label">Fuel Level</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                            <p class="value">75%</p>
+                        </div>
+                        <div class="stat">
+                            <p class="label">Mileage</p>
+                            <p class="value">45,230 km</p>
+                        </div>
+                        <div class="stat">
+                            <p class="label">Next Maintenance</p>
+                            <p class="value">In 2,500 km</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Reviews -->
+            <div class="grid-item recent-reviews">
+                <div class="section-header">
+                    <h3>Recent Reviews</h3>
+                    <a href="reviews.html" class="view-all">View All</a>
+                </div>
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <img src="../../img/profile-placeholder.jpg" alt="Reviewer">
+                                <div class="reviewer-details">
+                                    <h4>Alex Chen</h4>
+                                    <p>Airport Transfer • Yesterday</p>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">"Very professional and punctual. The car was clean and comfortable. Great service!"</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <img src="../../img/profile-placeholder.jpg" alt="Reviewer">
+                                <div class="reviewer-details">
+                                    <h4>Sarah Kim</h4>
+                                    <p>City Tour • 2 days ago</p>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">"Excellent knowledge of the city and very friendly. Made our tour very enjoyable!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .status-toggle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .status-text {
+            font-weight: 500;
+        }
+
+        .status-text.online {
+            color: #4CAF50;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .grid-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h3 {
+            margin: 0;
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .trip-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .trip-status.active {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .passenger-info {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .passenger-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .passenger-details h4 {
+            margin: 0 0 4px;
+        }
+
+        .passenger-details p {
+            margin: 0 0 8px;
+            color: #666;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 0.875rem;
+        }
+
+        .trip-route {
+            margin-bottom: 24px;
+        }
+
+        .route-point {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .route-line {
+            width: 2px;
+            height: 40px;
+            background: #dee2e6;
+            margin: 8px 0 8px 5px;
+        }
+
+        .point-details {
+            flex: 1;
+        }
+
+        .point-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .point-address {
+            margin: 4px 0;
+            font-weight: 500;
+        }
+
+        .point-time {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .trip-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .trips-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .trip-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .trip-time {
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .trip-time .time {
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .trip-time .date {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 4px 0 0;
+        }
+
+        .trip-info {
+            flex: 1;
+        }
+
+        .trip-info h4 {
+            margin: 0 0 4px;
+        }
+
+        .trip-info p {
+            margin: 0 0 4px;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .trip-price {
+            text-align: right;
+        }
+
+        .trip-price .amount {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin: 0 0 8px;
+        }
+
+        .vehicle-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .vehicle-header i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .vehicle-details {
+            flex: 1;
+        }
+
+        .vehicle-details h4 {
+            margin: 0 0 4px;
+        }
+
+        .vehicle-details p {
+            margin: 0;
+            color: #666;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-badge.active {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .vehicle-stats {
+            display: grid;
+            gap: 16px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat .label {
+            min-width: 120px;
+            margin: 0;
+            color: #666;
+        }
+
+        .stat .value {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #dee2e6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .review-item {
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            gap: 12px;
+        }
+
+        .reviewer-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .reviewer-details h4 {
+            margin: 0 0 4px;
+        }
+
+        .reviewer-details p {
+            margin: 0;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .review-rating {
+            color: #ffc107;
+        }
+
+        .review-text {
+            margin: 0;
+            color: #666;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 992px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-actions {
+                flex-direction: column;
+            }
+
+            .trip-actions .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .quick-actions {
+                width: 100%;
+            }
+
+            .quick-actions .btn {
+                flex: 1;
+            }
+
+            .trip-item {
+                flex-direction: column;
+            }
+
+            .trip-time {
+                text-align: left;
+            }
+
+            .trip-price {
+                text-align: left;
+            }
+
+            .vehicle-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .vehicle-details {
+                text-align: center;
+            }
+
+            .stat {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .stat .label {
+                min-width: auto;
+            }
+        }
+    </style>
+
+    <script>
+        // Online status toggle
+        document.getElementById('onlineStatus').addEventListener('change', function() {
+            const statusText = document.querySelector('.status-text');
+            if (this.checked) {
+                statusText.textContent = 'Online';
+                statusText.classList.add('online');
+            } else {
+                statusText.textContent = 'Offline';
+                statusText.classList.remove('online');
+            }
+        });
+
+        // Break button toggle
+        const breakBtn = document.querySelector('.quick-actions .btn-outline');
+        breakBtn.addEventListener('click', function() {
+            const isOnBreak = this.classList.contains('active');
+            if (isOnBreak) {
+                this.innerHTML = '<i class="fas fa-clock"></i> Start Break';
+                this.classList.remove('active');
+            } else {
+                this.innerHTML = '<i class="fas fa-clock"></i> End Break';
+                this.classList.add('active');
+            }
+        });
+
+        // Trip details buttons
+        document.querySelectorAll('.btn-sm').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Implementation for viewing trip details
+            });
+        });
+
+        // Authentication check
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                // If not authenticated, redirect to login
+                window.location.href = '../../login.html';
+                return;
+            }
+
+            // Check if user has the correct role
+            db.collection('users').doc(user.uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        const role = doc.data().role;
+                        if (role.toLowerCase() !== 'driver') {
+                            // If wrong role, redirect to appropriate dashboard
+                            redirectBasedOnRole(role);
+                        }
+                    } else {
+                        // If no user document, redirect to registration
+                        window.location.href = '../../register.html';
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error checking user role:', error);
+                });
+        });
+    </script>
+</body>
+</html> 

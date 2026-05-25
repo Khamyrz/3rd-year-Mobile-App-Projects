@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Learning Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: #0088cc;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .search-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-bar i {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-list {
+            list-style: none;
+        }
+
+        .content-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .content-item:hover {
+            transform: translateX(5px);
+        }
+
+        .content-item i {
+            color: #0088cc;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .content-details {
+            flex: 1;
+        }
+
+        .content-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .content-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="back-button" onclick="window.location.href='main.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="page-title">LEARNING CENTER</div>
+            <button class="menu-button">
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search places, activities, products..." id="searchInput">
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-map-marker-alt"></i>
+                Places to Visit
+            </h2>
+            <div class="content-list">
+                <div class="content-item">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <div class="content-details">
+                        <div class="content-title">Bantayan Island</div>
+                        <div class="content-description">A pristine island known for its white sand beaches and crystal clear waters. Perfect for swimming and snorkeling.</div>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <i class="fas fa-mountain"></i>
+                    <div class="content-details">
+                        <div class="content-title">Osmena Peak</div>
+                        <div class="content-description">The highest point in Cebu offering breathtaking views of the surrounding islands and jagged cliffs.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-fish"></i>
+                Marine Life
+            </h2>
+            <div class="content-list">
+                <div class="content-item">
+                    <i class="fas fa-water"></i>
+                    <div class="content-details">
+                        <div class="content-title">Sardine Run</div>
+                        <div class="content-description">Experience the amazing sardine run in Moalboal where millions of sardines create a natural spectacle.</div>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <i class="fas fa-water"></i>
+                    <div class="content-details">
+                        <div class="content-title">Whale Shark Watching</div>
+                        <div class="content-description">Swim with the gentle giants of the sea in Oslob, a unique experience you won't forget.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Menu</h2>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="profile-section">
+            <img src="img/default-avatar.png" alt="Profile" class="profile-image">
+            <div class="profile-name">Guest</div>
+            <div class="profile-role">Visitor</div>
+            <a href="login.html" class="login-link">No Account? Login here</a>
+        </div>
+        <div class="menu-items">
+            <a href="marketplace.html" class="menu-item">
+                <i class="fas fa-store"></i>
+                Marketplace
+            </a>
+            <a href="tourism.html" class="menu-item">
+                <i class="fas fa-umbrella-beach"></i>
+                Tourism
+            </a>
+            <a href="learning.html" class="menu-item">
+                <i class="fas fa-book-reader"></i>
+                Learning Center
+            </a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <script src="js/sidebar.js"></script>
+    <script>
+        // Initialize search functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const contentItems = document.querySelectorAll('.content-item');
+
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                contentItems.forEach(item => {
+                    const title = item.querySelector('.content-title').textContent.toLowerCase();
+                    const description = item.querySelector('.content-description').textContent.toLowerCase();
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

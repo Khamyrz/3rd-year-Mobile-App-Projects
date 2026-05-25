@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Buyer Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.html">
+                                <i class="fas fa-home"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.html">
+                                <i class="fas fa-shopping-bag"></i> My Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wishlist.html">
+                                <i class="fas fa-heart"></i> Wishlist
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reviews.html">
+                                <i class="fas fa-star"></i> My Reviews
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">My Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <button type="button" class="btn btn-sm btn-outline-primary me-2" id="notificationBtn">
+                            <i class="fas fa-bell"></i> Notifications
+                            <span class="badge bg-danger">3</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="helpBtn">
+                            <i class="fas fa-question-circle"></i> Help
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Overview Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Orders</h5>
+                                <h2 class="card-text" id="totalOrders">0</h2>
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Wishlist Items</h5>
+                                <h2 class="card-text" id="wishlistCount">0</h2>
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Reviews Given</h5>
+                                <h2 class="card-text" id="reviewsCount">0</h2>
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Points Earned</h5>
+                                <h2 class="card-text" id="pointsEarned">0</h2>
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Recent Orders</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="recentOrdersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Tour</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Orders will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Tours -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Upcoming Tours</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="upcomingToursContainer">
+                            <!-- Tours will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notification Modal -->
+    <div class="modal fade" id="notificationModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group" id="notificationList">
+                        <!-- Notifications will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize dashboard data
+            initializeDashboard();
+
+            // Event listeners
+            document.getElementById('notificationBtn').addEventListener('click', showNotifications);
+            document.getElementById('helpBtn').addEventListener('click', showHelp);
+        });
+
+        function initializeDashboard() {
+            // Fetch and update statistics
+            fetchStatistics();
+            
+            // Fetch and display recent orders
+            fetchRecentOrders();
+            
+            // Fetch and display upcoming tours
+            fetchUpcomingTours();
+            
+            // Fetch and update notifications
+            fetchNotifications();
+        }
+
+        function fetchStatistics() {
+            // Initialize with zero values
+            const stats = {
+                totalOrders: 0,
+                wishlistCount: 0,
+                reviewsCount: 0,
+                pointsEarned: 0
+            };
+
+            // Update statistics in the UI
+            document.getElementById('totalOrders').textContent = stats.totalOrders;
+            document.getElementById('wishlistCount').textContent = stats.wishlistCount;
+            document.getElementById('reviewsCount').textContent = stats.reviewsCount;
+            document.getElementById('pointsEarned').textContent = stats.pointsEarned;
+        }
+
+        function fetchRecentOrders() {
+            // Initialize with empty orders array
+            const orders = [];
+            const tbody = document.querySelector('#recentOrdersTable tbody');
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center">No orders yet</td></tr>';
+        }
+
+        function fetchUpcomingTours() {
+            // Initialize with empty tours array
+            const tours = [];
+            const container = document.getElementById('upcomingToursContainer');
+            container.innerHTML = '<div class="col-12 text-center">No upcoming tours</div>';
+        }
+
+        function fetchNotifications() {
+            // Initialize with empty notifications array
+            const notifications = [];
+            const list = document.getElementById('notificationList');
+            list.innerHTML = '<div class="text-center p-3">No notifications</div>';
+        }
+
+        function showNotifications() {
+            const modal = new bootstrap.Modal(document.getElementById('notificationModal'));
+            modal.show();
+        }
+
+        function showHelp() {
+            // Implement help functionality
+            alert('Help section coming soon!');
+        }
+
+        function viewOrder(orderId) {
+            // Implement order view functionality
+            window.location.href = `orders.html?id=${orderId}`;
+        }
+
+        function viewTour(tourId) {
+            // Implement tour view functionality
+            window.location.href = `../tours/details.html?id=${tourId}`;
+        }
+
+        // Authentication check
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                // If not authenticated, redirect to login
+                window.location.href = '../../login.html';
+                return;
+            }
+
+            // Check if user has the correct role
+            db.collection('users').doc(user.uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        const role = doc.data().role;
+                        if (role.toLowerCase() !== 'tourist') {
+                            // If wrong role, redirect to appropriate dashboard
+                            redirectBasedOnRole(role);
+                        }
+                    } else {
+                        // If no user document, redirect to registration
+                        window.location.href = '../../register.html';
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error checking user role:', error);
+                });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.snakeadventure.game" 
+        version="1.0.0" 
+        xmlns="http://www.w3.org/ns/widgets" 
+        xmlns:gap="http://phonegap.com/ns/1.0">
+    
+    <name>Snake Adventure</name>
+    <description>
+        A modern mobile snake game with progressive levels and exciting challenges
+    </description>
+    <author email="developer@snakeadventure.com" href="http://snakeadventure.com">
+        Snake Adventure Development Team
+    </author>
+    
+    <preference name="permissions" value="android.permission.INTERNET" />
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+    
+    <platform name="android">
+        <icon src="icon/android/icon-36-ldpi.png" density="ldpi" />
+        <icon src="icon/android/icon-48-mdpi.png" density="mdpi" />
+        <icon src="icon/android/icon-72-hdpi.png" density="hdpi" />
+        <icon src="icon/android/icon-96-xhdpi.png" density="xhdpi" />
+    </platform>
+    
+    <platform name="ios">
+        <icon src="icon/ios/icon-60@3x.png" width="180" height="180" />
+        <icon src="icon/ios/icon-60@2x.png" width="120" height="120" />
+    </platform>
+    
+    <plugin name="cordova-plugin-device" spec="^2.0.3" />
+    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.2" />
+</widget>

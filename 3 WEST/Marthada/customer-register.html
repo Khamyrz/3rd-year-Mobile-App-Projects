@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration - Marthada</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+            <h1>Customer Registration</h1>
+        </header>
+
+        <div class="content-area">
+            <form id="customerRegistrationForm" class="registration-form">
+                <div class="profile-upload">
+                    <div class="profile-image">
+                        <img id="profilePreview" src="img/default-profile.png" alt="Profile Preview">
+                    </div>
+                    <label for="profilePhoto" class="upload-btn">
+                        <i class="fas fa-camera"></i> Upload Photo
+                        <input type="file" id="profilePhoto" accept="image/*" required>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="middleName">Middle Name</label>
+                    <input type="text" id="middleName" name="middleName">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="18" required>
+                    <small>You must be at least 18 years old to register.</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+                <div class="form-footer">
+                    <p>Already have an account? <a href="customer-login.html">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

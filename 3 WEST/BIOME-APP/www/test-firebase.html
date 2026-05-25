@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Connection Test</title>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    <!-- Your Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .file-input-container {
+            margin: 20px 0;
+        }
+        
+        .custom-file-input {
+            display: none;
+        }
+        
+        .custom-file-label {
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .custom-file-label:hover {
+            background: #e0e0e0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        
+        .info {
+            background-color: #e3f2fd;
+            border: 1px solid #2196F3;
+            color: #0d47a1;
+        }
+        
+        .success {
+            background-color: #e8f5e9;
+            border: 1px solid #4CAF50;
+            color: #1b5e20;
+        }
+        
+        .error {
+            background-color: #ffebee;
+            border: 1px solid #f44336;
+            color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Firebase Connection Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Firebase Initialization</h2>
+        <button onclick="testFirebaseInit()">Test Firebase Init</button>
+        <div id="initResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Authentication Test</h2>
+        <button onclick="testAuth()">Test Authentication</button>
+        <div id="authResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Firestore Test</h2>
+        <button onclick="testFirestore()">Test Firestore</button>
+        <div id="firestoreResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Storage Test</h2>
+        <div class="file-input-container">
+            <input type="file" id="fileInput" class="custom-file-input" accept="image/*">
+            <label for="fileInput" id="fileLabel" class="custom-file-label">Choose file...</label>
+        </div>
+        <button id="testStorageBtn" disabled>Test Storage</button>
+        <div class="progress-bar" id="uploadProgress">
+            <div class="progress-bar-fill" id="uploadProgressFill"></div>
+        </div>
+        <div id="storage-status" class="status"></div>
+    </div>
+
+    <script>
+        // Test Firebase Initialization
+        function testFirebaseInit() {
+            const resultDiv = document.getElementById('initResult');
+            try {
+                if (firebase.app()) {
+                    resultDiv.innerHTML = '<p class="success">✅ Firebase initialized successfully!</p>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Firebase initialization failed: ${error.message}</p>`;
+            }
+        }
+
+        // Test Authentication
+        async function testAuth() {
+            const resultDiv = document.getElementById('authResult');
+            try {
+                // Try to sign in anonymously
+                const result = await firebase.auth().signInAnonymously();
+                resultDiv.innerHTML = '<p class="success">✅ Authentication working! Anonymous sign-in successful.</p>';
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Authentication test failed: ${error.message}</p>`;
+            }
+        }
+
+        // Test Firestore
+        async function testFirestore() {
+            const resultDiv = document.getElementById('firestoreResult');
+            try {
+                // Try to write and read a test document
+                const testDoc = await firebase.firestore()
+                    .collection('test')
+                    .add({
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        test: true
+                    });
+                
+                // Read it back
+                const doc = await testDoc.get();
+                if (doc.exists) {
+                    resultDiv.innerHTML = '<p class="success">✅ Firestore working! Test document created and read successfully.</p>';
+                    // Clean up
+                    await testDoc.delete();
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Firestore test failed: ${error.message}</p>`;
+            }
+        }
+
+        // File input validation and UI update
+        document.getElementById('fileInput').onchange = (event) => {
+            const file = event.target.files[0];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            const statusElement = document.getElementById('storage-status');
+            const testButton = document.getElementById('testStorageBtn');
+            const fileLabel = document.getElementById('fileLabel');
+
+            if (file) {
+                fileLabel.textContent = file.name;
+                
+                if (file.size > maxSize) {
+                    statusElement.className = 'error';
+                    statusElement.textContent = 'File size exceeds 5MB limit';
+                    testButton.disabled = true;
+                } else if (!file.type.startsWith('image/')) {
+                    statusElement.className = 'error';
+                    statusElement.textContent = 'Please select an image file';
+                    testButton.disabled = true;
+                } else {
+                    statusElement.className = 'info';
+                    statusElement.textContent = 'File selected and ready for upload';
+                    testButton.disabled = false;
+                }
+            } else {
+                fileLabel.textContent = 'Choose file...';
+                testButton.disabled = true;
+                statusElement.textContent = '';
+            }
+        };
+
+        // Storage Test Function
+        async function testStorage() {
+            const storageRef = firebase.storage().ref();
+            const statusElement = document.getElementById('storage-status');
+            const progressBar = document.getElementById('uploadProgress');
+            const progressBarFill = document.getElementById('uploadProgressFill');
+            const fileInput = document.getElementById('fileInput');
+            const testButton = document.getElementById('testStorageBtn');
+            
+            try {
+                const file = fileInput.files[0];
+                if (!file) {
+                    throw new Error('Please select a file first');
+                }
+
+                // Disable button and show progress bar
+                testButton.disabled = true;
+                progressBar.style.display = 'block';
+                progressBarFill.style.width = '0%';
+                
+                // Update status
+                statusElement.className = 'info';
+                statusElement.textContent = 'Starting file upload...';
+
+                // Create file reference with timestamp to avoid conflicts
+                const timestamp = Date.now();
+                const fileRef = storageRef.child(`test-uploads/${timestamp}_${file.name}`);
+
+                // Upload with retry logic
+                const maxRetries = 3;
+                let currentTry = 0;
+
+                while (currentTry < maxRetries) {
+                    try {
+                        // Create upload task
+                        const uploadTask = fileRef.put(file);
+
+                        // Monitor upload progress
+                        uploadTask.on('state_changed',
+                            (snapshot) => {
+                                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                                progressBarFill.style.width = `${progress}%`;
+                                statusElement.className = 'info';
+                                statusElement.textContent = `Upload progress: ${Math.round(progress)}%`;
+                            },
+                            (error) => {
+                                throw error;
+                            }
+                        );
+
+                        // Wait for upload to complete
+                        await uploadTask;
+                        
+                        // Get download URL
+                        const downloadURL = await fileRef.getDownloadURL();
+                        
+                        // Update UI for success
+                        statusElement.className = 'success';
+                        statusElement.textContent = 'Storage test successful! File uploaded.';
+                        
+                        // Clean up the test file after 5 minutes
+                        setTimeout(() => {
+                            fileRef.delete().catch(console.error);
+                        }, 5 * 60 * 1000);
+
+                        return true;
+
+                    } catch (error) {
+                        currentTry++;
+                        console.warn(`Upload attempt ${currentTry} failed:`, error);
+
+                        if (currentTry === maxRetries) {
+                            throw new Error(`Upload failed after ${maxRetries} attempts: ${error.message}`);
+                        }
+
+                        // Wait before retrying (exponential backoff)
+                        statusElement.textContent = `Retry attempt ${currentTry} of ${maxRetries}...`;
+                        await new Promise(resolve => setTimeout(resolve, Math.pow(2, currentTry) * 1000));
+                    }
+                }
+
+            } catch (error) {
+                statusElement.className = 'error';
+                statusElement.textContent = `Storage test failed: ${error.message}`;
+                console.error('Storage test error:', error);
+                return false;
+            } finally {
+                // Re-enable button and hide progress bar
+                testButton.disabled = false;
+                progressBar.style.display = 'none';
+            }
+        }
+
+        // Attach event handler
+        document.getElementById('testStorageBtn').onclick = testStorage;
+    </script>
+</body>
+</html> 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="cordova.js"></script>
+    <script defer src="game.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui">
+            <div class="ui-stats">
+                <p id="score">Score: 0</p>
+                <p id="level">Level: 1</p>
+                <p id="lives">Lives: 3</p>
+            </div>
+            <div class="ui-controls">
+                <button id="restart">Restart</button>
+                <button id="continue">Continue</button>
+                <button id="pause">Pause</button>
+            </div>
+            <div class="controller">
+                <div class="d-pad">
+                    <button id="up" class="dpad-btn up">↑</button>
+                    <div class="middle-row">
+                        <button id="left" class="dpad-btn left">←</button>
+                        <div class="center"></div>
+                        <button id="right" class="dpad-btn right">→</button>
+                    </div>
+                    <button id="down" class="dpad-btn down">↓</button>
+                </div>
+                <div id="game-over">GAME OVER</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

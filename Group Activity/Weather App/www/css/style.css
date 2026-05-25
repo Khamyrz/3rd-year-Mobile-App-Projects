@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.app-container {
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #72b1d8, #5a82db);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #fff;
+    font-size: 24px;
+    padding: 10px 0;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 25px 0 0 25px;
+    font-size: 16px;
+    outline: none;
+}
+
+#search-button {
+    background-color: #fff;
+    color: #5a82db;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.weather-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.location-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.location-info h2 {
+    font-size: 22px;
+    color: #333;
+}
+
+.location-info p {
+    color: #666;
+    font-size: 14px;
+}
+
+.weather-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.temp-container {
+    text-align: center;
+}
+
+#temperature {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+#feels-like {
+    font-size: 14px;
+    color: #666;
+}
+
+.weather-icon {
+    text-align: center;
+}
+
+.weather-icon img {
+    width: 80px;
+    height: 80px;
+}
+
+#weather-description {
+    text-transform: capitalize;
+    margin-top: 5px;
+    color: #333;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.detail {
+    text-align: center;
+    flex: 1;
+}
+
+.detail-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+#humidity, #wind, #pressure {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+#error-message {
+    color: #e74c3c;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Animation for loading */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.loading {
+    animation: pulse 1.5s infinite ease-in-out;
+}

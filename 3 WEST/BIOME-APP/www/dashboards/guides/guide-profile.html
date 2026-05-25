@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Guide Profile</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="guides.html" class="nav-item active">
+                <i class="fas fa-user-tie"></i>
+                <span>Local Guides</span>
+            </a>
+            <a href="bookings.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Bookings</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search guides by name, expertise, or location...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span>Tourist Name</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="profile-header">
+            <a href="guides.html" class="btn btn-outline btn-sm back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Guides
+            </a>
+            <div class="profile-actions">
+                <button class="btn btn-outline">
+                    <i class="far fa-heart"></i>
+                    Save
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-share"></i>
+                    Share
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-grid">
+            <div class="profile-main">
+                <div class="profile-card">
+                    <div class="profile-cover">
+                        <img src="../../img/profile-cover.jpg" alt="Cover Photo" class="cover-photo">
+                        <img src="../../img/profile-placeholder.jpg" alt="Guide" class="profile-photo">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-badges">
+                            <span class="badge featured">Featured</span>
+                            <span class="badge verified">Verified</span>
+                            <span class="badge top-rated">Top Rated</span>
+                        </div>
+                        <h1>Maria Santos</h1>
+                        <p class="profile-title">Cultural & Heritage Expert</p>
+                        <div class="profile-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-score">4.9</span>
+                            <span class="rating-count">(156 reviews)</span>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-route"></i>
+                                <div class="stat-info">
+                                    <span class="stat-value">250+</span>
+                                    <span class="stat-label">Tours Completed</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <div class="stat-info">
+                                    <span class="stat-value">1,200+</span>
+                                    <span class="stat-label">Tourists Guided</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <div class="stat-info">
+                                    <span class="stat-value">5 Years</span>
+                                    <span class="stat-label">Experience</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>About Me</h2>
+                    <p>Passionate about sharing Cebu's rich cultural heritage with visitors from around the world. With over 5 years of experience as a licensed tour guide, I specialize in historical tours, cultural immersion, and local food experiences.</p>
+                    <p>I'm fluent in English, Filipino, and Cebuano, and I love creating personalized experiences that help tourists truly understand and appreciate our local culture and traditions.</p>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Expertise</h2>
+                    <div class="expertise-grid">
+                        <div class="expertise-card">
+                            <i class="fas fa-landmark"></i>
+                            <h3>Heritage Sites</h3>
+                            <p>Expert knowledge of Cebu's historical landmarks and their significance</p>
+                        </div>
+                        <div class="expertise-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Food Tours</h3>
+                            <p>Curated food experiences featuring local delicacies and hidden gems</p>
+                        </div>
+                        <div class="expertise-card">
+                            <i class="fas fa-theater-masks"></i>
+                            <h3>Cultural Shows</h3>
+                            <p>Access to authentic cultural performances and traditional events</p>
+                        </div>
+                        <div class="expertise-card">
+                            <i class="fas fa-camera"></i>
+                            <h3>Photography</h3>
+                            <p>Knowledge of the best photo spots and lighting conditions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Tour Packages</h2>
+                    <div class="packages-grid">
+                        <div class="package-card">
+                            <img src="../../img/tour-placeholder.jpg" alt="Heritage Tour">
+                            <div class="package-content">
+                                <h3>Cebu Heritage Walk</h3>
+                                <p class="package-description">Explore the historic heart of Cebu City, visiting key landmarks and learning about their stories.</p>
+                                <div class="package-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>4 hours</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Max 10 people</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-tag"></i>
+                                        <span>From ₱1,500/person</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block">Book This Tour</button>
+                            </div>
+                        </div>
+
+                        <div class="package-card">
+                            <img src="../../img/tour-placeholder.jpg" alt="Food Tour">
+                            <div class="package-content">
+                                <h3>Cebu Food Trail</h3>
+                                <p class="package-description">Sample the best of Cebuano cuisine, from street food to local delicacies.</p>
+                                <div class="package-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>3 hours</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Max 8 people</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-tag"></i>
+                                        <span>From ₱1,200/person</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block">Book This Tour</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h2>Reviews</h2>
+                        <select class="filter-select">
+                            <option value="recent">Most Recent</option>
+                            <option value="positive">Highest Rated</option>
+                            <option value="critical">Critical Reviews</option>
+                        </select>
+                    </div>
+                    <div class="reviews-list">
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="../../img/profile-placeholder.jpg" alt="Reviewer" class="reviewer-photo">
+                                <div class="reviewer-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <div class="review-meta">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="review-date">June 15, 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">Maria was an excellent guide! Her knowledge of Cebu's history and culture is impressive, and she made our tour both educational and entertaining. The food tour was a highlight of our trip.</p>
+                            <div class="review-photos">
+                                <img src="../../img/review-photo.jpg" alt="Review Photo">
+                                <img src="../../img/review-photo.jpg" alt="Review Photo">
+                            </div>
+                        </div>
+
+                        <!-- More review cards... -->
+                    </div>
+                    <button class="btn btn-outline btn-block">Load More Reviews</button>
+                </div>
+            </div>
+
+            <div class="profile-sidebar">
+                <div class="booking-card">
+                    <h3>Book a Tour</h3>
+                    <form class="booking-form">
+                        <div class="form-group">
+                            <label>Select Tour</label>
+                            <select class="form-control">
+                                <option value="">Choose a tour package</option>
+                                <option value="heritage">Cebu Heritage Walk (₱1,500)</option>
+                                <option value="food">Cebu Food Trail (₱1,200)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Number of People</label>
+                            <input type="number" class="form-control" min="1" max="10" value="2">
+                        </div>
+                        <div class="form-group">
+                            <label>Special Requests</label>
+                            <textarea class="form-control" rows="3" placeholder="Any dietary restrictions or preferences?"></textarea>
+                        </div>
+                        <div class="price-summary">
+                            <div class="price-row">
+                                <span>Tour Price</span>
+                                <span>₱1,500 × 2</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Service Fee</span>
+                                <span>₱300</span>
+                            </div>
+                            <div class="price-total">
+                                <span>Total</span>
+                                <span>₱3,300</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+                    </form>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Contact Guide</h3>
+                    <p>Have questions? Send a message to Maria</p>
+                    <button class="btn btn-outline btn-block">
+                        <i class="fas fa-comment"></i>
+                        Send Message
+                    </button>
+                </div>
+
+                <div class="availability-card">
+                    <h3>Availability</h3>
+                    <div class="calendar-preview">
+                        <!-- Calendar widget will be implemented here -->
+                    </div>
+                    <div class="available-times">
+                        <h4>Available Times</h4>
+                        <div class="time-slots">
+                            <button class="time-slot">9:00 AM</button>
+                            <button class="time-slot">1:00 PM</button>
+                            <button class="time-slot">3:00 PM</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Booking form calculations
+        document.querySelector('select.form-control').addEventListener('change', function() {
+            // Implementation for updating price calculations
+        });
+
+        document.querySelector('input[type="number"]').addEventListener('change', function() {
+            // Implementation for updating number of people
+        });
+
+        // Review filter functionality
+        document.querySelector('.filter-select').addEventListener('change', function() {
+            // Implementation for filtering reviews
+        });
+
+        // Load more reviews
+        document.querySelector('.btn-block').addEventListener('click', function() {
+            // Implementation for loading more reviews
+        });
+    </script>
+</body>
+</html> 

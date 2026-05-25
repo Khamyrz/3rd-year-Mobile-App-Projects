@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to BIOME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0088cc, #005580);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/wave-pattern.png') repeat;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .skip-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            z-index: 100;
+            letter-spacing: 1px;
+        }
+
+        .skip-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .skip-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .skip-button:hover i {
+            transform: translateX(5px);
+        }
+
+        .slides-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(0);
+        }
+
+        .slide-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 30px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .slide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .action-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .action-button i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .action-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .action-button:hover i {
+            transform: translateX(5px);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-dot:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-dot.active {
+            background: white;
+            transform: scale(1.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .slide-card {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .slide-image {
+                height: 250px;
+            }
+
+            .slide-title {
+                font-size: 1.75rem;
+            }
+
+            .slide-description {
+                font-size: 1rem;
+            }
+
+            .action-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .skip-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .back-button {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+
+        /* Add animation keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Apply animations */
+        .slide-card {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .skip-button, .back-button {
+            animation: slideIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    
+    <a href="main.html" class="skip-button" id="skipButton">
+        <span>Skip</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+    
+    <div class="slides-container" id="slidesContainer">
+        <div class="slide" id="slide1">
+            <div class="slide-card">
+                <img src="img/guides.jpg" alt="Local Guides" class="slide-image">
+                <h2 class="slide-title">Discover Bantayan with Guides</h2>
+                <p class="slide-description">Book local drivers and guides for a personalized experience. Get authentic insights and navigate the island like a local.</p>
+                <button class="action-button">
+                    <span>Find Guides</span>
+                    <i class="fas fa-compass"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide2">
+            <div class="slide-card">
+                <img src="img/marine.jpg" alt="Marine Ecosystem" class="slide-image">
+                <h2 class="slide-title">Learn About Bantayan</h2>
+                <p class="slide-description">Discover marine ecosystems, local culture, and conservation efforts. Experience the rich biodiversity of our waters.</p>
+                <button class="action-button">
+                    <span>Explore Now</span>
+                    <i class="fas fa-fish"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3">
+            <div class="slide-card">
+                <img src="img/vendors.jpg" alt="Local Vendors" class="slide-image">
+                <h2 class="slide-title">Support Local Vendors</h2>
+                <p class="slide-description">Buy fresh seafood, crafts, and sustainable products directly from fisherfolk and farmers. Support the local economy.</p>
+                <button class="action-button">
+                    <span>Visit Market</span>
+                    <i class="fas fa-store"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <div class="nav-dot active" onclick="showSlide(0)"></div>
+        <div class="nav-dot" onclick="showSlide(1)"></div>
+        <div class="nav-dot" onclick="showSlide(2)"></div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const slidesContainer = document.getElementById('slidesContainer');
+
+        function showSlide(index) {
+            currentSlide = index;
+            slides.forEach(slide => {
+                slide.style.transform = `translateX(-${currentSlide * 100}%)`;
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        // Touch and swipe handling
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slidesContainer.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        slidesContainer.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0 && currentSlide < slides.length - 1) {
+                    showSlide(currentSlide + 1);
+                } else if (diff < 0 && currentSlide > 0) {
+                    showSlide(currentSlide - 1);
+                }
+            }
+        }
+
+        // Auto-advance slides with smoother transition
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 5000);
+
+        // Enhanced button functionality
+        document.querySelector('.back-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 100);
+        });
+
+        document.querySelector('.skip-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                window.location.href = 'main.html';
+            }, 100);
+        });
+    </script>
+</body>
+</html> 

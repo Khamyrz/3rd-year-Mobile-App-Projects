@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Driver Schedule</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/driver.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+            </a>
+            <a href="schedule.html" class="nav-item active">
+                <i class="fas fa-calendar"></i>
+                <span>Schedule</span>
+            </a>
+            <a href="vehicle.html" class="nav-item">
+                <i class="fas fa-car"></i>
+                <span>Vehicle</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search schedules...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span>Juan Driver</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="schedule-header">
+            <h1>My Schedule</h1>
+            <div class="schedule-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Set Availability
+                </button>
+            </div>
+        </div>
+
+        <div class="schedule-overview">
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="overview-info">
+                    <h3>Today's Hours</h3>
+                    <p>8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="overview-info">
+                    <h3>Scheduled Trips</h3>
+                    <p>3 trips today</p>
+                </div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <div class="overview-info">
+                    <h3>Break Time</h3>
+                    <p>2 hours remaining</p>
+                </div>
+            </div>
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div class="overview-info">
+                    <h3>Service Area</h3>
+                    <p>Cebu City & Mactan</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="schedule-calendar">
+            <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h2>June 2024</h2>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="calendar-view-options">
+                    <button class="btn btn-outline btn-sm active">Month</button>
+                    <button class="btn btn-outline btn-sm">Week</button>
+                    <button class="btn btn-outline btn-sm">Day</button>
+                </div>
+            </div>
+
+            <div class="calendar-grid">
+                <!-- Calendar days will be dynamically generated -->
+            </div>
+        </div>
+
+        <div class="schedule-details">
+            <div class="details-header">
+                <h2>Today's Schedule</h2>
+                <button class="btn btn-outline btn-sm">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+
+            <div class="schedule-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 AM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <div class="card-header">
+                                <span class="card-tag">Start Shift</span>
+                                <span class="card-time">8:00 AM - 10:30 AM</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Available for trips in Cebu City area</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">10:30 AM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-card active">
+                            <div class="card-header">
+                                <span class="card-tag">Airport Transfer</span>
+                                <span class="card-time">10:30 AM - 11:30 AM</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="passenger-info">
+                                    <img src="../../img/profile-placeholder.jpg" alt="Passenger" class="passenger-photo">
+                                    <div>
+                                        <h4>Sarah Johnson</h4>
+                                        <p>Mactan Airport → Shangri-La Mactan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">12:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-card break">
+                            <div class="card-header">
+                                <span class="card-tag">Break</span>
+                                <span class="card-time">12:00 PM - 1:00 PM</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Lunch Break</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">2:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <div class="card-header">
+                                <span class="card-tag">City Tour</span>
+                                <span class="card-time">2:00 PM - 5:00 PM</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="passenger-info">
+                                    <img src="../../img/profile-placeholder.jpg" alt="Passenger" class="passenger-photo">
+                                    <div>
+                                        <h4>Michael Chen</h4>
+                                        <p>Cebu City Heritage Tour</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">6:00 PM</div>
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <div class="card-header">
+                                <span class="card-tag">End Shift</span>
+                                <span class="card-time">6:00 PM</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Shift completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="availability-section">
+            <div class="section-header">
+                <h2>Weekly Availability</h2>
+                <button class="btn btn-outline">
+                    <i class="fas fa-edit"></i>
+                    Edit
+                </button>
+            </div>
+
+            <div class="availability-grid">
+                <div class="day-column">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot available">8:00 AM - 12:00 PM</div>
+                    <div class="time-slot break">12:00 PM - 1:00 PM</div>
+                    <div class="time-slot available">1:00 PM - 6:00 PM</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot available">8:00 AM - 12:00 PM</div>
+                    <div class="time-slot break">12:00 PM - 1:00 PM</div>
+                    <div class="time-slot available">1:00 PM - 6:00 PM</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot available">8:00 AM - 12:00 PM</div>
+                    <div class="time-slot break">12:00 PM - 1:00 PM</div>
+                    <div class="time-slot available">1:00 PM - 6:00 PM</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot available">8:00 AM - 12:00 PM</div>
+                    <div class="time-slot break">12:00 PM - 1:00 PM</div>
+                    <div class="time-slot available">1:00 PM - 6:00 PM</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot available">8:00 AM - 12:00 PM</div>
+                    <div class="time-slot break">12:00 PM - 1:00 PM</div>
+                    <div class="time-slot available">1:00 PM - 6:00 PM</div>
+                </div>
+                <div class="day-column weekend">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot available">9:00 AM - 1:00 PM</div>
+                    <div class="time-slot break">1:00 PM - 2:00 PM</div>
+                    <div class="time-slot available">2:00 PM - 5:00 PM</div>
+                </div>
+                <div class="day-column weekend">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot unavailable">Day Off</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .schedule-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .schedule-overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .overview-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .overview-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--background-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .overview-info h3 {
+            margin: 0 0 4px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .overview-info p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .schedule-calendar {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .calendar-nav h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .calendar-view-options {
+            display: flex;
+            gap: 8px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            min-height: 400px;
+        }
+
+        .schedule-details {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .details-header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .schedule-timeline {
+            position: relative;
+            padding-left: 48px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 32px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-time {
+            position: absolute;
+            left: -48px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 24px;
+        }
+
+        .timeline-card {
+            background: var(--background-light);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .timeline-card.active {
+            background: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .timeline-card.break {
+            background: #FFF3CD;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-tag {
+            padding: 4px 8px;
+            background: white;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .card-time {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .passenger-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .passenger-photo {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .passenger-info h4 {
+            margin: 0 0 4px;
+            font-size: 0.875rem;
+        }
+
+        .passenger-info p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .availability-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .day-column {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .day-header {
+            font-weight: 500;
+            padding: 8px;
+            text-align: center;
+            background: var(--background-light);
+            border-radius: 4px;
+        }
+
+        .time-slot {
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .time-slot.available {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .time-slot.break {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .time-slot.unavailable {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
+        .weekend .day-header {
+            color: var(--danger-color);
+        }
+
+        @media (max-width: 992px) {
+            .schedule-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .availability-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .schedule-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .schedule-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .calendar-view-options {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .availability-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+
+    <script>
+        // Calendar navigation
+        document.querySelectorAll('.calendar-nav button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Implementation for calendar navigation
+            });
+        });
+
+        // Calendar view switching
+        document.querySelectorAll('.calendar-view-options button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.calendar-view-options button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                // Implementation for view switching
+            });
+        });
+
+        // Availability editing
+        document.querySelector('.availability-section .btn-outline').addEventListener('click', function() {
+            // Implementation for editing availability
+        });
+
+        // Generate calendar grid
+        function generateCalendarGrid() {
+            const calendar = document.querySelector('.calendar-grid');
+            const daysInMonth = 30; // Example for June
+            const firstDay = 6; // First day of June 2024 is a Saturday (6)
+
+            // Add empty cells for days before the first of the month
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                calendar.appendChild(emptyDay);
+            }
+
+            // Add days of the month
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'calendar-day';
+                dayCell.innerHTML = `
+                    <span class="day-number">${i}</span>
+                    <div class="day-content">
+                        <div class="event-indicator"></div>
+                    </div>
+                `;
+                calendar.appendChild(dayCell);
+            }
+        }
+
+        // Initialize calendar
+        generateCalendarGrid();
+    </script>
+</body>
+</html> 

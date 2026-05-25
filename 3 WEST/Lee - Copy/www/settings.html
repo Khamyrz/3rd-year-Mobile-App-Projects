@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .container {
+      padding: 20px;
+      margin-bottom: 80px;
+    }
+
+    .settings-section {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .settings-item {
+      padding: 18px 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .settings-item:last-child {
+      border-bottom: none;
+    }
+
+    .settings-label {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .settings-icon {
+      color: #4285F4;
+      font-size: 1.2rem;
+      width: 25px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background-color: #ffffff;
+      border-top: 1px solid #eeeeee;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+      padding: 0 10px;
+      z-index: 1000;
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item i {
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item.active {
+      color: #4285F4;
+      transform: translateY(-5px);
+    }
+
+    .info-text {
+      display: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .info-text.active {
+      display: block;
+    }
+
+    select.language-dropdown {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #4285F4;
+      font-size: 14px;
+      background-color: #f9f9f9;
+      color: #333;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    select.language-dropdown:hover,
+    select.language-dropdown:focus {
+      border-color: #0059ff;
+      box-shadow: 0 0 6px rgba(66, 133, 244, 0.4);
+      outline: none;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; visibility: hidden; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="settings-section">
+      <div class="settings-item" id="aboutToggle">
+        <div class="settings-label">
+          <i class="fas fa-info-circle settings-icon"></i>
+          <span>About App</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="info-text" id="aboutText">
+        Madridejos Poultry Finder helps locals locate nearby poultry farms in Madridejos, Bantayan Island.
+      </div>
+
+      <div class="settings-item" id="policyToggle">
+        <div class="settings-label">
+          <i class="fas fa-shield-alt settings-icon"></i>
+          <span>Privacy Policy</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="info-text" id="policyText">
+        We respect your privacy. This app works offline and does not collect personal data.
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-item">
+        <div class="settings-label">
+          <i class="fas fa-language settings-icon"></i>
+          <div>
+            <label for="languageSelect">Language</label>
+            <select class="language-dropdown" id="languageSelect">
+              <option value="en">English</option>
+              <option value="ceb">Bisaya</option>
+              <option value="tag">Tagalog</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-item" id="developerToggle">
+        <div class="settings-label">
+          <i class="fas fa-user-cog settings-icon"></i>
+          <span>Developer</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="info-text" id="developerText">
+        Developed by Lee Gilbuela, a local app developer passionate about helping communities with technology.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-nav">
+    <a href="home.html" class="nav-item">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="map.html" class="nav-item">
+      <i class="fas fa-map-marked-alt"></i>
+      <span>Map</span>
+    </a>
+    <a href="settings.html" class="nav-item active">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const languageSelect = document.getElementById('languageSelect');
+
+      const savedLanguage = localStorage.getItem('appLanguage') || 'en';
+      languageSelect.value = savedLanguage;
+      applyLanguage(savedLanguage);
+
+      languageSelect.addEventListener('change', () => {
+        const selectedLang = languageSelect.value;
+        localStorage.setItem('appLanguage', selectedLang);
+        applyLanguage(selectedLang);
+      });
+
+      document.getElementById('aboutToggle').addEventListener('click', () => {
+        document.getElementById('aboutText').classList.toggle('active');
+      });
+
+      document.getElementById('policyToggle').addEventListener('click', () => {
+        document.getElementById('policyText').classList.toggle('active');
+      });
+
+      document.getElementById('developerToggle').addEventListener('click', () => {
+        document.getElementById('developerText').classList.toggle('active');
+      });
+
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+          this.classList.add('active');
+          window.location.href = this.href;
+        });
+      });
+
+      function applyLanguage(lang) {
+        const aboutText = document.getElementById('aboutText');
+        const policyText = document.getElementById('policyText');
+        const developerText = document.getElementById('developerText');
+
+        const translations = {
+          en: {
+            about: "Madridejos Poultry Finder helps locals locate nearby poultry farms in Madridejos, Bantayan Island.",
+            policy: "We respect your privacy. This app works offline and does not collect personal data.",
+            developer: "Developed by Lee Gilbuela, a local app developer passionate about helping communities with technology."
+          },
+          ceb: {
+            about: "Ang Madridejos Poultry Finder nagtabang sa mga tawo sa pagpangita og mga duol nga poultry farm sa Madridejos, Isla sa Bantayan.",
+            policy: "Girespeto namo ang imong privacy. Kini nga app offline ug walay personal nga datos nga makuha.",
+            developer: "Gibuhat ni Lee Gilbuela, usa ka local developer nga nangandoy nga makatabang sa komunidad pinaagi sa teknolohiya."
+          },
+          tag: {
+            about: "Ang Poultry Finder sa Madridejos ay tumutulong sa mga tao na makahanap ng mga malalapit na manukan sa isla ng Bantayan.",
+            policy: "Iginagalang namin ang iyong privacy. Gumagana ang app na ito kahit walang signal at hindi kinokolekta ang iyong data.",
+            developer: "Ipinrograma ito ni Lee Gilbuela, isang lokal na developer na nais tumulong sa komunidad sa pamamagitan ng teknolohiya."
+          }
+        };
+
+        aboutText.textContent = translations[lang]?.about || translations.en.about;
+        policyText.textContent = translations[lang]?.policy || translations.en.policy;
+        developerText.textContent = translations[lang]?.developer || translations.en.developer;
+      }
+    });
+  </script>
+</body>
+</html>

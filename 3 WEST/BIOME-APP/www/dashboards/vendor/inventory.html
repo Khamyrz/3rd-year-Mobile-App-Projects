@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Vendor Inventory</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="products.html" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="inventory.html" class="nav-item active">
+                <i class="fas fa-warehouse"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Store Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search inventory by product name or SKU...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications" data-unread="3">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span class="store-name">Artisan Crafts Manila</span>
+            <img src="../../img/store-placeholder.jpg" alt="Store" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="dashboard-header">
+            <h1>Inventory Management</h1>
+            <div class="header-actions">
+                <button class="btn btn-outline-primary me-2">
+                    <i class="fas fa-file-import"></i>
+                    Import Inventory
+                </button>
+                <button class="btn btn-outline-primary me-2">
+                    <i class="fas fa-file-export"></i>
+                    Export Inventory
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add Stock
+                </button>
+            </div>
+        </div>
+
+        <div class="inventory-stats">
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #e3f2fd;">
+                    <i class="fas fa-boxes" style="color: #1976d2;"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Total Products</h3>
+                    <p class="stat-value">156</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #fff3e0;">
+                    <i class="fas fa-exclamation-triangle" style="color: #f57c00;"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Low Stock Items</h3>
+                    <p class="stat-value">12</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #fce4ec;">
+                    <i class="fas fa-times-circle" style="color: #c2185b;"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Out of Stock</h3>
+                    <p class="stat-value">5</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #e8f5e9;">
+                    <i class="fas fa-sync" style="color: #2e7d32;"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Reorder Points</h3>
+                    <p class="stat-value">8</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventory-filters">
+            <div class="filter-group">
+                <label>Category</label>
+                <select class="form-select">
+                    <option value="all">All Categories</option>
+                    <option value="bags">Bags</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="clothing">Clothing</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Stock Status</label>
+                <select class="form-select">
+                    <option value="all">All Status</option>
+                    <option value="in-stock">In Stock</option>
+                    <option value="low-stock">Low Stock</option>
+                    <option value="out-of-stock">Out of Stock</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sort By</label>
+                <select class="form-select">
+                    <option value="name">Product Name</option>
+                    <option value="sku">SKU</option>
+                    <option value="stock">Stock Level</option>
+                    <option value="value">Stock Value</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table inventory-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>SKU</th>
+                                <th>Category</th>
+                                <th>Stock Level</th>
+                                <th>Reorder Point</th>
+                                <th>Stock Value</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <img src="../../img/product-placeholder.jpg" alt="Product" width="40" height="40">
+                                        <div>
+                                            <div class="product-name">Handwoven Bag</div>
+                                            <div class="product-variant">Brown / Large</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>HWB-001-BR-L</td>
+                                <td>Bags</td>
+                                <td>
+                                    <div class="stock-level">
+                                        <span class="stock-indicator stock-medium"></span>
+                                        <span>15 units</span>
+                                    </div>
+                                </td>
+                                <td>20 units</td>
+                                <td>₱45,000.00</td>
+                                <td>
+                                    <div>Mar 15, 2024</div>
+                                    <small class="text-muted">2:30 PM</small>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-success">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-info">
+                                            <i class="fas fa-history"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- More inventory rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn btn-outline-primary" disabled>Previous</button>
+                    <div class="page-numbers">
+                        <button class="btn btn-primary">1</button>
+                        <button class="btn btn-outline-primary">2</button>
+                        <button class="btn btn-outline-primary">3</button>
+                        <span>...</span>
+                        <button class="btn btn-outline-primary">10</button>
+                    </div>
+                    <button class="btn btn-outline-primary">Next</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Stock Modal -->
+    <div class="modal" id="stockModal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Stock Level</h5>
+                    <button type="button" class="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="stockForm">
+                        <div class="form-group">
+                            <label>Adjustment Type</label>
+                            <select class="form-select" required>
+                                <option value="add">Add Stock</option>
+                                <option value="remove">Remove Stock</option>
+                                <option value="set">Set Stock Level</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="number" class="form-control" required min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Reason</label>
+                            <select class="form-select" required>
+                                <option value="purchase">New Purchase</option>
+                                <option value="return">Customer Return</option>
+                                <option value="damage">Damaged/Lost</option>
+                                <option value="correction">Inventory Correction</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Notes</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" form="stockForm" class="btn btn-primary">Update Stock</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock History Modal -->
+    <div class="modal" id="historyModal" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Stock History</h5>
+                    <button type="button" class="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Stock history will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/vendor.js"></script>
+</body>
+</html> 

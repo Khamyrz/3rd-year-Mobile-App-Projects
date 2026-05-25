@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BookShelf</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-logo">
+            <i class="fas fa-book-reader"></i>
+            <h1>Litlounge</h1>
+        </div>
+        <p>Your Digital Reading Companion</p>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-container">
+        <!-- Header -->
+        <header>
+            <div class="menu-icon">
+                <i class="fas fa-bars" id="menu-button"></i>
+            </div>
+            <div class="logo">
+                <h1>BookShelf</h1>
+            </div>
+            <div class="search-icon">
+                <i class="fas fa-search" id="search-button"></i>
+            </div>
+        </header>
+
+        <!-- Search Overlay -->
+        <div id="search-overlay">
+            <div class="search-container">
+                <i class="fas fa-arrow-left" id="back-search"></i>
+                <input type="text" id="search-input" placeholder="Search books...">
+                <i class="fas fa-times" id="clear-search"></i>
+            </div>
+            <div id="search-results">
+                <!-- Search results will be populated here -->
+            </div>
+        </div>
+
+        <!-- Side Menu -->
+        <div id="side-menu">
+            <div class="side-menu-header">
+                <i class="fas fa-times" id="close-menu"></i>
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-name">Reader</div>
+                </div>
+            </div>
+            <ul class="menu-items">
+                <li data-page="home" class="active"><i class="fas fa-home"></i> Home</li>
+                <li data-page="library"><i class="fas fa-book"></i> My Library</li>
+                <li data-page="shelf"><i class="fas fa-bookmark"></i> Reading List</li>
+                <li data-page="favorites"><i class="fas fa-heart"></i> Favorites</li>
+                <li data-page="settings"><i class="fas fa-cog"></i> Settings</li>
+                <li data-page="about"><i class="fas fa-info-circle"></i> About</li>
+            </ul>
+        </div>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <div class="section">
+                    <h2>Featured Books</h2>
+                    <div class="book-carousel">
+                        <div class="book-card" data-id="1">
+                            <div class="book-cover" style="background-color: #2c3e50;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">The Alchemist</div>
+                            <div class="book-author">Paulo Coelho</div>
+                        </div>
+                        <div class="book-card" data-id="2">
+                            <div class="book-cover" style="background-color: #e74c3c;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">Sapiens</div>
+                            <div class="book-author">Yuval Noah Harari</div>
+                        </div>
+                        <div class="book-card" data-id="3">
+                            <div class="book-cover" style="background-color: #2ecc71;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">Educated</div>
+                            <div class="book-author">Tara Westover</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>New Releases</h2>
+                    <div class="book-carousel">
+                        <div class="book-card" data-id="4">
+                            <div class="book-cover" style="background-color: #9b59b6;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">Fourth Wing</div>
+                            <div class="book-author">Rebecca Yarros</div>
+                        </div>
+                        <div class="book-card" data-id="5">
+                            <div class="book-cover" style="background-color: #f39c12;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">Atomic Habits</div>
+                            <div class="book-author">James Clear</div>
+                        </div>
+                        <div class="book-card" data-id="6">
+                            <div class="book-cover" style="background-color: #16a085;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">Tomorrow Will Be Better</div>
+                            <div class="book-author">Betty Smith</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Continue Reading</h2>
+                    <div class="book-carousel">
+                        <div class="book-card" data-id="7">
+                            <div class="book-cover" style="background-color: #d35400;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">The Silent Patient</div>
+                            <div class="book-author">Alex Michaelides</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%;"></div>
+                            </div>
+                            <div class="progress-text">45%</div>
+                        </div>
+                        <div class="book-card" data-id="8">
+                            <div class="book-cover" style="background-color: #27ae60;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">The Nightingale</div>
+                            <div class="book-author">Kristin Hannah</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 62%;"></div>
+                            </div>
+                            <div class="progress-text">62%</div>
+                        </div>
+                        <div class="book-card" data-id="9">
+                            <div class="book-cover" style="background-color: #8e44ad;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">Where the Crawdads Sing</div>
+                            <div class="book-author">Delia Owens</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 28%;"></div>
+                            </div>
+                            <div class="progress-text">28%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Recommended For You</h2>
+                    <div class="book-carousel">
+                        <div class="book-card" data-id="10">
+                            <div class="book-cover" style="background-color: #c0392b;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="book-title">It Ends with Us</div>
+                            <div class="book-author">Colleen Hoover</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library Page -->
+            <div id="library" class="page">
+                <div class="section">
+                    <h2>My Library</h2>
+                    <div class="filter-tabs">
+                        <div class="filter-tab active" data-filter="all">All</div>
+                        <div class="filter-tab" data-filter="fiction">Fiction</div>
+                        <div class="filter-tab" data-filter="non-fiction">Non-Fiction</div>
+                    </div>
+                    <div class="library-grid">
+                        <!-- Books will be populated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reading List Page -->
+            <div id="shelf" class="page">
+                <div class="section">
+                    <h2>Reading List</h2>
+                    <div class="shelf-list">
+                        <!-- Reading list will be populated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Favorites Page -->
+            <div id="favorites" class="page">
+                <div class="section">
+                    <h2>Favorites</h2>
+                    <div class="favorites-grid">
+                        <!-- Favorites will be populated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings" class="page">
+                <div class="section">
+                    <h2>Settings</h2>
+                    <div class="settings-list">
+                        <div class="settings-item">
+                            <div class="settings-label">Night Mode</div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="night-mode-toggle">
+                                <label for="night-mode-toggle"></label>
+                            </div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Font Size</div>
+                            <div class="font-size-controls">
+                                <button id="decrease-font">A-</button>
+                                <button id="increase-font">A+</button>
+                            </div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Notifications</div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="notifications-toggle" checked>
+                                <label for="notifications-toggle"></label>
+                            </div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Data Usage</div>
+                            <select id="data-usage">
+                                <option value="wifi">Wi-Fi Only</option>
+                                <option value="all">All Networks</option>
+                                <option value="none">Manual Download Only</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Page -->
+            <div id="about" class="page">
+                <div class="section">
+                    <h2>About BookShelf</h2>
+                    <div class="about-content">
+                        <p>BookShelf is your digital reading companion, designed to help you organize and enjoy your book collection.</p>
+                        <p>Version 1.0.0</p>
+                        <p>&copy; 2025 BookShelf</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Details Overlay -->
+            <div id="book-details-overlay" class="overlay">
+                <div class="overlay-content">
+                    <i class="fas fa-arrow-left back-button"></i>
+                    <div id="book-details-content">
+                        <!-- Book details will be populated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reader Overlay -->
+            <div id="reader-overlay" class="overlay">
+                <div class="reader-header">
+                    <i class="fas fa-arrow-left back-to-details"></i>
+                    <div class="reader-title">Book Title</div>
+                    <i class="fas fa-cog reader-settings"></i>
+                </div>
+                <div class="reader-content">
+                    <div id="book-content">
+                        <!-- Book content will be populated here by JavaScript -->
+                    </div>
+                </div>
+                <div class="reader-footer">
+                    <div class="page-number">Page <span id="current-page">1</span> of <span id="total-pages">X</span></div>
+                    <div class="reader-controls">
+                        <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+                        <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" data-page="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item" data-page="library">
+                <i class="fas fa-book"></i>
+                <span>Library</span>
+            </div>
+            <div class="nav-item" data-page="shelf">
+                <i class="fas fa-bookmark"></i>
+                <span>Reading</span>
+            </div>
+            <div class="nav-item" data-page="favorites">
+                <i class="fas fa-heart"></i>
+                <span>Favorites</span>
+            </div>
+        </nav>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

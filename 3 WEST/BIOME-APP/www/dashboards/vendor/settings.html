@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Vendor Settings</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="products.html" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="inventory.html" class="nav-item">
+                <i class="fas fa-warehouse"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <i class="fas fa-cog"></i>
+                <span>Store Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <h2 class="page-title">Store Settings</h2>
+        <div class="user-profile">
+            <div class="notifications" data-unread="3">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span class="store-name">Artisan Crafts Manila</span>
+            <img src="../../img/store-placeholder.jpg" alt="Store" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="settings-container">
+            <div class="settings-nav">
+                <a href="#store-info" class="settings-nav-item active">
+                    <i class="fas fa-store"></i>
+                    Store Information
+                </a>
+                <a href="#payment" class="settings-nav-item">
+                    <i class="fas fa-credit-card"></i>
+                    Payment Settings
+                </a>
+                <a href="#shipping" class="settings-nav-item">
+                    <i class="fas fa-truck"></i>
+                    Shipping Settings
+                </a>
+                <a href="#notifications" class="settings-nav-item">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </a>
+                <a href="#account" class="settings-nav-item">
+                    <i class="fas fa-user"></i>
+                    Account Settings
+                </a>
+                <a href="#security" class="settings-nav-item">
+                    <i class="fas fa-shield-alt"></i>
+                    Security
+                </a>
+            </div>
+
+            <div class="settings-content">
+                <section id="store-info" class="settings-section">
+                    <h2>Store Information</h2>
+                    <form id="storeInfoForm">
+                        <div class="store-logo-upload">
+                            <div class="logo-preview">
+                                <img src="../../img/store-placeholder.jpg" alt="Store Logo">
+                            </div>
+                            <div class="upload-actions">
+                                <button type="button" class="btn btn-outline-primary">
+                                    <i class="fas fa-upload"></i>
+                                    Upload New Logo
+                                </button>
+                                <p class="text-muted">Recommended size: 200x200px</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Store Name</label>
+                            <input type="text" class="form-control" value="Artisan Crafts Manila">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Store Description</label>
+                            <textarea class="form-control" rows="4">We specialize in handcrafted products made by local artisans, celebrating Filipino craftsmanship and culture.</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" class="form-control" value="contact@artisancraftsmanila.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Contact Phone</label>
+                            <input type="tel" class="form-control" value="+63 912 345 6789">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Business Address</label>
+                            <textarea class="form-control" rows="3">123 Artisan Street, Makati City, Metro Manila, Philippines</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Store Categories</label>
+                            <select class="form-select" multiple>
+                                <option selected>Handcrafted Goods</option>
+                                <option selected>Traditional Crafts</option>
+                                <option selected>Fashion Accessories</option>
+                                <option>Home Decor</option>
+                                <option>Jewelry</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </section>
+
+                <section id="payment" class="settings-section">
+                    <h2>Payment Settings</h2>
+                    <div class="payment-methods">
+                        <h3>Accepted Payment Methods</h3>
+                        <div class="payment-method-grid">
+                            <div class="payment-method-card active">
+                                <img src="../../img/payment/gcash.png" alt="GCash">
+                                <span>GCash</span>
+                                <button class="btn btn-sm btn-danger">Remove</button>
+                            </div>
+                            <div class="payment-method-card active">
+                                <img src="../../img/payment/paymaya.png" alt="PayMaya">
+                                <span>PayMaya</span>
+                                <button class="btn btn-sm btn-danger">Remove</button>
+                            </div>
+                            <div class="payment-method-card">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Payment Method</span>
+                            </div>
+                        </div>
+
+                        <h3>Bank Account Information</h3>
+                        <form id="bankInfoForm">
+                            <div class="form-group">
+                                <label>Bank Name</label>
+                                <input type="text" class="form-control" value="BDO">
+                            </div>
+                            <div class="form-group">
+                                <label>Account Name</label>
+                                <input type="text" class="form-control" value="Artisan Crafts Manila">
+                            </div>
+                            <div class="form-group">
+                                <label>Account Number</label>
+                                <input type="text" class="form-control" value="1234 5678 9012 3456">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </section>
+
+                <section id="shipping" class="settings-section">
+                    <h2>Shipping Settings</h2>
+                    <div class="shipping-methods">
+                        <h3>Shipping Methods</h3>
+                        <div class="shipping-method-list">
+                            <div class="shipping-method-item">
+                                <div class="method-info">
+                                    <h4>Standard Shipping</h4>
+                                    <p>3-5 business days</p>
+                                    <p class="price">₱100.00</p>
+                                </div>
+                                <div class="method-actions">
+                                    <button class="btn btn-outline-primary">Edit</button>
+                                    <button class="btn btn-danger">Delete</button>
+                                </div>
+                            </div>
+                            <div class="shipping-method-item">
+                                <div class="method-info">
+                                    <h4>Express Shipping</h4>
+                                    <p>1-2 business days</p>
+                                    <p class="price">₱200.00</p>
+                                </div>
+                                <div class="method-actions">
+                                    <button class="btn btn-outline-primary">Edit</button>
+                                    <button class="btn btn-danger">Delete</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary add-shipping-method">
+                                <i class="fas fa-plus"></i>
+                                Add Shipping Method
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="notifications" class="settings-section">
+                    <h2>Notification Settings</h2>
+                    <form id="notificationForm">
+                        <div class="notification-group">
+                            <h3>Email Notifications</h3>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="newOrder" checked>
+                                <label class="form-check-label" for="newOrder">New Order Notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="lowStock" checked>
+                                <label class="form-check-label" for="lowStock">Low Stock Alerts</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="reviews" checked>
+                                <label class="form-check-label" for="reviews">New Review Notifications</label>
+                            </div>
+                        </div>
+
+                        <div class="notification-group">
+                            <h3>Push Notifications</h3>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="pushNewOrder" checked>
+                                <label class="form-check-label" for="pushNewOrder">New Order Notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="pushMessages">
+                                <label class="form-check-label" for="pushMessages">Customer Messages</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Preferences</button>
+                    </form>
+                </section>
+
+                <section id="account" class="settings-section">
+                    <h2>Account Settings</h2>
+                    <form id="accountForm">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" class="form-control" value="owner@artisancraftsmanila.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" name="current-password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" name="new-password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm New Password</label>
+                            <input type="password" name="confirm-password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Account</button>
+                    </form>
+                </section>
+
+                <section id="security" class="settings-section">
+                    <h2>Security Settings</h2>
+                    <div class="security-options">
+                        <div class="security-option">
+                            <div class="option-info">
+                                <h4>Two-Factor Authentication</h4>
+                                <p>Add an extra layer of security to your account</p>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="twoFactor">
+                            </div>
+                        </div>
+                        <div class="security-option">
+                            <div class="option-info">
+                                <h4>Login Notifications</h4>
+                                <p>Get notified of new login attempts</p>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="loginNotifications" checked>
+                            </div>
+                        </div>
+                        <div class="security-option">
+                            <div class="option-info">
+                                <h4>Session Management</h4>
+                                <p>Manage your active sessions</p>
+                            </div>
+                            <button class="btn btn-outline-primary">View Sessions</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Shipping Method Modal -->
+    <div class="modal" id="shippingMethodModal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Shipping Method</h5>
+                    <button type="button" class="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="shippingMethodForm">
+                        <div class="form-group">
+                            <label>Method Name</label>
+                            <input type="text" name="method-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Time</label>
+                            <input type="text" name="delivery-time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="number" name="price" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" form="shippingMethodForm" class="btn btn-primary">Save Method</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../js/vendor.js"></script>
+    <script src="../../js/vendor-settings.js"></script>
+</body>
+</html> 

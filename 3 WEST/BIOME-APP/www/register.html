@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Register</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    <!-- Your Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="img/logo.png" alt="BIOME Logo" class="auth-logo">
+                <h1>Create Account</h1>
+                <p>Join BIOME and explore the Philippines</p>
+            </div>
+
+            <div id="notification" class="notification" style="display: none;"></div>
+
+            <form id="registrationForm" class="auth-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="form-control" required minlength="2" maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" class="form-control" required minlength="6" maxlength="50">
+                        <button type="button" id="togglePassword" onclick="togglePasswordVisibility('password', 'togglePassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <small class="form-text text-muted">Password must be at least 6 characters long</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="password-input">
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required minlength="6" maxlength="50">
+                        <button type="button" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPassword', 'toggleConfirmPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Register as</label>
+                    <select id="role" name="role" class="form-control" onchange="updateFormFields()" required>
+                        <option value="">Select your role</option>
+                        <option value="tourist">Tourist</option>
+                        <option value="vendor">Vendor</option>
+                        <option value="guide">Local Guide</option>
+                        <option value="driver">Driver</option>
+                    </select>
+                </div>
+
+                <div id="additionalFields">
+                    <!-- Dynamic fields based on role selection will be inserted here -->
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+
+                <div class="social-login">
+                    <button type="button" onclick="signInWithGoogle()" class="btn btn-google">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                    <button type="button" onclick="signInWithFacebook()" class="btn btn-facebook">
+                        <i class="fab fa-facebook-f"></i> Continue with Facebook
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Script -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Initialize providers
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
+        const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+        // Add form submit event listener
+        document.getElementById('registrationForm').addEventListener('submit', registerUser);
+
+        // Check for social auth provider in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const provider = urlParams.get('provider');
+        
+        if (provider) {
+            // Pre-fill email and name if available from social auth
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    document.getElementById('email').value = user.email || '';
+                    document.getElementById('fullName').value = user.displayName || '';
+                    document.getElementById('email').readOnly = true;
+                }
+            });
+        }
+
+        // Add password match validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (password !== confirmPassword) {
+                this.setCustomValidity('Passwords do not match');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        // Social Sign In functions
+        async function signInWithGoogle() {
+            try {
+                const result = await auth.signInWithPopup(googleProvider);
+                // After successful sign in, the page will be reloaded with provider=google
+                window.location.href = 'register.html?provider=google';
+            } catch (error) {
+                showNotification('error', error.message);
+            }
+        }
+
+        async function signInWithFacebook() {
+            try {
+                const result = await auth.signInWithPopup(facebookProvider);
+                // After successful sign in, the page will be reloaded with provider=facebook
+                window.location.href = 'register.html?provider=facebook';
+            } catch (error) {
+                showNotification('error', error.message);
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,234 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    margin: 0;
+    background-color: #e1eaee; /* Sky Blue */
+    font-weight: bold;
+    color: #1b1e1f;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+#game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    z-index: 100; /* Increased z-index to ensure it appears on top */
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#game-over.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#game-container {
+    width: 80vw;
+    max-width: 400px; /* Increased from 450px */
+    height: 65vh; /* Slightly increased */
+    max-height: 400px; /* Increased from 400px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; /* Added to create space between game and controls */
+    position: relative; /* Added for positioning game over message */
+}
+
+canvas {
+    width: 100%;
+    height: 55%; /* Increased from 60% */
+    border: 5px solid rgb(22, 21, 21);
+    background: #7CFC00; /* Grass Green */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Game Over message styling */
+#game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    z-index: 10;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#game-over.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.game-info {
+    margin: 5px 0; /* Compact the score/level/lives display */
+    text-align: center;
+}
+
+
+.ui-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#mobile-controls {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.mobile-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(76, 175, 80, 0.7);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+    #mobile-controls {
+        display: flex;
+    }
+    .keyboard-info {
+        display: none;
+    }
+}
+.controller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px; /* Reduced from 10px */
+}
+
+
+button {
+    background-color: #007BFF;
+    color: rgb(27, 26, 26);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: "Lucida Console", "Courier New", monospace;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #6c11fd;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #5d9be2;
+    transform: scale(0.95);
+}
+
+.d-pad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px; /* Reduced from 5px for a more compact d-pad */
+}
+
+.middle-row {
+    display: flex;
+    align-items: center;
+    gap: 3px; /* Reduced from 5px */
+}
+
+.dpad-btn {
+    width: 45px; /* Slightly reduced from 50px */
+    height: 45px; /* Slightly reduced from 50px */
+    background-color: #0074D9;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dpad-btn:active {
+    background-color: #0056A3;
+    transform: scale(0.9);
+}
+
+.center {
+    width: 45px; /* Match other buttons */
+    height: 45px; /* Match other buttons */
+    background: transparent;
+}
+
+/* Added responsive adjustments for smaller screens */
+@media (max-height: 600px) {
+    #game-container {
+        height: 55vh;
+        max-height: 350px;
+    }
+    
+    .dpad-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .center {
+        width: 40px;
+        height: 40px;
+    }
+}

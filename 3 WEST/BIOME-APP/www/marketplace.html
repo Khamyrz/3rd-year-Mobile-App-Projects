@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: #0088cc;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .tab-button.buy {
+            background: #007bff;
+            color: white;
+        }
+
+        .tab-button.sell {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .tab-button.active {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            color: #0088cc;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="back-button" onclick="window.location.href='main.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="page-title">MARKETPLACE</div>
+            <button class="menu-button">
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+
+        <div class="tab-container">
+            <button class="tab-button buy active" onclick="switchTab('buy')">BUY</button>
+            <button class="tab-button sell" onclick="switchTab('sell')">SELL</button>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="img/tuna.jpg" alt="Fresh Tuna" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">FRESH TUNA</div>
+                    <div class="product-price">₱200/KLS</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="img/marlin.jpg" alt="Fresh Marlin" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">FRESH MARLIN</div>
+                    <div class="product-price">₱100/KLS</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="img/subagjo.jpg" alt="Subagjo" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">SUBAGJO</div>
+                    <div class="product-price">₱100/KLS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Menu</h2>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="profile-section">
+            <img src="img/default-avatar.png" alt="Profile" class="profile-image">
+            <div class="profile-name">Guest</div>
+            <div class="profile-role">Visitor</div>
+            <a href="login.html" class="login-link">No Account? Login here</a>
+        </div>
+        <div class="menu-items">
+            <a href="marketplace.html" class="menu-item">
+                <i class="fas fa-store"></i>
+                Marketplace
+            </a>
+            <a href="tourism.html" class="menu-item">
+                <i class="fas fa-umbrella-beach"></i>
+                Tourism
+            </a>
+            <a href="learning.html" class="menu-item">
+                <i class="fas fa-book-reader"></i>
+                Learning Center
+            </a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <script src="js/sidebar.js"></script>
+    <script>
+        function switchTab(tab) {
+            const buyButton = document.querySelector('.tab-button.buy');
+            const sellButton = document.querySelector('.tab-button.sell');
+            
+            if (tab === 'buy') {
+                buyButton.classList.add('active');
+                sellButton.classList.remove('active');
+                // Add logic to show buy content
+            } else {
+                sellButton.classList.add('active');
+                buyButton.classList.remove('active');
+                // Add logic to show sell content
+            }
+        }
+    </script>
+</body>
+</html> 

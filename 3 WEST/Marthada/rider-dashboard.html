@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Dashboard - Marthada</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="dashboard-header">
+            <div class="user-info">
+                <img id="riderProfilePic" src="img/default-profile.png" alt="Profile Picture" class="profile-pic">
+                <div class="user-details">
+                    <h3 id="riderName">Rider Name</h3>
+                    <span id="riderStatus" class="status available">Available</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="toggleAvailability" class="btn btn-toggle">Go Offline</button>
+                <button id="menuToggle" class="menu-btn"><i class="fas fa-bars"></i></button>
+            </div>
+        </header>
+
+        <div class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <img src="img/logo.png" alt="Marthada Logo" class="logo">
+                <h3>MARTHADA</h3>
+                <button id="closeMenu" class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="menu-items">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Ride History</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Earnings</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-star"></i> Ratings</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                <li><a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="content-area">
+            <div class="map-container">
+                <div id="map" class="map"></div>
+            </div>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-route"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalRides">0</span>
+                        <span class="stat-label">Total Rides</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-wallet"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalEarnings">$0.00</span>
+                        <span class="stat-label">Earnings</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="ratingValue">0.0</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ride-controls">
+                <button id="bookForRide" class="btn btn-primary">Book For a Ride</button>
+            </div>
+
+            <div class="ride-request-panel hidden" id="rideRequestPanel">
+                <h3>New Ride Request</h3>
+                <div class="customer-info">
+                    <img src="img/default-profile.png" alt="Customer Profile" class="customer-pic">
+                    <div class="customer-details">
+                        <h4 id="customerName">Customer Name</h4>
+                        <p id="pickupLocation"><i class="fas fa-map-marker-alt"></i> Pickup Location</p>
+                        <p id="dropoffLocation"><i class="fas fa-map-pin"></i> Dropoff Location</p>
+                        <p id="estimatedFare"><i class="fas fa-money-bill-wave"></i> Estimated Fare: $10.00</p>
+                    </div>
+                </div>
+                <div class="request-actions">
+                    <button id="acceptRide" class="btn btn-accept">Accept</button>
+                    <button id="declineRide" class="btn btn-decline">Decline</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <button class="footer-btn"><i class="fas fa-map"></i></button>
+            <button class="footer-btn"><i class="fas fa-history"></i></button>
+            <button class="footer-btn"><i class="fas fa-bell"></i></button>
+            <button class="footer-btn"><i class="fas fa-user"></i></button>
+        </footer>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

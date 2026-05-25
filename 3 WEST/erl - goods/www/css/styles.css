@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --primary-color: #8B0000;
+    --secondary-color: #A52A2A;
+    --text-color: #333;
+    --light-text: #fff;
+    --background-color: #f5f5f5;
+    --danger-color: #ff4444;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+#app {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.screen {
+    min-height: 100vh;
+    padding: 20px;
+    background-color: var(--primary-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Home Screen Styles */
+.app-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.app-header h1 {
+    color: var(--light-text);
+    font-size: 24px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.menu-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu-item i {
+    font-size: 32px;
+    color: var(--light-text);
+    margin-bottom: 10px;
+}
+
+.menu-item span {
+    display: block;
+    color: var(--light-text);
+    font-size: 14px;
+}
+
+/* Screen Header Styles */
+.screen-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--light-text);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.screen-header h2 {
+    color: var(--light-text);
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Weather Screen Styles */
+.weather-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.weather-card {
+    margin-bottom: 20px;
+}
+
+.weather-card h3 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.tide-chart {
+    margin-bottom: 20px;
+}
+
+.warning-section {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Logbook Screen Styles */
+.new-entry-btn {
+    background-color: var(--light-text);
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.logbook-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.logbook-form input,
+.logbook-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.logbook-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Profile Screen Styles */
+.profile-content {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+    color: var(--light-text);
+}
+
+.profile-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image i {
+    font-size: 80px;
+    color: #666;
+}
+
+.profile-info {
+    margin-bottom: 30px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.info-row label {
+    color: #666;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-actions button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.edit-profile-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.view-history-btn {
+    background-color: #333;
+    color: white;
+}
+
+.logout-btn {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Map Screen Styles */
+#map {
+    height: calc(100vh - 100px);
+    border-radius: 15px;
+    z-index: 1;
+}
+
+/* Hide Leaflet Attribution */
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+.leaflet-bottom {
+    display: none !important;
+}
+
+/* Custom Marker Styles */
+.custom-marker {
+    background: transparent;
+    border: none;
+}
+
+.marker-inner {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.marker-inner:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Custom Popup Styles */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.custom-popup {
+    padding: 12px;
+    max-width: 250px;
+}
+
+.custom-popup h3 {
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.custom-popup p {
+    color: var(--text-color);
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.coordinates {
+    font-family: monospace;
+    font-size: 12px;
+    color: #666;
+    background-color: #f5f5f5;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+} 

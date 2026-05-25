@@ -1,0 +1,45 @@
+Litlounge is a mobile/web application that allows users to manage their digital book collection. The app provides features for browsing books, maintaining a reading shelf, tracking reading progress, marking favorites, and customizing the reading experience.
+
+Core Components
+Initialization
+
+The app initializes when the device is ready or when DOM content is loaded (for browser testing)
+A splash screen displays briefly before transitioning to the main app interface
+Initial setup includes loading the library, reading shelf, favorites, and applying saved user settings
+
+Navigation
+
+The app uses a side menu and bottom navigation bar for moving between sections
+Main sections include Library, Reading Shelf, Favorites, and Settings
+A search overlay allows users to find books by title or author
+
+Book Management
+
+Book data is stored in a JavaScript array with details including title, author, genre, progress, etc.
+Books can be added to favorites and the reading shelf
+Reading progress is tracked as a percentage and displayed visually with progress bars
+
+Reading Experience
+
+The app features a full-screen reading mode with page navigation
+Book content is paginated and displayed one page at a time
+Progress is automatically updated as users advance through pages
+
+Reading Shelf
+
+Shows books the user is currently reading
+Displays reading progress for each book
+Allows quick access to continue reading
+
+Favorites
+
+Collection of books marked as favorites by the user
+Easy access to preferred titles
+
+Search
+
+Overlay interface for finding books
+Real-time filtering as the user types
+Results displayed in a grid similar to the library view
+
+

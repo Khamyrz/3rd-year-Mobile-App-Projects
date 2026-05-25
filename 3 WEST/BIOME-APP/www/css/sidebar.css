@@ -1,0 +1,183 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background: #005580;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+/* Hamburger Menu Styles */
+.menu-button {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.hamburger-menu {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+/* Hamburger Animation */
+.menu-button.active .hamburger-menu span:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+}
+
+.menu-button.active .hamburger-menu span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.menu-button.active .hamburger-menu span:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-sidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-sidebar:hover {
+    transform: rotate(90deg);
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
+.profile-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-role {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.login-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.login-link:hover {
+    opacity: 1;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.menu-item i {
+    width: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover i {
+    transform: scale(1.2);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 280px;
+    }
+} 

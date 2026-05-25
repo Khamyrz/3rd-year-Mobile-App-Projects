@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgiananIsda</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Home Screen -->
+        <div class="screen" id="homeScreen">
+            <div class="app-header">
+                <img src="img/logo.png" alt="AgiananIsda" class="logo">
+                <h1>AgiananIsda</h1>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item" onclick="showScreen('weatherScreen')">
+                    <i class="fas fa-cloud-sun"></i>
+                    <span>Weather & Tide Info</span>
+                </div>
+                <div class="menu-item" onclick="showScreen('mapScreen')">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Map & Fishing Spots</span>
+                </div>
+                <div class="menu-item" onclick="showScreen('logbookScreen')">
+                    <i class="fas fa-book"></i>
+                    <span>Fishing Logbook</span>
+                </div>
+                <div class="menu-item" onclick="showScreen('profileScreen')">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Screen -->
+        <div class="screen hidden" id="weatherScreen">
+            <div class="screen-header">
+                <button onclick="showScreen('homeScreen')" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Weather & Tide Info</h2>
+            </div>
+            <div class="weather-content">
+                <div class="weather-card">
+                    <h3>Current Weather</h3>
+                    <div id="currentWeather"></div>
+                </div>
+                <div class="tide-chart">
+                    <h3>Tide Chart</h3>
+                    <canvas id="tideChart"></canvas>
+                </div>
+                <div class="warning-section" id="warningSection">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p id="warningText">No current warnings</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fishing Logbook Screen -->
+        <div class="screen hidden" id="logbookScreen">
+            <div class="screen-header">
+                <button onclick="showScreen('homeScreen')" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Fishing Logbook</h2>
+            </div>
+            <button class="new-entry-btn" onclick="showNewEntryForm()">+ New Entry</button>
+            <div class="logbook-form hidden" id="logbookForm">
+                <input type="date" id="date" placeholder="Date">
+                <input type="text" id="location" placeholder="Location">
+                <input type="text" id="fishType" placeholder="Type of Fish">
+                <input type="number" id="quantity" placeholder="Quantity">
+                <textarea id="notes" placeholder="Notes"></textarea>
+                <button onclick="saveLogEntry()">Save Entry</button>
+            </div>
+            <div class="logbook-entries" id="logbookEntries"></div>
+        </div>
+
+        <!-- Profile Screen -->
+        <div class="screen hidden" id="profileScreen">
+            <div class="screen-header">
+                <button onclick="showScreen('homeScreen')" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Profile</h2>
+            </div>
+            <div class="profile-content">
+                <div class="profile-image">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-info">
+                    <div class="info-row">
+                        <label>Name</label>
+                        <span id="profileName">John Doe</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Username</label>
+                        <span id="profileUsername">@johndoe</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Email</label>
+                        <span id="profileEmail">johndoe@example.com</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Joined</label>
+                        <span id="profileJoined">January 2023</span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="edit-profile-btn">EDIT PROFILE</button>
+                    <button class="view-history-btn">VIEW RIDE HISTORY</button>
+                    <button class="logout-btn">LOG OUT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Screen -->
+        <div class="screen hidden" id="mapScreen">
+            <div class="screen-header">
+                <button onclick="showScreen('homeScreen')" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Map & Fishing Spots</h2>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

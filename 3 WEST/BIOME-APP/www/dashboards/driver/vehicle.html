@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOME - Vehicle Management</title>
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/driver.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../../img/logo.png" alt="BIOME Logo" height="40">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="trips.html" class="nav-item">
+                <i class="fas fa-route"></i>
+                <span>My Trips</span>
+            </a>
+            <a href="schedule.html" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Schedule</span>
+            </a>
+            <a href="vehicle.html" class="nav-item active">
+                <i class="fas fa-car"></i>
+                <span>Vehicle</span>
+            </a>
+            <a href="earnings.html" class="nav-item">
+                <i class="fas fa-wallet"></i>
+                <span>Earnings</span>
+            </a>
+            <a href="reviews.html" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="topbar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search maintenance records...">
+            <button class="btn btn-primary search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="user-profile">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <span>Juan Driver</span>
+            <img src="../../img/profile-placeholder.jpg" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="vehicle-header">
+            <h1>Vehicle Management</h1>
+            <div class="vehicle-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-download"></i>
+                    Export Records
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add Maintenance Record
+                </button>
+            </div>
+        </div>
+
+        <div class="vehicle-overview">
+            <div class="vehicle-info-card">
+                <div class="vehicle-photo">
+                    <img src="../../img/vehicle-placeholder.jpg" alt="Toyota Innova">
+                    <button class="btn btn-outline btn-sm edit-photo">
+                        <i class="fas fa-camera"></i>
+                        Update Photo
+                    </button>
+                </div>
+                <div class="vehicle-details">
+                    <div class="detail-group">
+                        <label>Vehicle Type</label>
+                        <p>Toyota Innova 2022</p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Plate Number</label>
+                        <p>ABC 123</p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Registration Expiry</label>
+                        <p>December 31, 2024</p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Insurance Expiry</label>
+                        <p>December 31, 2024</p>
+                    </div>
+                    <button class="btn btn-outline btn-block">
+                        <i class="fas fa-edit"></i>
+                        Edit Details
+                    </button>
+                </div>
+            </div>
+
+            <div class="vehicle-status-cards">
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Odometer</h3>
+                        <p>45,678 km</p>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Next Oil Change</h3>
+                        <p>In 2,500 km</p>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Next Service</h3>
+                        <p>July 15, 2024</p>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Fuel Level</h3>
+                        <p>75%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="maintenance-section">
+            <div class="section-header">
+                <h2>Maintenance Schedule</h2>
+                <div class="header-actions">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-filter"></i>
+                        Filter
+                    </button>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-sort"></i>
+                        Sort
+                    </button>
+                </div>
+            </div>
+
+            <div class="maintenance-timeline">
+                <div class="timeline-item upcoming">
+                    <div class="timeline-badge">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="maintenance-card">
+                            <div class="card-header">
+                                <div class="header-info">
+                                    <h3>Regular Maintenance</h3>
+                                    <span class="status upcoming">Upcoming</span>
+                                </div>
+                                <div class="header-actions">
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="maintenance-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>July 15, 2024</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Toyota Cebu City</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>9:00 AM</span>
+                                    </div>
+                                </div>
+                                <div class="maintenance-tasks">
+                                    <h4>Service Items:</h4>
+                                    <ul>
+                                        <li>Oil Change</li>
+                                        <li>Brake Inspection</li>
+                                        <li>Tire Rotation</li>
+                                        <li>General Inspection</li>
+                                    </ul>
+                                </div>
+                                <div class="estimated-cost">
+                                    <span>Estimated Cost:</span>
+                                    <strong>₱5,000</strong>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary btn-block">
+                                    <i class="fas fa-calendar-check"></i>
+                                    Confirm Appointment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item completed">
+                    <div class="timeline-badge">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="maintenance-card">
+                            <div class="card-header">
+                                <div class="header-info">
+                                    <h3>Oil Change</h3>
+                                    <span class="status completed">Completed</span>
+                                </div>
+                                <div class="header-actions">
+                                    <button class="btn btn-outline btn-sm">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="maintenance-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>June 1, 2024</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Shell Service Center</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>43,178 km</span>
+                                    </div>
+                                </div>
+                                <div class="maintenance-tasks">
+                                    <h4>Service Items:</h4>
+                                    <ul>
+                                        <li>Oil Change</li>
+                                        <li>Oil Filter Replacement</li>
+                                        <li>Basic Inspection</li>
+                                    </ul>
+                                </div>
+                                <div class="actual-cost">
+                                    <span>Total Cost:</span>
+                                    <strong>₱3,500</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="documents-section">
+            <div class="section-header">
+                <h2>Vehicle Documents</h2>
+                <button class="btn btn-outline">
+                    <i class="fas fa-upload"></i>
+                    Upload Document
+                </button>
+            </div>
+
+            <div class="documents-grid">
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="document-info">
+                        <h3>Vehicle Registration</h3>
+                        <p>Expires: Dec 31, 2024</p>
+                    </div>
+                    <div class="document-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="document-info">
+                        <h3>Insurance Policy</h3>
+                        <p>Expires: Dec 31, 2024</p>
+                    </div>
+                    <div class="document-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="document-info">
+                        <h3>Inspection Certificate</h3>
+                        <p>Expires: Dec 31, 2024</p>
+                    </div>
+                    <div class="document-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="document-info">
+                        <h3>Driver's License</h3>
+                        <p>Expires: Dec 31, 2024</p>
+                    </div>
+                    <div class="document-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .vehicle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .vehicle-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .vehicle-overview {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .vehicle-info-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .vehicle-photo {
+            position: relative;
+            width: 100%;
+            height: 200px;
+        }
+
+        .vehicle-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .edit-photo {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+        }
+
+        .vehicle-details {
+            padding: 20px;
+        }
+
+        .detail-group {
+            margin-bottom: 16px;
+        }
+
+        .detail-group label {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .detail-group p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .vehicle-status-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .status-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .status-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--background-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .status-info h3 {
+            margin: 0 0 4px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .status-info p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .maintenance-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .maintenance-timeline {
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            left: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-item.completed .timeline-badge {
+            background: var(--success-color);
+        }
+
+        .timeline-item.upcoming .timeline-badge {
+            background: var(--warning-color);
+        }
+
+        .maintenance-card {
+            background: var(--background-light);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .header-info h3 {
+            margin: 0 0 4px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status.upcoming {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .status.completed {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .maintenance-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .maintenance-tasks {
+            margin-bottom: 16px;
+        }
+
+        .maintenance-tasks h4 {
+            margin: 0 0 8px;
+            font-size: 0.875rem;
+        }
+
+        .maintenance-tasks ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.875rem;
+        }
+
+        .estimated-cost,
+        .actual-cost {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .card-actions {
+            margin-top: 16px;
+        }
+
+        .documents-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .document-card {
+            background: var(--background-light);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .document-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+        }
+
+        .document-info h3 {
+            margin: 0 0 4px;
+            font-size: 0.875rem;
+        }
+
+        .document-info p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        @media (max-width: 992px) {
+            .vehicle-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .vehicle-status-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .documents-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vehicle-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .vehicle-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .vehicle-status-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .maintenance-details {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+    <script>
+        // Document preview functionality
+        document.querySelectorAll('.document-actions .btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Implementation for document actions
+            });
+        });
+
+        // Maintenance record actions
+        document.querySelectorAll('.maintenance-card .header-actions .btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Implementation for maintenance record actions
+            });
+        });
+
+        // Vehicle photo update
+        document.querySelector('.edit-photo').addEventListener('click', function() {
+            // Implementation for photo update
+        });
+
+        // Vehicle details edit
+        document.querySelector('.vehicle-details .btn-block').addEventListener('click', function() {
+            // Implementation for editing vehicle details
+        });
+    </script>
+</body>
+</html>

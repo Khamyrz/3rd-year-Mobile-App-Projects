@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madridejos Habal-Habal Taxi</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
+    <!-- Leaflet Integration -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Auth Container -->
+        <div id="auth-container" class="page-container active">
+            <div class="auth-layout">
+                <div class="auth-form-container">
+                    <div class="tabs" data-active="login">
+                        <button class="tab-btn active" id="login-tab">Login</button>
+                        <button class="tab-btn" id="register-tab">Register</button>
+                        <button class="tab-btn" id="admin-login-tab">Admin</button>
+                        <div class="tab-indicator"></div>
+                    </div>
+                    
+                    <!-- Login Forms -->
+                    <div id="login-selection" class="auth-form active">
+                        <h2>Select Login Type</h2>
+                        <div class="registration-choice">
+                            <div class="choice-card" id="rider-login-choice">
+                                <div class="icon">🏍️</div>
+                                <h3>Rider Login</h3>
+                                <p>Login as a rider to start accepting rides</p>
+                            </div>
+                            <div class="choice-card" id="customer-login-choice">
+                                <div class="icon">👤</div>
+                                <h3>Customer Login</h3>
+                                <p>Login as a customer to book rides</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rider Login Form -->
+                    <form id="rider-login-form" class="auth-form">
+                        <h2>Rider Login</h2>
+                        <div class="form-group">
+                            <label for="rider-login-email">Email</label>
+                            <input type="email" id="rider-login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-login-password">Password</label>
+                            <input type="password" id="rider-login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-secondary" id="back-to-login-select" style="margin-top: 1rem;">Back</button>
+                        <p style="margin-top: 1rem; text-align: center;">
+                            <a href="#" id="rider-forgot-password">Forgot Password?</a>
+                        </p>
+                    </form>
+                    
+                    <!-- Customer Login Form -->
+                    <form id="customer-login-form" class="auth-form">
+                        <h2>Customer Login</h2>
+                        <div class="form-group">
+                            <label for="customer-login-email">Email</label>
+                            <input type="email" id="customer-login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-login-password">Password</label>
+                            <input type="password" id="customer-login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-secondary" id="back-to-login-select-customer" style="margin-top: 1rem;">Back</button>
+                        <p style="margin-top: 1rem; text-align: center;">
+                            <a href="#" id="customer-forgot-password">Forgot Password?</a>
+                        </p>
+                    </form>
+                    
+                    <!-- Admin Login Form -->
+                    <form id="admin-login-form" class="auth-form">
+                        <h2>Admin Login</h2>
+                        <div class="form-group">
+                            <label for="admin-login-username">Username</label>
+                            <input type="text" id="admin-login-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-login-password">Password</label>
+                            <input type="password" id="admin-login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    
+                    <!-- Registration Choice -->
+                    <div id="registration-selection" class="auth-form">
+                        <h2>Choose Registration Type</h2>
+                        <div class="registration-choice">
+                            <div class="choice-card" id="rider-reg-choice">
+                                <div class="icon">🏍️</div>
+                                <h3>Register as Rider</h3>
+                                <p>Join our rider team and earn money</p>
+                            </div>
+                            <div class="choice-card" id="customer-reg-choice">
+                                <div class="icon">👤</div>
+                                <h3>Register as Customer</h3>
+                                <p>Register to book rides with us</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rider Registration Form -->
+                    <form id="rider-registration-form" class="auth-form">
+                        <h2>Rider Registration</h2>
+                        <div class="form-group file-upload">
+                            <label for="rider-photo">Photo of Self</label>
+                            <input type="file" id="rider-photo" accept="image/*" required>
+                            <div class="file-preview" id="rider-photo-preview">
+                                📷 Upload Photo
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-email">Email</label>
+                            <input type="email" id="rider-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-name">First Name</label>
+                            <input type="text" id="rider-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-middle-name">Middle Name</label>
+                            <input type="text" id="rider-middle-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-last-name">Last Name</label>
+                            <input type="text" id="rider-last-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-password">Password</label>
+                            <input type="password" id="rider-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-confirm-password">Confirm Password</label>
+                            <input type="password" id="rider-confirm-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-phone">Phone Number</label>
+                            <input type="tel" id="rider-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-address">Address</label>
+                            <input type="text" id="rider-address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-age">Age</label>
+                            <input type="number" id="rider-age" min="18" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-vehicle-model">Vehicle Model</label>
+                            <input type="text" id="rider-vehicle-model" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rider-license-plate">License Plate Number</label>
+                            <input type="text" id="rider-license-plate" required>
+                        </div>
+                        <div class="form-group file-upload">
+                            <label for="rider-vehicle-photo">Motor Vehicle Photo</label>
+                            <input type="file" id="rider-vehicle-photo" accept="image/*" required>
+                            <div class="file-preview" id="vehicle-photo-preview">
+                                📷 Upload Photo
+                            </div>
+                        </div>
+                        <div class="form-group file-upload">
+                            <label for="rider-license-photo">License Photo</label>
+                            <input type="file" id="rider-license-photo" accept="image/*" required>
+                            <div class="file-preview" id="license-photo-preview">
+                                📷 Upload Photo
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="button" class="btn btn-secondary" id="back-to-reg-select" style="margin-top: 1rem;">Back</button>
+                    </form>
+                    
+                    <!-- Customer Registration Form -->
+                    <form id="customer-registration-form" class="auth-form">
+                        <h2>Customer Registration</h2>
+                        <div class="form-group file-upload">
+                            <label for="customer-photo">Photo of Self</label>
+                            <input type="file" id="customer-photo" accept="image/*" required>
+                            <div class="file-preview" id="customer-photo-preview">
+                                📷 Upload Photo
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-email">Email</label>
+                            <input type="email" id="customer-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-name">First Name</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-middle-name">Middle Name</label>
+                            <input type="text" id="customer-middle-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-last-name">Last Name</label>
+                            <input type="text" id="customer-last-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-password">Password</label>
+                            <input type="password" id="customer-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-confirm-password">Confirm Password</label>
+                            <input type="password" id="customer-confirm-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone">Phone Number</label>
+                            <input type="tel" id="customer-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-address">Address</label>
+                            <input type="text" id="customer-address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-age">Age</label>
+                            <input type="number" id="customer-age" min="18" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="button" class="btn btn-secondary" id="back-to-reg-select-customer" style="margin-top: 1rem;">Back</button>
+                    </form>
+                </div>
+                <div class="auth-hero">
+                    <div class="hero-content">
+                        <h1>RideConnect</h1>
+                        <p>Your trusted ride-sharing platform</p>
+                        <ul class="features-list">
+                            <li>Verified drivers for your safety</li>
+                            <li>Affordable transportation</li>
+                            <li>Real-time location tracking</li>
+                            <li>Works online and offline</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Customer Container -->
+        <div id="customer-container" class="page-container">
+            <div class="map-container">
+                <div id="customer-map"></div>
+                <div class="location-instructions" id="location-instructions">
+                    Click on the map to set your pickup location
+                </div>
+                <div class="bottom-sheet" id="customer-bottom-sheet">
+                    <div class="handle"></div>
+                    <div class="bottom-sheet-content">
+                        <div id="ride-request-form" class="form-section active">
+                            <h2>Request a Ride</h2>
+                            <div class="location-input-group">
+                                <div class="form-group">
+                                    <label for="pickup-location">
+                                        <span class="location-icon pickup">📍</span>
+                                        Pickup Location
+                                    </label>
+                                    <input type="text" 
+                                           id="pickup-location" 
+                                           placeholder="Click on map to set pickup location"
+                                           readonly>
+                                </div>
+                                <div class="location-connector">
+                                    <div class="connector-line"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="destination-location">
+                                        <span class="location-icon destination">🎯</span>
+                                        Destination
+                                    </label>
+                                    <input type="text" 
+                                           id="destination-location" 
+                                           placeholder="Enter your destination">
+                                </div>
+                            </div>
+                            <div class="ride-options">
+                                <h3>Ride Options</h3>
+                                <div class="options-grid">
+                                    <div class="option-card active">
+                                        <span class="option-icon">🏍️</span>
+                                        <span class="option-name">Standard</span>
+                                        <span class="option-desc">Regular habal-habal ride</span>
+                                    </div>
+                                    <div class="option-card disabled">
+                                        <span class="option-icon">🛵</span>
+                                        <span class="option-name">Premium</span>
+                                        <span class="option-desc">Coming soon</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="request-ride-btn" class="btn btn-primary btn-large">
+                                <span class="btn-icon">🚗</span>
+                                Request Ride
+                            </button>
+                        </div>
+                        <div id="active-ride-details" class="form-section">
+                            <h2>Your Ride</h2>
+                            <div class="ride-status">
+                                <span id="ride-status-badge" class="badge">Requested</span>
+                            </div>
+                            <div class="ride-info">
+                                <div class="rider-details">
+                                    <h3>Rider Details</h3>
+                                    <div id="rider-info-container" class="info-container">
+                                        <div class="profile-circle">
+                                            <span id="rider-initials">--</span>
+                                        </div>
+                                        <div class="details">
+                                            <p id="rider-name">Waiting for rider...</p>
+                                            <p id="rider-vehicle">--</p>
+                                            <p id="rider-phone-display">--</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ride-locations">
+                                    <div class="location pickup">
+                                        <span class="dot"></span>
+                                        <p id="active-pickup-address">--</p>
+                                    </div>
+                                    <div class="location-divider"></div>
+                                    <div class="location destination">
+                                        <span class="dot"></span>
+                                        <p id="active-destination-address">--</p>
+                                    </div>
+                                </div>
+                                <div class="ride-actions">
+                                    <button id="call-rider-btn" class="btn btn-secondary" disabled>Call</button>
+                                    <button id="message-rider-btn" class="btn btn-secondary" disabled>Message</button>
+                                    <button id="cancel-ride-btn" class="btn btn-danger">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="customer-logout-btn" class="btn btn-secondary" style="position: absolute; top: 1rem; left: 1rem; z-index: 500;">Logout</button>
+            </div>
+        </div>
+        
+        <!-- Rider Container -->
+        <div id="rider-container" class="page-container">
+            <div class="map-container">
+                <div id="rider-map"></div>
+                <div class="rider-status-toggle">
+                    <label class="toggle">
+                        <input type="checkbox" id="rider-status-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span id="rider-status-text">Offline</span>
+                </div>
+                <div class="bottom-sheet collapsed" id="rider-bottom-sheet">
+                    <div class="handle"></div>
+                    <div class="bottom-sheet-content">
+                        <div id="ride-requests" class="form-section active">
+                            <h2>Ride Requests</h2>
+                            <div id="book-ride-container" style="text-align: center; margin-bottom: 1.5rem;">
+                                <button id="book-ride-btn" class="btn btn-primary">Book for a Ride</button>
+                            </div>
+                            <div id="ride-requests-list" class="requests-list">
+                                <p class="empty-message">No ride requests available</p>
+                            </div>
+                        </div>
+                        <div id="active-ride-details-rider" class="form-section">
+                            <h2>Current Ride</h2>
+                            <div class="ride-status">
+                                <span id="rider-ride-status-badge" class="badge">Accepted</span>
+                            </div>
+                            <div class="ride-info">
+                                <div class="customer-details">
+                                    <h3>Customer Details</h3>
+                                    <div id="customer-info-container" class="info-container">
+                                        <div class="profile-circle">
+                                            <span id="customer-initials">--</span>
+                                        </div>
+                                        <div class="details">
+                                            <p id="customer-name-display">--</p>
+                                            <p id="customer-phone-display">--</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ride-locations">
+                                    <div class="location pickup">
+                                        <span class="dot"></span>
+                                        <p id="rider-pickup-address">--</p>
+                                    </div>
+                                    <div class="location-divider"></div>
+                                    <div class="location destination">
+                                        <span class="dot"></span>
+                                        <p id="rider-destination-address">--</p>
+                                    </div>
+                                </div>
+                                <div class="ride-actions">
+                                    <button id="start-ride-btn" class="btn btn-primary">Start Ride</button>
+                                    <button id="complete-ride-btn" class="btn btn-success" disabled>Complete Ride</button>
+                                    <button id="cancel-ride-btn-rider" class="btn btn-danger">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="rider-logout-btn" class="btn btn-secondary" style="position: absolute; top: 1rem; left: 1rem; z-index: 500;">Logout</button>
+            </div>
+        </div>
+        
+        <!-- Admin Container -->
+        <div id="admin-container" class="page-container">
+            <div class="admin-container">
+                <div class="admin-header">
+                    <h1>Admin Dashboard</h1>
+                    <button id="admin-logout-btn" class="btn btn-danger">Logout</button>
+                </div>
+                
+                <div class="admin-tabs">
+                    <div class="admin-tab active" data-tab="riders">Riders</div>
+                    <div class="admin-tab" data-tab="customers">Customers</div>
+                    <div class="admin-tab" data-tab="password-reset">Password Reset Requests</div>
+                </div>
+                
+                <div class="admin-content" id="riders-content">
+                    <h2>Manage Riders</h2>
+                    <div class="table-container">
+                        <table class="user-table" id="riders-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Age</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rider rows will be added dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="admin-content hidden" id="customers-content">
+                    <h2>Manage Customers</h2>
+                    <div class="table-container">
+                        <table class="user-table" id="customers-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Age</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Customer rows will be added dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="admin-content hidden" id="password-reset-content">
+                    <h2>Password Reset Requests</h2>
+                    <div class="table-container">
+                        <table class="user-table" id="password-reset-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>User Type</th>
+                                    <th>Request Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Password reset requests will be added dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast-container"></div>
+
+    <!-- JavaScript Dependencies -->
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/rides.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
